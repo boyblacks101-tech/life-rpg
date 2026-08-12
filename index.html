@@ -3,51 +3,122 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Life RPG</title>
-
-    <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        body {
-            min-height: 100vh;
-            background: #0b0b12;
-            color: #ffffff;
-            font-family: Arial, sans-serif;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .app {
-            width: min(900px, 92%);
-            padding: 30px;
-            border: 1px solid #252536;
-            border-radius: 20px;
-            background: #12121c;
-        }
-
-        h1 {
-            font-size: 42px;
-            margin-bottom: 10px;
-        }
-
-        p {
-            color: #9999aa;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <main class="app">
-        <h1>Life RPG</h1>
-        <p>Your real life. Your character. Your progression.</p>
+<div class="app">
+
+    <header class="topbar">
+        <div>
+            <span class="logo">LIFE RPG</span>
+            <p class="subtitle">Upgrade your real life.</p>
+        </div>
+
+        <div class="level">
+            <span>LEVEL</span>
+            <strong id="level">1</strong>
+        </div>
+    </header>
+
+    <main>
+
+        <section class="character-card">
+
+            <div class="character">
+
+                <div class="avatar">?</div>
+
+                <div class="character-info">
+                    <h1 id="playerName">Player</h1>
+                    <p>Novice</p>
+
+                    <div class="xp">
+                        <div class="xp-text">
+                            <span>XP</span>
+                            <span id="xpText">0 / 100</span>
+                        </div>
+
+                        <div class="xp-bar">
+                            <div id="xpBar"></div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </section>
+
+        <section class="stats">
+
+            <div class="stat">
+                <span>STR</span>
+                <strong id="str">1</strong>
+            </div>
+
+            <div class="stat">
+                <span>INT</span>
+                <strong id="int">1</strong>
+            </div>
+
+            <div class="stat">
+                <span>DISC</span>
+                <strong id="disc">1</strong>
+            </div>
+
+            <div class="stat">
+                <span>ENERGY</span>
+                <strong id="energy">1</strong>
+            </div>
+
+        </section>
+
+        <section class="quests">
+
+            <div class="section-title">
+                <h2>Daily Quests</h2>
+                <span id="questCount">0 / 3</span>
+            </div>
+
+            <div class="quest-list">
+
+                <button class="quest" onclick="completeQuest(this, 20)">
+                    <span class="quest-check">+</span>
+                    <div>
+                        <strong>Study</strong>
+                        <small>Focus for 30 minutes</small>
+                    </div>
+                    <span class="reward">+20 XP</span>
+                </button>
+
+                <button class="quest" onclick="completeQuest(this, 15)">
+                    <span class="quest-check">+</span>
+                    <div>
+                        <strong>Exercise</strong>
+                        <small>Move your body</small>
+                    </div>
+                    <span class="reward">+15 XP</span>
+                </button>
+
+                <button class="quest" onclick="completeQuest(this, 10)">
+                    <span class="quest-check">+</span>
+                    <div>
+                        <strong>Read</strong>
+                        <small>Read for 20 minutes</small>
+                    </div>
+                    <span class="reward">+10 XP</span>
+                </button>
+
+            </div>
+
+        </section>
+
     </main>
 
+</div>
+
+<script src="script.js"></script>
 </body>
 </html>
