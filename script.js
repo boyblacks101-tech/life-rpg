@@ -1,17 +1,29 @@
-let xp = 0;
-let level = 1;
-let completedQuests = 0;
+let xp = Number(localStorage.getItem("xp")) || 0;
+let level = Number(localStorage.getItem("level")) || 1;
+let completedQuests =
+    Number(localStorage.getItem("completedQuests")) || 0;
 
 const xpText = document.getElementById("xpText");
 const xpBar = document.getElementById("xpBar");
 const levelElement = document.getElementById("level");
 const questCount = document.getElementById("questCount");
 
+function saveGame() {
+    localStorage.setItem("xp", xp);
+    localStorage.setItem("level", level);
+    localStorage.setItem(
+        "completedQuests",
+        completedQuests
+    );
+}
+
 function updateUI() {
     xpText.textContent = `${xp} / 100`;
     xpBar.style.width = `${xp}%`;
     levelElement.textContent = level;
-    questCount.textContent = `${completedQuests} / 3`;
+
+    questCount.textContent =
+        `${completedQuests} / 3`;
 }
 
 function completeQuest(button, reward) {
@@ -20,7 +32,10 @@ function completeQuest(button, reward) {
     }
 
     button.classList.add("completed");
-    button.querySelector(".quest-check").textContent = "✓";
+
+    button.querySelector(
+        ".quest-check"
+    ).textContent = "✓";
 
     completedQuests++;
     xp += reward;
@@ -30,6 +45,7 @@ function completeQuest(button, reward) {
         level++;
     }
 
+    saveGame();
     updateUI();
 }
 
