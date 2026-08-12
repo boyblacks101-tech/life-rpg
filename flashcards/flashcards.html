@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Flashcards - Life RPG</title>
+    <link rel="stylesheet" href="flashcards.css">
+</head>
+
+<body>
+
+<div class="page">
+
+    <header class="header">
+
+        <a href="../index.html" class="back">←</a>
+
+        <div>
+            <h1>Flashcards</h1>
+            <p>Train your knowledge.</p>
+        </div>
+
+        <button class="menu">⋮</button>
+
+    </header>
+
+
+    <section class="daily">
+
+        <div class="daily-head">
+            <h2>Today</h2>
+            <span id="todayProgress">0 / 84</span>
+        </div>
+
+        <div class="daily-grid">
+
+            <div class="daily-card new">
+                <strong id="newCount">24</strong>
+                <span>New</span>
+            </div>
+
+            <div class="daily-card learning">
+                <strong id="learningCount">18</strong>
+                <span>Learning</span>
+            </div>
+
+            <div class="daily-card review">
+                <strong id="reviewCount">42</strong>
+                <span>Review</span>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <section class="decks">
+
+        <div class="section-head">
+            <h2>My Decks</h2>
+            <button id="addDeck">＋</button>
+        </div>
+
+
+        <div class="deck-list">
+
+            <button class="deck" data-deck="english">
+
+                <div class="deck-icon">EN</div>
+
+                <div class="deck-info">
+                    <strong>English</strong>
+                    <span>Words & Native Patterns</span>
+
+                    <div class="deck-progress">
+                        <div style="width: 68%"></div>
+                    </div>
+                </div>
+
+                <div class="deck-count">
+                    <strong>124</strong>
+                    <span>cards</span>
+                </div>
+
+            </button>
+
+
+            <button class="deck" data-deck="cybersecurity">
+
+                <div class="deck-icon">CY</div>
+
+                <div class="deck-info">
+                    <strong>Cybersecurity</strong>
+                    <span>Bug Bounty & Web Security</span>
+
+                    <div class="deck-progress">
+                        <div style="width: 42%"></div>
+                    </div>
+                </div>
+
+                <div class="deck-count">
+                    <strong>86</strong>
+                    <span>cards</span>
+                </div>
+
+            </button>
+
+
+            <button class="deck" data-deck="programming">
+
+                <div class="deck-icon">DEV</div>
+
+                <div class="deck-info">
+                    <strong>Programming</strong>
+                    <span>Code, Concepts & Commands</span>
+
+                    <div class="deck-progress">
+                        <div style="width: 31%"></div>
+                    </div>
+                </div>
+
+                <div class="deck-count">
+                    <strong>57</strong>
+                    <span>cards</span>
+                </div>
+
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <section class="quick">
+
+        <button id="browse">
+            <span>⌕</span>
+            <div>
+                <strong>Browse Cards</strong>
+                <small>Search and manage your cards</small>
+            </div>
+        </button>
+
+        <button id="stats">
+            <span>▥</span>
+            <div>
+                <strong>Statistics</strong>
+                <small>See your learning progress</small>
+            </div>
+        </button>
+
+    </section>
+
+</div>
+
+<script src="flashcards.js"></script>
+
+</body>
+  </html>
