@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
     <title>Life RPG</title>
     <link rel="stylesheet" href="style.css">
 </head>
@@ -11,130 +12,144 @@
 
 <div class="app">
 
-    <header class="topbar">
+    <header class="header">
         <div>
-            <span class="logo">LIFE RPG</span>
-            <p class="subtitle">Upgrade your real life.</p>
+            <span class="brand">LIFE RPG</span>
+            <p>Build yourself.</p>
         </div>
-
-        <div class="level">
-            <span>LEVEL</span>
-            <strong id="level">1</strong>
-        </div>
+        <button class="icon-btn">⚙</button>
     </header>
 
-    <main>
+    <section class="hero">
 
-        <section class="character-card">
-
-            <div class="character">
-
-                <div class="avatar">?</div>
-
-                <div class="character-info">
-                    <h1 id="playerName">Player</h1>
-                    <p>Novice</p>
-
-                    <div class="xp">
-                        <div class="xp-text">
-                            <span>XP</span>
-                            <span id="xpText">0 / 100</span>
-                        </div>
-
-                        <div class="xp-bar">
-                            <div id="xpBar"></div>
-                        </div>
-                    </div>
-                </div>
-
+        <div class="hero-top">
+            <div>
+                <span class="label">CURRENT LEVEL</span>
+                <h1>Level <strong id="level">1</strong></h1>
             </div>
 
-        </section>
+            <div class="xp-value">
+                <strong id="xp">0</strong>
+                <span>/ 100 XP</span>
+            </div>
+        </div>
 
-        <section class="stats">
+        <div class="xp-track">
+            <div id="xpBar"></div>
+        </div>
 
-            <div class="stat">
-                <span>STR</span>
-                <strong id="str">1</strong>
+        <p class="next-level">100 XP until next level</p>
+
+    </section>
+
+    <section class="section">
+
+        <div class="section-title">
+            <h2>Today</h2>
+            <span>Thursday</span>
+        </div>
+
+        <div class="stats-grid">
+
+            <div class="mini-card">
+                <span>QUESTS</span>
+                <strong>0</strong>
+                <small>completed</small>
             </div>
 
-            <div class="stat">
-                <span>INT</span>
-                <strong id="int">1</strong>
+            <div class="mini-card">
+                <span>STREAK</span>
+                <strong>0</strong>
+                <small>days</small>
             </div>
 
-            <div class="stat">
-                <span>DISC</span>
-                <strong id="disc">1</strong>
+            <div class="mini-card">
+                <span>STUDY</span>
+                <strong>0h</strong>
+                <small>today</small>
             </div>
 
-            <div class="stat">
-                <span>ENERGY</span>
-                <strong id="energy">1</strong>
+        </div>
+
+    </section>
+
+    <section class="section">
+
+        <div class="section-title">
+            <h2>Quick Access</h2>
+        </div>
+
+        <a href="flashcards/flashcards.html"
+           class="feature">
+
+            <div class="feature-icon">✦</div>
+
+            <div class="feature-info">
+                <strong>Flashcards</strong>
+                <span>
+                    Words · Native Patterns · Tech
+                </span>
             </div>
 
-        </section>
+            <div class="arrow">›</div>
 
-        <section class="quests">
+        </a>
 
-            <div class="section-title">
-                <h2>Daily Quests</h2>
-                <span id="questCount">0 / 3</span>
+        <button class="feature">
+
+            <div class="feature-icon">⚔</div>
+
+            <div class="feature-info">
+                <strong>Daily Quests</strong>
+                <span>Complete actions and earn XP</span>
             </div>
 
-            <div class="quest-list">
+            <div class="arrow">›</div>
 
-                <button class="quest" onclick="completeQuest(this, 20)">
-                    <span class="quest-check">+</span>
-                    <div>
-                        <strong>Study</strong>
-                        <small>Focus for 30 minutes</small>
-                    </div>
-                    <span class="reward">+20 XP</span>
-                </button>
+        </button>
 
-                <button class="quest" onclick="completeQuest(this, 15)">
-                    <span class="quest-check">+</span>
-                    <div>
-                        <strong>Exercise</strong>
-                        <small>Move your body</small>
-                    </div>
-                    <span class="reward">+15 XP</span>
-                </button>
+        <button class="feature">
 
-                <button class="quest" onclick="completeQuest(this, 10)">
-                    <span class="quest-check">+</span>
-                    <div>
-                        <strong>Read</strong>
-                        <small>Read for 20 minutes</small>
-                    </div>
-                    <span class="reward">+10 XP</span>
-                </button>
+            <div class="feature-icon">◈</div>
 
+            <div class="feature-info">
+                <strong>Character</strong>
+                <span>Stats, skills and progression</span>
             </div>
 
-        </section>
+            <div class="arrow">›</div>
 
-    </main>
+        </button>
+
+    </section>
+
+    <nav class="bottom-nav">
+
+        <a class="active" href="index.html">
+            <span>⌂</span>
+            Home
+        </a>
+
+        <a href="flashcards/flashcards.html">
+            <span>✦</span>
+            Learn
+        </a>
+
+        <a href="#">
+            <span>⚔</span>
+            Quests
+        </a>
+
+        <a href="#">
+            <span>◉</span>
+            Character
+        </a>
+
+    </nav>
 
 </div>
 
 <script src="script.js"></script>
+
 </body>
 </html>
-<a href="flashcards/flashcards.html" class="flashcards-link">
-
-    <div class="flashcards-icon">
-        ⊞
-    </div>
-
-    <div class="flashcards-content">
-        <strong>Flashcards</strong>
-        <span>Words, Native Patterns & Tech</span>
-    </div>
-
-    <div class="flashcards-arrow">
-        →
-    </div>
-
-</a>
