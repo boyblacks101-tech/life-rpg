@@ -224,3 +224,20 @@ button {
         display: none;
     }
 }
+.flashcards-link {
+    display: block;
+    width: 100%;
+    padding: 18px;
+    margin-bottom: 20px;
+    background: #111119;
+    border: 1px solid #242431;
+    border-radius: 15px;
+    color: #fff;
+    text-decoration: none;
+    text-align: center;
+    font-weight: bold;
+}
+
+.flashcards-link:hover {
+    background: #181822;
+}
