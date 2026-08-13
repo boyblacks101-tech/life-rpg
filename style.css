@@ -42,11 +42,6 @@ a {
     color: inherit;
 }
 
-button,
-a {
-    -webkit-tap-highlight-color: transparent;
-}
-
 
 /* BACKGROUND */
 
@@ -76,7 +71,7 @@ a {
 /* APP */
 
 .app {
-    width: min(460px, 100%);
+    width: min(460px,100%);
     min-height: 100vh;
     margin: auto;
     padding: 25px 20px 110px;
@@ -113,12 +108,12 @@ header h1 {
 .round-button {
     width: 38px;
     height: 38px;
-    border-radius: 50%;
-    border: 1px solid #25252c;
-    background: rgba(16,16,20,.9);
-    color: #aaaab2;
     display: grid;
     place-items: center;
+    border: 1px solid #25252c;
+    border-radius: 50%;
+    background: rgba(16,16,20,.9);
+    color: #aaaab2;
     transition: .2s ease;
 }
 
@@ -189,7 +184,6 @@ header h1 {
     width: 0;
     height: 100%;
     background: #eeeef0;
-    transition: .4s ease;
 }
 
 .level > span {
@@ -278,30 +272,14 @@ header h1 {
 /* PERFORMANCE */
 
 .performance-card {
-    position: relative;
     margin-top: 14px;
     padding: 18px;
     border: 1px solid var(--border);
     border-radius: 20px;
     background: #101014;
-    overflow: hidden;
-}
-
-.performance-card::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background:
-        linear-gradient(
-            120deg,
-            rgba(120,80,255,.12),
-            transparent 45%
-        );
-    pointer-events: none;
 }
 
 .performance-header {
-    position: relative;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -347,7 +325,6 @@ header h1 {
 }
 
 .chart-stats {
-    position: relative;
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 10px;
@@ -373,7 +350,6 @@ header h1 {
 }
 
 .chart {
-    position: relative;
     height: 105px;
     margin-top: 14px;
     padding: 10px 8px 0;
@@ -400,7 +376,6 @@ header h1 {
     max-width: 18px;
     height: var(--height);
     border-radius: 5px 5px 2px 2px;
-    background: rgba(99,91,255,.22);
 }
 
 .chart-bar span {
@@ -427,17 +402,11 @@ header h1 {
     border: 1px solid var(--border);
     border-radius: 20px;
     background: #111115;
-    transition: .2s ease;
-}
-
-.continue a:hover {
-    transform: translateY(-2px);
 }
 
 .learn-icon {
     width: 45px;
     height: 45px;
-    flex-shrink: 0;
     display: grid;
     place-items: center;
     border-radius: 14px;
@@ -538,7 +507,6 @@ header h1 {
     width: 50%;
     height: 100%;
     background: linear-gradient(90deg,#3a3dff,#ff2929);
-    transition: .5s ease;
 }
 
 .rival-card p {
@@ -588,7 +556,7 @@ nav span {
 }
 
 
-/* MENUS */
+/* OVERLAY */
 
 .overlay-menu {
     position: fixed;
@@ -598,7 +566,7 @@ nav span {
     align-items: flex-end;
     justify-content: center;
     padding: 15px;
-    background: rgba(0,0,0,.55);
+    background: rgba(0,0,0,.6);
     backdrop-filter: blur(8px);
     opacity: 0;
     pointer-events: none;
@@ -652,7 +620,7 @@ nav span {
 }
 
 
-/* WORLD ITEMS */
+/* WORLDS */
 
 .menu-item {
     display: flex;
@@ -670,10 +638,8 @@ nav span {
     height: 42px;
     display: grid;
     place-items: center;
-    flex-shrink: 0;
     border-radius: 14px;
     background: #202027;
-    font-size: 17px;
 }
 
 .menu-item div {
@@ -709,57 +675,100 @@ nav span {
 }
 
 
-/* SETTINGS */
+/* =========================
+   SETTINGS UI
+========================= */
 
-.setting-row {
+.settings-card {
+    padding-bottom: 22px;
+}
+
+.setting-button {
+    width: 100%;
+    min-height: 48px;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    gap: 15px;
-    padding: 15px;
-    border: 1px solid var(--border);
-    border-radius: 17px;
-    background: #15151a;
-}
-
-.setting-row strong,
-.setting-row small {
-    display: block;
-}
-
-.setting-row strong {
-    font-size: 12px;
-}
-
-.setting-row small {
-    margin-top: 4px;
-    color: var(--muted);
-    font-size: 9px;
-}
-
-#photoInput {
-    width: 90px;
-    color: transparent;
-    font-size: 0;
-}
-
-#photoInput::file-selector-button {
-    padding: 8px;
-    border: 0;
+    justify-content: flex-start;
+    gap: 10px;
+    padding: 0 15px;
+    margin-top: 9px;
     border-radius: 10px;
-    background: #24242c;
+    border: none;
+    position: relative;
+    background: #424242;
     color: white;
-    font-size: 9px;
+    text-align: left;
+    transition-duration: .2s;
 }
 
-.danger-button {
-    width: 100%;
-    margin-top: 10px;
-    padding: 13px;
-    border-radius: 15px;
-    background: #241316;
-    color: #ff6677;
-    font-size: 11px;
+.setting-button:hover {
+    background: #4d4d4d;
+}
+
+.setting-button:active {
+    transform: translate(1px,1px);
+}
+
+.setting-icon {
+    width: 13px;
+    height: 16px;
+}
+
+.setting-icon path {
+    fill: rgb(0,206,62);
+}
+
+.setting-symbol {
+    width: 18px;
+    display: grid;
+    place-items: center;
+    color: rgb(0,206,62);
+    font-size: 15px;
+}
+
+.arrow {
+    position: absolute;
+    right: 0;
+    width: 30px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+}
+
+.setting-button:hover .arrow {
+    animation: slide-right .6s ease-out both;
+}
+
+.setting-state {
+    position: absolute;
+    right: 27px;
+    color: #8d8d93;
+    font-size: 8px;
+    letter-spacing: 1px;
+}
+
+.danger-setting {
+    color: #ff6b78;
+}
+
+.danger-setting .setting-symbol {
+    color: #ff4d5f;
+}
+
+@keyframes slide-right {
+
+    0% {
+        transform: translateX(-10px);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+
 }
 
 
