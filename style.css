@@ -1038,3 +1038,275 @@ nav .active {
 
     font-size: 10px;
 }
+
+/* =========================
+   PERFORMANCE
+========================= */
+
+.performance {
+    margin-top: 42px;
+}
+
+.performance-card {
+    position: relative;
+    margin-top: 14px;
+    padding: 18px;
+    border-radius: 20px;
+    border: 1px solid #24242b;
+    background: #101014;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0,0,0,.25);
+}
+
+.performance-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 20px;
+    background:
+        linear-gradient(
+            120deg,
+            rgba(120,80,255,.12),
+            transparent 45%,
+            rgba(0,200,255,.05)
+        );
+    pointer-events: none;
+}
+
+.performance-header {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.performance-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.performance-icon {
+    width: 34px;
+    height: 34px;
+    display: grid;
+    place-items: center;
+    border-radius: 10px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #635bff,
+            #9b5cff
+        );
+
+    color: white;
+    font-size: 17px;
+}
+
+.performance-title strong {
+    display: block;
+    font-size: 13px;
+}
+
+.performance-title span {
+    display: block;
+    margin-top: 3px;
+    color: #686872;
+    font-size: 9px;
+}
+
+.live-status {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+
+    padding: 5px 8px;
+
+    border-radius: 20px;
+
+    background: rgba(0,255,150,.06);
+
+    color: #35d98b;
+
+    font-size: 8px;
+    letter-spacing: .5px;
+}
+
+.live-status i {
+    width: 5px;
+    height: 5px;
+
+    border-radius: 50%;
+
+    background: #35d98b;
+
+    box-shadow: 0 0 8px #35d98b;
+}
+
+
+/* STATS */
+
+.chart-stats {
+    position: relative;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    gap: 10px;
+
+    margin-top: 16px;
+}
+
+.chart-stats > div {
+    padding: 11px;
+
+    border-radius: 11px;
+
+    background: #15151b;
+}
+
+.chart-stats small {
+    display: block;
+
+    color: #686872;
+
+    font-size: 8px;
+    letter-spacing: .7px;
+}
+
+.chart-stats strong {
+    display: inline-block;
+
+    margin-top: 5px;
+
+    font-size: 19px;
+}
+
+.chart-stats span {
+    margin-left: 5px;
+
+    color: #35d98b;
+
+    font-size: 8px;
+}
+
+
+/* CHART */
+
+.chart {
+    position: relative;
+
+    height: 105px;
+
+    margin-top: 14px;
+
+    padding: 10px 8px 0;
+
+    border-radius: 12px;
+
+    background:
+        repeating-linear-gradient(
+            to bottom,
+            transparent 0,
+            transparent 25px,
+            #202028 26px
+        );
+}
+
+.chart-bars {
+    height: 100%;
+
+    display: flex;
+
+    align-items: flex-end;
+
+    justify-content: space-between;
+
+    gap: 7px;
+}
+
+.chart-bar {
+    position: relative;
+
+    width: 100%;
+
+    max-width: 18px;
+
+    height: var(--height);
+
+    border-radius: 5px 5px 2px 2px;
+
+    background: rgba(99,91,255,.22);
+
+    overflow: hidden;
+
+    transition:
+        height .5s ease,
+        background .3s ease;
+}
+
+.chart-bar span {
+    position: absolute;
+
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    height: 100%;
+
+    border-radius: inherit;
+
+    background:
+        linear-gradient(
+            to top,
+            #635bff,
+            #9b5cff
+        );
+
+    opacity: .9;
+}
+
+.chart-bar:hover {
+    background: rgba(99,91,255,.4);
+
+    transform: translateY(-2px);
+}
+
+
+/* FOOTER */
+
+.performance-footer {
+    position: relative;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-top: 13px;
+}
+
+.performance-footer > span {
+    color: #686872;
+    font-size: 9px;
+}
+
+#chartSwitch {
+    border: 0;
+
+    padding: 6px 9px;
+
+    border-radius: 8px;
+
+    background: #1b1b22;
+
+    color: #aaaab2;
+
+    font-size: 9px;
+
+    cursor: pointer;
+}
+
+#chartSwitch span {
+    margin-left: 4px;
+}
