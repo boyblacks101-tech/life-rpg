@@ -1,5 +1,5 @@
 /* =========================
-   RPG DATA
+   PLAYER DATA
 ========================= */
 
 let xp =
@@ -10,7 +10,7 @@ let level =
 
 
 /* =========================
-   XP UI
+   BASIC UI
 ========================= */
 
 const xpBar =
@@ -25,6 +25,12 @@ const levelText =
 const nextXP =
     document.getElementById("nextXP");
 
+const chartValue =
+    document.getElementById("chartValue");
+
+const chartLevel =
+    document.getElementById("chartLevel");
+
 
 function updateUI() {
 
@@ -37,274 +43,85 @@ function updateUI() {
     levelText.textContent =
         level;
 
+    chartLevel.textContent =
+        level;
+
     nextXP.textContent =
         `${100 - xp} XP`;
 }
 
 
 /* =========================
-   BACKGROUND PHOTOS
+   DATE
 ========================= */
 
-const input =
-    document.getElementById("photoInput");
+function updateDate() {
 
-const bg =
-    document.getElementById("photoBg");
-
-const tabs =
-    document.getElementById("photoTabs");
-
-
-let photos =
-    JSON.parse(
-        localStorage.getItem("photos") || "[]"
-    );
-
-let current = 0;
-
-
-function savePhotos() {
-
-    localStorage.setItem(
-        "photos",
-        JSON.stringify(photos)
-    );
-}
-
-
-function showPhoto(index) {
-
-    if (!photos.length) return;
-
-    current = index;
-
-    bg.style.backgroundImage =
-        `url("${photos[current]}")`;
-
-    bg.style.opacity = "1";
-
-
-    document
-        .querySelectorAll(".photo-tab")
-        .forEach((tab, i) => {
-
-            tab.classList.toggle(
-                "active",
-                i === current
-            );
-
-        });
-}
-
-
-function renderTabs() {
-
-    tabs.innerHTML = "";
-
-    photos.forEach((photo, index) => {
-
-        const tab =
-            document.createElement("button");
-
-        tab.className =
-            "photo-tab";
-
-        tab.style.backgroundImage =
-            `url("${photo}")`;
-
-        tab.onclick =
-            () => showPhoto(index);
-
-        tabs.appendChild(tab);
-
-    });
-
-    showPhoto(current);
-}
-
-
-input.addEventListener(
-    "change",
-    () => {
-
-        [...input.files].forEach(file => {
-
-            const reader =
-                new FileReader();
-
-            reader.onload =
-                event => {
-
-                    photos.push(
-                        event.target.result
-                    );
-
-                    savePhotos();
-                    renderTabs();
-
-                };
-
-            reader.readAsDataURL(file);
-
-        });
-
-    }
-);
-
-
-setInterval(
-    () => {
-
-        if (!photos.length) return;
-
-        showPhoto(
-            (current + 1) %
-            photos.length
-        );
-
-    },
-    60000
-);
-
-
-/* =========================
-   RPG CLOCK
-========================= */
-
-function updateClock() {
-
-    const now =
+    const date =
         new Date();
 
-    const hours =
-        String(
-            now.getHours()
-        ).padStart(2, "0");
-
-    const minutes =
-        String(
-            now.getMinutes()
-        ).padStart(2, "0");
-
-
-    document.getElementById(
-        "hourTens"
-    ).textContent = hours[0];
-
+    const text =
+        date.toLocaleDateString(
+            "en-US",
+            {
+                weekday: "short",
+                month: "short",
+                day: "numeric"
+            }
+        ).toUpperCase();
 
     document.getElementById(
-        "hourOnes"
-    ).textContent = hours[1];
-
-
-    document.getElementById(
-        "minuteTens"
-    ).textContent = minutes[0];
-
-
-    document.getElementById(
-        "minuteOnes"
-    ).textContent = minutes[1];
+        "todayDate"
+    ).textContent = text;
 }
 
 
-updateClock();
-
-
-setInterval(
-    updateClock,
-    1000
-);
-
-
 /* =========================
-   RIVAL SYSTEM
+   TODAY STATS
 ========================= */
 
-function updateRival() {
+function updateToday() {
 
-    const playerXP =
+    const cards =
         Number(
-            localStorage.getItem("xp")
+            localStorage.getItem(
+                "flashcardsDone"
+            )
         ) || 0;
 
-    const rivalXP =
+    const quests =
         Number(
-            localStorage.getItem("rivalXP")
+            localStorage.getItem(
+                "questsDone"
+            )
         ) || 0;
 
+    const streak =
+        Number(
+            localStorage.getItem(
+                "streak"
+            )
+        ) || 0;
 
-    const playerScore =
-        document.getElementById(
-            "playerScore"
-        );
+    document.getElementById(
+        "cardCount"
+    ).textContent = cards;
 
-    const rivalScore =
-        document.getElementById(
-            "rivalScore"
-        );
+    document.getElementById(
+        "questCount"
+    ).textContent = quests;
 
-    const progress =
-        document.getElementById(
-            "rivalProgress"
-        );
-
-    const message =
-        document.getElementById(
-            "rivalMessage"
-        );
-
-
-    if (!playerScore) return;
-
-
-    playerScore.textContent =
-        `${playerXP} XP`;
-
-    rivalScore.textContent =
-        `${rivalXP} XP`;
-
-
-    const total =
-        playerXP + rivalXP;
-
-
-    const percentage =
-        total === 0
-            ? 0
-            : (playerXP / total) * 100;
-
-
-    progress.style.width =
-        `${percentage}%`;
-
-
-    if (playerXP > rivalXP) {
-
-        message.textContent =
-            "You're ahead. Keep pushing.";
-
-    } else if (playerXP < rivalXP) {
-
-        message.textContent =
-            "Your rival is ahead. Catch up.";
-
-    } else {
-
-        message.textContent =
-            "You're perfectly tied.";
-
-    }
+    document.getElementById(
+        "streakCount"
+    ).textContent = streak;
 }
 
 
-updateRival();
-
-
 /* =========================
-   PERFORMANCE
+   PERFORMANCE CHART
 ========================= */
+
+let chartMode = "xp";
 
 const chartTitle =
     document.getElementById(
@@ -316,33 +133,16 @@ const chartSubtitle =
         "chartSubtitle"
     );
 
-const chartValue =
-    document.getElementById(
-        "chartValue"
-    );
-
-const chartLevel =
-    document.getElementById(
-        "chartLevel"
-    );
-
 const chartSwitch =
     document.getElementById(
         "chartSwitch"
     );
 
 
-let chartMode = "xp";
-
-
 function updateChart() {
-
-    if (!chartSwitch) return;
-
 
     chartLevel.textContent =
         level;
-
 
     if (chartMode === "xp") {
 
@@ -357,7 +157,6 @@ function updateChart() {
 
         chartSwitch.innerHTML =
             `XP <span>⌄</span>`;
-
     }
 
 
@@ -376,7 +175,6 @@ function updateChart() {
 
         chartSwitch.innerHTML =
             `STUDY <span>⌄</span>`;
-
     }
 
 
@@ -395,49 +193,164 @@ function updateChart() {
 
         chartSwitch.innerHTML =
             `CARDS <span>⌄</span>`;
-
     }
 }
 
 
-if (chartSwitch) {
+chartSwitch.addEventListener(
+    "click",
+    () => {
 
-    chartSwitch.addEventListener(
-        "click",
-        () => {
+        if (chartMode === "xp") {
 
-            if (chartMode === "xp") {
+            chartMode = "study";
 
-                chartMode =
-                    "study";
+        } else if (
+            chartMode === "study"
+        ) {
 
-            } else if (
-                chartMode === "study"
-            ) {
+            chartMode = "flashcards";
 
-                chartMode =
-                    "flashcards";
+        } else {
 
-            } else {
-
-                chartMode =
-                    "xp";
-
-            }
-
-            updateChart();
-
+            chartMode = "xp";
         }
-    );
 
-}
-
-
-updateChart();
+        updateChart();
+    }
+);
 
 
 /* =========================
-   DASHBOARD
+   RIVAL
+========================= */
+
+function updateRival() {
+
+    const playerXP =
+        Number(
+            localStorage.getItem("xp")
+        ) || 0;
+
+    const rivalXP =
+        Number(
+            localStorage.getItem(
+                "rivalXP"
+            )
+        ) || 0;
+
+
+    document.getElementById(
+        "playerScore"
+    ).textContent =
+        `${playerXP} XP`;
+
+
+    document.getElementById(
+        "rivalScore"
+    ).textContent =
+        `${rivalXP} XP`;
+
+
+    const total =
+        playerXP + rivalXP;
+
+
+    const percentage =
+        total === 0
+            ? 50
+            : (playerXP / total) * 100;
+
+
+    document.getElementById(
+        "rivalProgress"
+    ).style.width =
+        `${percentage}%`;
+
+
+    const message =
+        document.getElementById(
+            "rivalMessage"
+        );
+
+
+    if (playerXP > rivalXP) {
+
+        message.textContent =
+            "You're ahead. Keep pushing.";
+
+    } else if (playerXP < rivalXP) {
+
+        message.textContent =
+            "Your rival is ahead. Catch up.";
+
+    } else {
+
+        message.textContent =
+            "You're perfectly tied.";
+    }
+}
+
+
+/* =========================
+   WORLDS MENU
+========================= */
+
+const worldButton =
+    document.getElementById(
+        "worldButton"
+    );
+
+const worldNav =
+    document.getElementById(
+        "worldNav"
+    );
+
+const worldMenu =
+    document.getElementById(
+        "worldMenu"
+    );
+
+const closeWorlds =
+    document.getElementById(
+        "closeWorlds"
+    );
+
+
+function openWorlds() {
+
+    worldMenu.classList.add(
+        "open"
+    );
+}
+
+
+function closeWorldMenu() {
+
+    worldMenu.classList.remove(
+        "open"
+    );
+}
+
+
+worldButton.addEventListener(
+    "click",
+    openWorlds
+);
+
+worldNav.addEventListener(
+    "click",
+    openWorlds
+);
+
+closeWorlds.addEventListener(
+    "click",
+    closeWorldMenu
+);
+
+
+/* =========================
+   SETTINGS
 ========================= */
 
 const dashboardButton =
@@ -456,154 +369,169 @@ const closeDashboard =
     );
 
 
-if (
-    dashboardButton &&
-    dashboardMenu &&
-    closeDashboard
-) {
+dashboardButton.addEventListener(
+    "click",
+    () => {
 
-    dashboardButton.addEventListener(
-        "click",
-        () => {
+        dashboardMenu.classList.add(
+            "open"
+        );
+    }
+);
 
-            dashboardMenu.classList.add(
-                "open"
-            );
 
-        }
+closeDashboard.addEventListener(
+    "click",
+    () => {
+
+        dashboardMenu.classList.remove(
+            "open"
+        );
+    }
+);
+
+
+/* =========================
+   BACKGROUND
+========================= */
+
+const input =
+    document.getElementById(
+        "photoInput"
+    );
+
+const bg =
+    document.getElementById(
+        "photoBg"
     );
 
 
-    closeDashboard.addEventListener(
-        "click",
-        () => {
-
-            dashboardMenu.classList.remove(
-                "open"
-            );
-
-        }
+let photos =
+    JSON.parse(
+        localStorage.getItem(
+            "photos"
+        ) || "[]"
     );
 
 
-    dashboardMenu.addEventListener(
-        "click",
-        event => {
+let currentPhoto = 0;
 
-            if (
-                event.target ===
-                dashboardMenu
-            ) {
 
-                dashboardMenu.classList.remove(
-                    "open"
-                );
+function savePhotos() {
 
-            }
-
-        }
+    localStorage.setItem(
+        "photos",
+        JSON.stringify(photos)
     );
-
 }
 
 
-/* =========================
-   CHECKLIST SAVE
-========================= */
+function showPhoto(index) {
 
-document
-    .querySelectorAll(
-        ".my-form input[type='checkbox']"
-    )
-    .forEach(
-        checkbox => {
+    if (!photos.length)
+        return;
 
-            const key =
-                `check_${checkbox.id}`;
+    currentPhoto = index;
 
-            checkbox.checked =
-                localStorage.getItem(
-                    key
-                ) === "true";
+    bg.style.backgroundImage =
+        `url("${photos[index]}")`;
+
+    bg.style.opacity = "1";
+}
 
 
-            checkbox.addEventListener(
-                "change",
-                () => {
+input.addEventListener(
+    "change",
+    () => {
 
-                    localStorage.setItem(
-                        key,
-                        checkbox.checked
-                    );
+        [...input.files].forEach(
+            file => {
 
-                }
-            );
+                const reader =
+                    new FileReader();
 
-        }
-    );
+                reader.onload =
+                    event => {
 
-
-/* =========================
-   MOOD SAVE
-========================= */
-
-const savedMood =
-    localStorage.getItem(
-        "playerMood"
-    );
-
-
-document
-    .querySelectorAll(
-        ".mood-reactions button"
-    )
-    .forEach(
-        button => {
-
-            if (
-                button.dataset.mood ===
-                savedMood
-            ) {
-
-                button.classList.add(
-                    "selected"
-                );
-
-            }
-
-
-            button.addEventListener(
-                "click",
-                () => {
-
-                    document
-                        .querySelectorAll(
-                            ".mood-reactions button"
-                        )
-                        .forEach(
-                            item => {
-
-                                item.classList.remove(
-                                    "selected"
-                                );
-
-                            }
+                        photos.push(
+                            event.target.result
                         );
 
+                        savePhotos();
 
-                    button.classList.add(
-                        "selected"
-                    );
+                        showPhoto(
+                            photos.length - 1
+                        );
+                    };
+
+                reader.readAsDataURL(
+                    file
+                );
+            }
+        );
+    }
+);
 
 
-                    localStorage.setItem(
-                        "playerMood",
-                        button.dataset.mood
-                    );
+setInterval(
+    () => {
 
-                }
+        if (!photos.length)
+            return;
+
+        showPhoto(
+            (currentPhoto + 1)
+            % photos.length
+        );
+
+    },
+    60000
+);
+
+
+/* =========================
+   RESET
+========================= */
+
+document
+    .getElementById("resetProgress")
+    .addEventListener(
+        "click",
+        () => {
+
+            const confirmReset =
+                confirm(
+                    "Reset all RPG progress?"
+                );
+
+            if (!confirmReset)
+                return;
+
+            localStorage.removeItem(
+                "xp"
             );
 
+            localStorage.removeItem(
+                "level"
+            );
+
+            localStorage.removeItem(
+                "studyMinutes"
+            );
+
+            localStorage.removeItem(
+                "flashcardsDone"
+            );
+
+            localStorage.removeItem(
+                "questsDone"
+            );
+
+            localStorage.removeItem(
+                "streak"
+            );
+
+            location.reload();
         }
     );
 
@@ -613,6 +541,11 @@ document
 ========================= */
 
 updateUI();
-renderTabs();
-updateRival();
+updateDate();
+updateToday();
 updateChart();
+updateRival();
+
+if (photos.length) {
+    showPhoto(0);
+}
