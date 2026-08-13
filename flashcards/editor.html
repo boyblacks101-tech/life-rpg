@@ -51,7 +51,9 @@ content="width=device-width,initial-scale=1">
 <button data-tech="Concept">Concept</button>
 <button data-tech="Command">Command</button>
 <button data-tech="Code">Code</button>
-<button data-tech="Vulnerability">Vulnerability</button>
+<button data-tech="Vulnerability">
+Vulnerability
+</button>
 <button data-tech="Technique">Technique</button>
 <button data-tech="Scenario">Scenario</button>
 
@@ -59,24 +61,43 @@ content="width=device-width,initial-scale=1">
 
 <section id="form" class="hidden">
 
-<label>FRONT</label>
-<input id="frontInput"
+<label id="frontLabel">
+FRONT
+</label>
+
+<input
+id="frontInput"
+type="text"
+autocomplete="off"
 placeholder="Question or term">
 
-<label>BACK</label>
-<textarea id="backInput"
-placeholder="Answer or explanation"></textarea>
+<label id="backLabel">
+BACK
+</label>
 
-<label>EXAMPLE</label>
-<textarea id="exampleInput"
-placeholder="Optional example"></textarea>
+<textarea
+id="backInput"
+placeholder="Answer or explanation">
+</textarea>
 
-<button id="save">Save Card</button>
+<label>
+EXAMPLE
+</label>
+
+<textarea
+id="exampleInput"
+placeholder="Optional example">
+</textarea>
+
+<button id="save">
+Save Card
+</button>
 
 </section>
 
 </div>
 
 <script src="editor.js"></script>
+
 </body>
-  </html>
+</html>
