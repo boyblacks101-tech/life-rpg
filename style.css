@@ -1310,3 +1310,142 @@ nav .active {
 #chartSwitch span {
     margin-left: 4px;
 }
+
+.worlds {
+    margin-top: 42px;
+}
+
+.worlds-title {
+    display: block;
+    color: #686872;
+    font-size: 10px;
+    letter-spacing: 2px;
+    margin-bottom: 12px;
+}
+
+.world-grid {
+    display: grid;
+    gap: 12px;
+}
+
+.world-card {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 16px;
+    min-height: 78px;
+    border-radius: 20px;
+    text-decoration: none;
+    color: #fff;
+    overflow: hidden;
+    transition:
+        transform .25s ease,
+        border-color .25s ease;
+}
+
+.world-card:hover {
+    transform: translateY(-2px);
+}
+
+.world-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    opacity: .12;
+    pointer-events: none;
+}
+
+.english-world {
+    border: 1px solid rgba(151, 106, 250, .35);
+    background:
+        linear-gradient(
+            135deg,
+            rgba(151,106,250,.12),
+            #111115 65%
+        );
+}
+
+.english-world::before {
+    background:
+        radial-gradient(
+            circle at 0% 50%,
+            #956afa,
+            transparent 55%
+        );
+}
+
+.cyber-world {
+    border: 1px solid rgba(0, 255, 65, .25);
+    background:
+        linear-gradient(
+            135deg,
+            rgba(0,255,65,.08),
+            #080b09 65%
+        );
+}
+
+.cyber-world::before {
+    background:
+        radial-gradient(
+            circle at 0% 50%,
+            #00ff41,
+            transparent 55%
+        );
+}
+
+.world-icon {
+    position: relative;
+    z-index: 1;
+
+    width: 45px;
+    height: 45px;
+
+    display: grid;
+    place-items: center;
+
+    flex-shrink: 0;
+
+    border-radius: 14px;
+
+    background: #202027;
+
+    font-size: 19px;
+    font-weight: 700;
+}
+
+.english-world .world-icon {
+    color: #b794ff;
+    box-shadow: 0 0 20px rgba(149,106,250,.15);
+}
+
+.cyber-world .world-icon {
+    color: #00ff41;
+    font-family: monospace;
+    box-shadow: 0 0 20px rgba(0,255,65,.12);
+}
+
+.world-card div {
+    position: relative;
+    z-index: 1;
+    flex: 1;
+}
+
+.world-card strong {
+    display: block;
+    font-size: 14px;
+}
+
+.world-card small {
+    display: block;
+    margin-top: 5px;
+    color: #686872;
+    font-size: 9px;
+}
+
+.world-card b {
+    position: relative;
+    z-index: 1;
+    color: #777780;
+    font-size: 20px;
+}
