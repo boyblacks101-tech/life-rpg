@@ -100,3 +100,120 @@ setInterval(() => {
 
 updateUI();
 renderTabs();
+
+/* =========================
+   RPG CLOCK
+========================= */
+
+function updateClock() {
+
+    const now = new Date();
+
+    const hours = String(
+        now.getHours()
+    ).padStart(2, "0");
+
+    const minutes = String(
+        now.getMinutes()
+    ).padStart(2, "0");
+
+
+    document.getElementById("hourTens")
+        .innerHTML = `<span>${hours[0]}</span>`;
+
+    document.getElementById("hourOnes")
+        .innerHTML = `<span>${hours[1]}</span>`;
+
+    document.getElementById("minuteTens")
+        .innerHTML = `<span>${minutes[0]}</span>`;
+
+    document.getElementById("minuteOnes")
+        .innerHTML = `<span>${minutes[1]}</span>`;
+}
+
+
+updateClock();
+
+setInterval(
+    updateClock,
+    1000
+);
+
+
+/* =========================
+   RIVAL SYSTEM
+========================= */
+
+function updateRival() {
+
+    const playerXP =
+        Number(
+            localStorage.getItem("xp")
+        ) || 0;
+
+    const rivalXP =
+        Number(
+            localStorage.getItem("rivalXP")
+        ) || 0;
+
+
+    const playerScore =
+        document.getElementById(
+            "playerScore"
+        );
+
+    const rivalScore =
+        document.getElementById(
+            "rivalScore"
+        );
+
+    const progress =
+        document.getElementById(
+            "rivalProgress"
+        );
+
+    const message =
+        document.getElementById(
+            "rivalMessage"
+        );
+
+
+    playerScore.textContent =
+        `${playerXP} XP`;
+
+    rivalScore.textContent =
+        `${rivalXP} XP`;
+
+
+    const total =
+        playerXP + rivalXP;
+
+    const percentage =
+        total === 0
+            ? 0
+            : (playerXP / total) * 100;
+
+
+    progress.style.width =
+        `${percentage}%`;
+
+
+    if (playerXP > rivalXP) {
+
+        message.textContent =
+            "You're ahead. Keep pushing.";
+
+    } else if (playerXP < rivalXP) {
+
+        message.textContent =
+            "Your rival is ahead. Catch up.";
+
+    } else {
+
+        message.textContent =
+            "You're perfectly tied.";
+    }
+}
+
+
+updateRival();
