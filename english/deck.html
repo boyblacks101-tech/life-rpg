@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1"
+    >
+
+    <title>Deck</title>
+
+    <link
+        rel="stylesheet"
+        href="deck.css"
+    >
+</head>
+
+<body>
+
+<div class="deck-app">
+
+    <header class="deck-header">
+
+        <a
+            href="english.html"
+            class="back-button"
+        >
+            ←
+        </a>
+
+        <div>
+            <small>ENGLISH WORLD</small>
+            <h1 id="deckTitle">Deck</h1>
+        </div>
+
+        <button
+            id="addWordButton"
+            class="add-button"
+        >
+            +
+        </button>
+
+    </header>
+
+
+    <section class="deck-info">
+
+        <div>
+            <small>CARDS</small>
+            <strong id="cardCount">0</strong>
+        </div>
+
+        <div>
+            <small>MASTERED</small>
+            <strong id="masteredCount">0%</strong>
+        </div>
+
+        <div>
+            <small>XP</small>
+            <strong id="deckXP">0</strong>
+        </div>
+
+    </section>
+
+
+    <section class="cards-section">
+
+        <div class="section-title">
+            <small>VOCABULARY</small>
+            <span id="deckDescription"></span>
+        </div>
+
+
+        <div
+            id="cardList"
+            class="card-list"
+        ></div>
+
+
+        <div
+            id="emptyCards"
+            class="empty-cards"
+        >
+
+            <div class="empty-icon">
+                +
+            </div>
+
+            <strong>
+                No words yet
+            </strong>
+
+            <p>
+                Add your first word to this deck.
+            </p>
+
+            <button id="emptyAddButton">
+                Add Word
+            </button>
+
+        </div>
+
+    </section>
+
+</div>
+
+
+<!-- ADD WORD MODAL -->
+
+<div
+    id="wordModal"
+    class="modal"
+>
+
+    <div class="modal-box">
+
+        <div class="modal-header">
+
+            <div>
+                <small>NEW FLASHCARD</small>
+                <h2>Add Word</h2>
+            </div>
+
+            <button id="closeWordModal">
+                ×
+            </button>
+
+        </div>
+
+
+        <form id="wordForm">
+
+            <label>
+                English word
+            </label>
+
+            <input
+                id="wordInput"
+                type="text"
+                placeholder="e.g. discipline"
+                required
+            >
+
+
+            <label>
+                Meaning
+            </label>
+
+            <input
+                id="meaningInput"
+                type="text"
+                placeholder="e.g. انضباط"
+                required
+            >
+
+
+            <label>
+                Example sentence
+            </label>
+
+            <textarea
+                id="exampleInput"
+                placeholder="e.g. Discipline is more important than motivation."
+            ></textarea>
+
+
+            <label>
+                Pronunciation
+            </label>
+
+            <input
+                id="pronunciationInput"
+                type="text"
+                placeholder="e.g. /ˈdɪsəplɪn/"
+            >
+
+
+            <div class="modal-actions">
+
+                <button
+                    type="button"
+                    id="cancelWord"
+                >
+                    Cancel
+                </button>
+
+                <button
+                    type="submit"
+                    class="save-button"
+                >
+                    Save Word
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+<script src="deck.js"></script>
+
+</body>
+
+</html>
