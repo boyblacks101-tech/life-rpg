@@ -122,27 +122,9 @@ function escapeHTML(text) {
 
 function openDeck(id) {
 
-    /*
-        قدم بعدی همین‌جا ساخته می‌شود:
+    window.location.href =
+        `deck.html?id=${id}`;
 
-        Deck Page
-        ↓
-        Add Word
-        ↓
-        Front / Back
-        ↓
-        Example
-        ↓
-        Pronunciation
-        ↓
-        Review
-        ↓
-        XP
-    */
-
-    alert(
-        "Deck selected. Review system is coming next."
-    );
 }
 
 
