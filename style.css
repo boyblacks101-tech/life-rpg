@@ -5,8 +5,8 @@
 }
 
 body {
-    background: #07070a;
-    color: #f5f5f7;
+    background: #070709;
+    color: #f4f4f5;
     font-family: Arial, sans-serif;
 }
 
@@ -15,94 +15,84 @@ a {
     font: inherit;
 }
 
-button {
-    border: 0;
-}
-
 .app {
-    width: min(480px, 100%);
+    width: min(460px, 100%);
     min-height: 100vh;
     margin: auto;
-    padding: 24px 18px 100px;
+    padding: 25px 20px 100px;
 }
 
-.header,
-.hero-top,
-.section-title,
-.feature,
-.bottom-nav {
+header {
     display: flex;
-    align-items: center;
-}
-
-.header,
-.hero-top,
-.section-title {
     justify-content: space-between;
 }
 
-.brand {
-    font-size: 18px;
-    font-weight: 800;
+header small,
+.section-head span,
+.continue > small {
+    color: #686872;
+    font-size: 10px;
     letter-spacing: 2px;
 }
 
-.header p {
-    color: #666671;
-    font-size: 12px;
-    margin-top: 5px;
+header h1 {
+    margin-top: 8px;
+    font-size: 28px;
+    line-height: 1.15;
 }
 
-.icon-btn {
+header button {
     width: 40px;
     height: 40px;
-    border-radius: 13px;
-    background: #111116;
-    color: #aaaab4;
+    border: 1px solid #202026;
+    border-radius: 12px;
+    background: #101014;
+    color: #aaaab2;
 }
 
-.hero {
-    margin-top: 25px;
-    padding: 24px;
-    border-radius: 24px;
-    background: #15151b;
+.character {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    margin-top: 40px;
 }
 
-.label,
-.mini-card span {
-    color: #70707b;
+.avatar {
+    width: 125px;
+    height: 155px;
+    border-radius: 30px;
+    background:
+        radial-gradient(circle at 50% 35%, #33333d, #141419 55%, #0c0c10);
+    display: grid;
+    place-items: end center;
+    padding-bottom: 15px;
+}
+
+.avatar span {
+    color: #666670;
     font-size: 10px;
-    letter-spacing: 1.5px;
+    letter-spacing: 3px;
 }
 
-.hero h1 {
-    margin-top: 7px;
-    font-size: 25px;
+.level {
+    flex: 1;
 }
 
-.hero h1 strong {
-    font-size: 32px;
+.level small {
+    color: #686872;
+    font-size: 10px;
+    letter-spacing: 2px;
 }
 
-.xp-value {
-    text-align: right;
+.level strong {
+    display: block;
+    font-size: 42px;
+    margin: 4px 0 15px;
 }
 
-.xp-value strong {
-    font-size: 22px;
-}
-
-.xp-value span,
-.next-level,
-.section-title span {
-    color: #70707b;
-    font-size: 11px;
-}
-
-.xp-track {
-    height: 7px;
-    margin-top: 22px;
-    background: #28282f;
+.xp {
+    height: 5px;
+    background: #202026;
     border-radius: 10px;
     overflow: hidden;
 }
@@ -110,123 +100,151 @@ button {
 #xpBar {
     width: 0%;
     height: 100%;
-    background: #f5f5f7;
+    background: #eeeef0;
 }
 
-.next-level {
-    margin-top: 9px;
-}
-
-.section {
-    margin-top: 30px;
-}
-
-.section-title {
-    margin-bottom: 12px;
-}
-
-.section-title h2 {
-    font-size: 17px;
-}
-
-.stats-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 9px;
-}
-
-.mini-card {
-    padding: 16px 13px;
-    border-radius: 17px;
-    background: #111116;
-}
-
-.mini-card strong {
+.level > span {
     display: block;
-    margin-top: 9px;
-    font-size: 23px;
-}
-
-.mini-card small {
-    color: #70707b;
+    margin-top: 7px;
+    color: #686872;
     font-size: 10px;
 }
 
-.feature {
-    width: 100%;
-    min-height: 72px;
-    margin-top: 9px;
-    padding: 13px;
-    border-radius: 18px;
-    background: #111116;
-    color: #fff;
-    text-align: left;
-    text-decoration: none;
-    cursor: pointer;
+.today,
+.continue,
+.activity {
+    margin-top: 42px;
 }
 
-.feature-icon {
-    width: 46px;
-    height: 46px;
-    border-radius: 14px;
-    background: #1d1d24;
+.section-head {
+    display: flex;
+    justify-content: space-between;
+}
+
+.section-head small {
+    color: #45454e;
+    font-size: 9px;
+}
+
+.today-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    margin-top: 18px;
+}
+
+.today-row div {
+    border-left: 1px solid #24242b;
+    padding-left: 15px;
+}
+
+.today-row div:first-child {
+    border: 0;
+    padding-left: 0;
+}
+
+.today-row strong {
+    display: block;
+    font-size: 27px;
+}
+
+.today-row span {
+    color: #686872;
+    font-size: 10px;
+}
+
+.continue > small {
+    display: block;
+    margin-bottom: 12px;
+}
+
+.continue a {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 17px;
+    border: 1px solid #24242b;
+    border-radius: 20px;
+    background: #111115;
+    color: white;
+    text-decoration: none;
+}
+
+.learn-icon {
+    width: 45px;
+    height: 45px;
     display: grid;
     place-items: center;
-    color: #dddde3;
+    border-radius: 14px;
+    background: #202027;
     font-size: 19px;
 }
 
-.feature-info {
+.continue a div:nth-child(2) {
     flex: 1;
-    margin-left: 13px;
 }
 
-.feature-info strong {
+.continue strong {
     display: block;
     font-size: 14px;
 }
 
-.feature-info span {
+.continue span {
     display: block;
     margin-top: 5px;
-    color: #70707b;
-    font-size: 11px;
+    color: #686872;
+    font-size: 10px;
 }
 
-.arrow {
-    color: #666671;
-    font-size: 25px;
+.continue b {
+    color: #777780;
+    font-size: 20px;
 }
 
-.bottom-nav {
+.activity p {
+    margin-top: 18px;
+    color: #45454e;
+    font-size: 12px;
+}
+
+nav {
     position: fixed;
     bottom: 12px;
     left: 50%;
     transform: translateX(-50%);
-    width: min(444px, calc(100% - 24px));
-    padding: 9px;
+    width: min(420px, calc(100% - 30px));
+    display: flex;
     justify-content: space-around;
-    border: 1px solid #202027;
-    border-radius: 20px;
-    background: #101015ee;
-    backdrop-filter: blur(15px);
+    padding: 10px 5px;
+    border: 1px solid #222229;
+    border-radius: 22px;
+    background: #101014eF;
+    backdrop-filter: blur(18px);
 }
 
-.bottom-nav a {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 4px;
-    color: #656570;
+nav a {
+    color: #55555f;
     text-decoration: none;
     font-size: 9px;
-    padding: 5px 12px;
+    text-align: center;
 }
 
-.bottom-nav a span {
+nav span {
+    display: block;
+    margin-bottom: 4px;
     font-size: 17px;
 }
 
-.bottom-nav .active {
+nav .active {
     color: #fff;
+}
+
+@media (max-width: 360px) {
+    .avatar {
+        width: 105px;
+        height: 140px;
+    }
+
+    .character {
+        gap: 16px;
+    }
 }
