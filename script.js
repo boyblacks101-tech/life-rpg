@@ -1,23 +1,19 @@
-const xp = 0;
-const level = 1;
+let xp = Number(localStorage.getItem("xp")) || 0;
+let level = Number(localStorage.getItem("level")) || 1;
 
-const xpElement =
-    document.getElementById("xp");
+const xpBar = document.getElementById("xpBar");
+const xpText = document.getElementById("xpText");
+const levelText = document.getElementById("level");
 
-const levelElement =
-    document.getElementById("level");
-
-const xpBar =
-    document.getElementById("xpBar");
-
-function updateCharacter() {
-
-    xpElement.textContent = xp;
-
-    levelElement.textContent = level;
-
+function updateUI() {
     xpBar.style.width = `${xp}%`;
-
+    xpText.textContent = `${xp} / 100 XP`;
+    levelText.textContent = level;
 }
 
-updateCharacter();
+function saveGame() {
+    localStorage.setItem("xp", xp);
+    localStorage.setItem("level", level);
+}
+
+updateUI();
