@@ -2,7 +2,6 @@
 <html lang="en">
 
 <head>
-
     <meta charset="UTF-8">
 
     <meta
@@ -10,34 +9,28 @@
         content="width=device-width, initial-scale=1"
     >
 
-    <title>English World · Troviruses</title>
+    <title>English World</title>
 
     <link
         rel="stylesheet"
         href="english.css"
     >
-
 </head>
 
 <body>
 
 <div class="english-app">
 
-
-    <!-- ================= HEADER ================= -->
+    <!-- HEADER -->
 
     <header class="english-header">
 
         <div>
+            <small>WORLD 01</small>
 
-            <small>
-                WORLD 01
-            </small>
+            <h1>English World</h1>
 
-            <h1>
-                English World
-            </h1>
-
+            <p>Build your English.</p>
         </div>
 
         <a
@@ -50,156 +43,76 @@
     </header>
 
 
-    <!-- ================= PLAYER ================= -->
+    <!-- XP -->
 
-    <section class="english-player">
+    <section class="english-progress">
 
-        <div class="player-main">
+        <div class="progress-top">
 
-            <small>
-                ENGLISH LEVEL
-            </small>
+            <span>ENGLISH XP</span>
 
-            <strong id="englishLevel">
-                1
+            <strong id="englishXP">
+                0 XP
             </strong>
 
-            <div class="english-xp">
-
-                <div id="englishXPBar"></div>
-
-            </div>
-
-            <span id="englishXPText">
-                0 / 100 XP
-            </span>
-
         </div>
 
+        <div class="progress-track">
 
-        <div class="english-stats">
-
-            <div>
-                <strong id="wordsLearned">
-                    0
-                </strong>
-
-                <span>
-                    words
-                </span>
-            </div>
-
-            <div>
-                <strong id="englishStreak">
-                    0
-                </strong>
-
-                <span>
-                    streak
-                </span>
-            </div>
-
-            <div>
-                <strong id="cardsDue">
-                    0
-                </strong>
-
-                <span>
-                    due
-                </span>
-            </div>
+            <div
+                id="englishXPBar"
+                class="progress-fill"
+            ></div>
 
         </div>
 
     </section>
 
 
-    <!-- ================= QUICK ACTIONS ================= -->
+    <!-- QUICK ACTIONS -->
 
-    <section class="english-actions">
+    <section class="quick-actions">
 
-        <button
-            class="english-action primary"
-            id="reviewButton"
-        >
+        <button id="reviewButton">
 
-            <span>
-                ↻
-            </span>
+            <span>↻</span>
 
             <div>
-
-                <strong>
-                    Review
-                </strong>
-
-                <small>
-                    Study cards due today
-                </small>
-
+                <strong>Review</strong>
+                <small>Practice your cards</small>
             </div>
-
-            <b>
-                →
-            </b>
 
         </button>
 
 
-        <button
-            class="english-action"
-            id="vocabularyButton"
-        >
+        <button id="createDeckButton">
 
-            <span>
-                Aa
-            </span>
+            <span>＋</span>
 
             <div>
-
-                <strong>
-                    Vocabulary
-                </strong>
-
-                <small>
-                    Browse your words
-                </small>
-
+                <strong>New Deck</strong>
+                <small>Create a collection</small>
             </div>
-
-            <b>
-                →
-            </b>
 
         </button>
 
     </section>
 
 
-    <!-- ================= DECKS ================= -->
+    <!-- DECKS -->
 
     <section class="decks-section">
 
-        <div class="section-head">
+        <div class="section-title">
 
             <div>
-
-                <small>
-                    COLLECTIONS
-                </small>
-
-                <h2>
-                    My Decks
-                </h2>
-
+                <small>YOUR COLLECTIONS</small>
+                <h2>Decks</h2>
             </div>
 
-            <button
-                id="createDeckButton"
-                class="create-button"
-            >
-                + Deck
-            </button>
+            <span id="deckCount">
+                0
+            </span>
 
         </div>
 
@@ -207,151 +120,55 @@
         <div
             id="deckList"
             class="deck-list"
+        ></div>
+
+
+        <div
+            id="emptyDeck"
+            class="empty-deck"
         >
 
-            <!-- Decks will be inserted by JavaScript -->
+            <div class="empty-icon">
+                +
+            </div>
+
+            <strong>
+                No decks yet
+            </strong>
+
+            <p>
+                Create your first vocabulary collection.
+            </p>
+
+            <button id="emptyCreateButton">
+                Create Deck
+            </button>
 
         </div>
 
     </section>
-
-
-    <!-- ================= SPECIAL ================= -->
-
-    <section class="special-section">
-
-        <div class="section-head">
-
-            <div>
-
-                <small>
-                    SPECIAL
-                </small>
-
-                <h2>
-                    More
-                </h2>
-
-            </div>
-
-        </div>
-
-
-        <button
-            class="english-action"
-            id="pakdastButton"
-        >
-
-            <span>
-                ✦
-            </span>
-
-            <div>
-
-                <strong>
-                    پاکدست
-                </strong>
-
-                <small>
-                    English practice & challenges
-                </small>
-
-            </div>
-
-            <b>
-                →
-            </b>
-
-        </button>
-
-    </section>
-
-
-    <!-- ================= BOTTOM NAV ================= -->
-
-    <nav class="english-nav">
-
-        <a
-            class="active"
-            href="english.html"
-        >
-
-            <span>
-                ⌂
-            </span>
-
-            Home
-
-        </a>
-
-
-        <a href="#decks">
-
-            <span>
-                ▣
-            </span>
-
-            Decks
-
-        </a>
-
-
-        <a href="#review">
-
-            <span>
-                ↻
-            </span>
-
-            Review
-
-        </a>
-
-
-        <a href="#vocabulary">
-
-            <span>
-                Aa
-            </span>
-
-            Words
-
-        </a>
-
-    </nav>
 
 
 </div>
 
 
-
-<!-- ================= CREATE DECK MODAL ================= -->
+<!-- DECK MODAL -->
 
 <div
     id="deckModal"
-    class="modal-overlay"
+    class="modal"
 >
 
-    <div class="deck-modal">
+    <div class="modal-box">
 
         <div class="modal-header">
 
             <div>
-
-                <small>
-                    NEW COLLECTION
-                </small>
-
-                <h2>
-                    Create Deck
-                </h2>
-
+                <small>ENGLISH WORLD</small>
+                <h2>New Deck</h2>
             </div>
 
-
-            <button
-                id="closeDeckModal"
-                class="close-modal"
-            >
+            <button id="closeDeckModal">
                 ×
             </button>
 
@@ -360,43 +177,46 @@
 
         <form id="deckForm">
 
-            <div class="modal-field">
+            <label>
+                Deck name
+            </label>
 
-                <label>
-                    Deck name
-                </label>
-
-                <input
-                    id="deckName"
-                    type="text"
-                    placeholder="e.g. Daily Vocabulary"
-                    required
-                >
-
-            </div>
-
-
-            <div class="modal-field">
-
-                <label>
-                    Description
-                </label>
-
-                <input
-                    id="deckDescription"
-                    type="text"
-                    placeholder="What are you learning?"
-                >
-
-            </div>
-
-
-            <button
-                type="submit"
-                class="create-deck-submit"
+            <input
+                id="deckName"
+                type="text"
+                placeholder="e.g. Daily English"
+                required
             >
-                CREATE DECK
-            </button>
+
+
+            <label>
+                Description
+            </label>
+
+            <input
+                id="deckDescription"
+                type="text"
+                placeholder="e.g. Words I use every day"
+            >
+
+
+            <div class="modal-actions">
+
+                <button
+                    type="button"
+                    id="cancelDeck"
+                >
+                    Cancel
+                </button>
+
+                <button
+                    type="submit"
+                    class="create-button"
+                >
+                    Create Deck
+                </button>
+
+            </div>
 
         </form>
 
