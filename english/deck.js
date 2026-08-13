@@ -5,99 +5,100 @@ let decks = JSON.parse(
 );
 
 
-/* GET DECK ID */
+const params =
+    new URLSearchParams(
+        window.location.search
+    );
 
-const params = new URLSearchParams(
-    window.location.search
-);
-
-const deckId = Number(
-    params.get("id")
-);
+const deckId =
+    Number(params.get("id"));
 
 
-const deck = decks.find(
-    item => item.id === deckId
-);
+const deck =
+    decks.find(
+        item => item.id === deckId
+    );
 
-
-/* ELEMENTS */
-
-const deckTitle =
-    document.getElementById("deckTitle");
-
-const deckDescription =
-    document.getElementById("deckDescription");
-
-const cardList =
-    document.getElementById("cardList");
-
-const emptyCards =
-    document.getElementById("emptyCards");
-
-const cardCount =
-    document.getElementById("cardCount");
-
-const masteredCount =
-    document.getElementById("masteredCount");
-
-const deckXP =
-    document.getElementById("deckXP");
-
-const wordModal =
-    document.getElementById("wordModal");
-
-const wordForm =
-    document.getElementById("wordForm");
-
-
-/* CHECK DECK */
 
 if (!deck) {
 
-    deckTitle.textContent = "Deck not found";
-
-} else {
-
-    renderDeck();
+    window.location.href =
+        "english.html";
 
 }
 
 
-/* RENDER */
+/* =========================
+   ELEMENTS
+========================= */
 
-function renderDeck() {
+const deckTitle =
+    document.getElementById(
+        "deckTitle"
+    );
+
+const deckDescription =
+    document.getElementById(
+        "deckDescription"
+    );
+
+const cardCount =
+    document.getElementById(
+        "cardCount"
+    );
+
+const masteredCount =
+    document.getElementById(
+        "masteredCount"
+    );
+
+const cardList =
+    document.getElementById(
+        "cardList"
+    );
+
+const emptyCards =
+    document.getElementById(
+        "emptyCards"
+    );
+
+
+/* =========================
+   SAVE
+========================= */
+
+function save() {
+
+    localStorage.setItem(
+        STORAGE_KEY,
+        JSON.stringify(decks)
+    );
+
+}
+
+
+/* =========================
+   RENDER
+========================= */
+
+function render() {
 
     deckTitle.textContent =
         deck.name;
 
     deckDescription.textContent =
-        deck.description || "";
+        deck.description ||
+        "Vocabulary collection";
 
 
     cardCount.textContent =
         deck.cards.length;
 
 
-    const mastered =
-        deck.cards.length === 0
-            ? 0
-            : Math.round(
-                deck.cards.filter(
-                    card => card.mastered
-                ).length
-                /
-                deck.cards.length
-                * 100
-            );
-
-
     masteredCount.textContent =
-        mastered + "%";
-
-
-    deckXP.textContent =
-        deck.cards.length * 10;
+        deck.cards.filter(
+            card => card.mastered
+        ).length;
 
 
     cardList.innerHTML = "";
@@ -109,6 +110,7 @@ function renderDeck() {
             "block";
 
         return;
+
     }
 
 
@@ -116,232 +118,209 @@ function renderDeck() {
         "none";
 
 
-    deck.cards.forEach(card => {
+    deck.cards.forEach(
+        (card, index) => {
 
-        const element =
-            document.createElement("div");
+            const element =
+                document.createElement(
+                    "div"
+                );
 
-        element.className =
-            "word-card";
+            element.className =
+                "word-card";
 
 
-        element.innerHTML = `
-
-            <div class="word-top">
+            element.innerHTML = `
 
                 <div>
 
-                    <div class="word">
-                        ${escapeHTML(card.word)}
-                    </div>
-
-                    <div class="pronunciation">
+                    <strong>
                         ${escapeHTML(
-                            card.pronunciation || ""
+                            card.word
                         )}
-                    </div>
+                    </strong>
+
+                    <span>
+                        ${escapeHTML(
+                            card.meaning
+                        )}
+                    </span>
+
+                    ${
+                        card.example
+                        ? `<small>
+                            ${escapeHTML(
+                                card.example
+                            )}
+                           </small>`
+                        : ""
+                    }
 
                 </div>
 
-                <div class="card-status">
-                    NEW
-                </div>
+                <button
+                    data-index="${index}"
+                    class="delete-card"
+                >
+                    ×
+                </button>
 
-            </div>
-
-            <div class="meaning">
-                ${escapeHTML(card.meaning)}
-            </div>
-
-            ${
-                card.example
-                ?
-                `
-                <div class="example">
-                    ${escapeHTML(card.example)}
-                </div>
-                `
-                :
-                ""
-            }
-
-        `;
+            `;
 
 
-        cardList.appendChild(element);
+            element
+                .querySelector(
+                    ".delete-card"
+                )
+                .addEventListener(
+                    "click",
+                    () => {
 
-    });
+                        deck.cards.splice(
+                            index,
+                            1
+                        );
+
+                        save();
+
+                        render();
+
+                    }
+                );
+
+
+            cardList.appendChild(
+                element
+            );
+
+        }
+    );
 
 }
 
 
-/* ESCAPE */
+/* =========================
+   ADD CARD
+========================= */
+
+document
+    .getElementById("cardForm")
+    .addEventListener(
+        "submit",
+        event => {
+
+            event.preventDefault();
+
+
+            const word =
+                document
+                    .getElementById(
+                        "wordInput"
+                    )
+                    .value
+                    .trim();
+
+
+            const meaning =
+                document
+                    .getElementById(
+                        "meaningInput"
+                    )
+                    .value
+                    .trim();
+
+
+            const example =
+                document
+                    .getElementById(
+                        "exampleInput"
+                    )
+                    .value
+                    .trim();
+
+
+            deck.cards.push({
+
+                id: Date.now(),
+
+                word,
+
+                meaning,
+
+                example,
+
+                mastered: false,
+
+                reviews: 0,
+
+                createdAt:
+                    new Date()
+                        .toISOString()
+
+            });
+
+
+            save();
+
+            event.target.reset();
+
+            render();
+
+        }
+    );
+
+
+/* =========================
+   REVIEW
+========================= */
+
+document
+    .getElementById("startReview")
+    .addEventListener(
+        "click",
+        () => {
+
+            if (
+                deck.cards.length === 0
+            ) {
+
+                alert(
+                    "Add some cards first."
+                );
+
+                return;
+
+            }
+
+
+            window.location.href =
+                `review.html?id=${deck.id}`;
+
+        }
+    );
+
+
+/* =========================
+   ESCAPE HTML
+========================= */
 
 function escapeHTML(text) {
 
     const div =
-        document.createElement("div");
+        document.createElement(
+            "div"
+        );
 
     div.textContent =
         text || "";
 
     return div.innerHTML;
-}
-
-
-/* OPEN MODAL */
-
-function openWordModal() {
-
-    wordModal.classList.add("active");
-
-    setTimeout(() => {
-
-        document
-            .getElementById("wordInput")
-            .focus();
-
-    }, 100);
 
 }
 
 
-/* CLOSE MODAL */
+/* =========================
+   START
+========================= */
 
-function closeWordModal() {
-
-    wordModal.classList.remove("active");
-
-    wordForm.reset();
-
-}
-
-
-/* BUTTONS */
-
-document
-    .getElementById("addWordButton")
-    .addEventListener(
-        "click",
-        openWordModal
-    );
-
-
-document
-    .getElementById("emptyAddButton")
-    .addEventListener(
-        "click",
-        openWordModal
-    );
-
-
-document
-    .getElementById("closeWordModal")
-    .addEventListener(
-        "click",
-        closeWordModal
-    );
-
-
-document
-    .getElementById("cancelWord")
-    .addEventListener(
-        "click",
-        closeWordModal
-    );
-
-
-wordModal.addEventListener(
-    "click",
-    event => {
-
-        if (event.target === wordModal) {
-            closeWordModal();
-        }
-
-    }
-);
-
-
-/* SAVE WORD */
-
-wordForm.addEventListener(
-    "submit",
-    event => {
-
-        event.preventDefault();
-
-
-        if (!deck) return;
-
-
-        const word =
-            document
-                .getElementById("wordInput")
-                .value
-                .trim();
-
-
-        const meaning =
-            document
-                .getElementById("meaningInput")
-                .value
-                .trim();
-
-
-        const example =
-            document
-                .getElementById("exampleInput")
-                .value
-                .trim();
-
-
-        const pronunciation =
-            document
-                .getElementById("pronunciationInput")
-                .value
-                .trim();
-
-
-        if (!word || !meaning) {
-            return;
-        }
-
-
-        const card = {
-
-            id: Date.now(),
-
-            word,
-
-            meaning,
-
-            example,
-
-            pronunciation,
-
-            mastered: false,
-
-            reviews: 0,
-
-            createdAt:
-                new Date().toISOString()
-
-        };
-
-
-        deck.cards.push(card);
-
-
-        localStorage.setItem(
-            STORAGE_KEY,
-            JSON.stringify(decks)
-        );
-
-
-        renderDeck();
-
-        closeWordModal();
-
-    }
-);
+render();
