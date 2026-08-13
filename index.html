@@ -3,779 +3,356 @@
 
 <head>
 
-    <meta charset="UTF-8">
+<meta charset="UTF-8">
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1"
+>
 
-    <title>Life RPG</title>
+<title>Life RPG</title>
 
-    <link
-        rel="stylesheet"
-        href="style.css"
-    >
+<link rel="stylesheet" href="style.css">
 
 </head>
 
 <body>
 
-    <!-- Background -->
-    <div id="photoBg"></div>
-    <div id="photoOverlay"></div>
+<div id="photoBg"></div>
+<div id="photoOverlay"></div>
+
+<div class="app">
+
+<header>
+
+<div>
+
+<small>
+LIFE RPG
+</small>
+
+<h1>
+Good morning,<br>
+Player.
+</h1>
+
+</div>
+
+<button id="settings">
+⚙
+</button>
+
+</header>
 
 
-    <div class="app">
+<section class="photo-controls">
 
-        <!-- ================= HEADER ================= -->
+<input
+  id="photoInput"
+  type="file"
+  accept="image/*"
+  multiple
+>
 
-        <header>
+<div id="photoTabs"></div>
 
-            <!-- RPG CLOCK -->
-<section class="rpg-clock">
-    <div class="mechanical-timer-module">
-        <div class="time-group">
-            <div class="digit-casing">
-                <div class="digit-track" id="hourTens">
-                    <span>0</span>
-                </div>
-            </div>
+</section>
 
-            <div class="digit-casing">
-                <div class="digit-track" id="hourOnes">
-                    <span>0</span>
-                </div>
-            </div>
-        </div>
 
-        <div class="time-separator">:</div>
+<main>
 
-        <div class="time-group">
-            <div class="digit-casing">
-                <div class="digit-track" id="minuteTens">
-                    <span>0</span>
-                </div>
-            </div>
 
-            <div class="digit-casing">
-                <div class="digit-track" id="minuteOnes">
-                    <span>0</span>
-                </div>
-            </div>
-        </div>
-    </div>
+<section class="character">
+
+<div class="avatar">
+
+<span>
+01
+</span>
+
+</div>
+
+
+<div class="level">
+
+<small>
+LEVEL
+</small>
+
+<strong id="level">
+1
+</strong>
+
+<div class="xp">
+
+<div id="xpBar"></div>
+
+</div>
+
+<span id="xpText">
+0 / 100 XP
+</span>
+
+</div>
+
 </section>
 
 
-<!-- RIVAL -->
-<section class="rival-card">
+<section class="next-level">
 
-    <div class="rival-title">
-        <span>RIVAL</span>
-        <small>YOUR CURRENT OPPONENT</small>
-    </div>
+<small>
+NEXT LEVEL
+</small>
 
-    <div class="rival-versus">
+<strong id="nextXP">
+100 XP
+</strong>
 
-        <div class="rival-player">
-            <strong>YOU</strong>
-            <span id="playerScore">0 XP</span>
-        </div>
-
-        <div class="versus">
-            VS
-        </div>
-
-        <div class="rival-player enemy">
-            <strong>RIVAL</strong>
-            <span id="rivalScore">0 XP</span>
-        </div>
-
-    </div>
-
-    <div class="rival-progress">
-        <div id="rivalProgress"></div>
-    </div>
-
-    <p id="rivalMessage">
-        Start your journey.
-    </p>
+<p>
+Keep going to upgrade your character.
+</p>
 
 </section>
-            <div>
 
-                <small>
-                    LIFE RPG
-                </small>
 
-                <h1>
-                    Good morning,<br>
-                    Player.
-                </h1>
+<section class="today">
 
-            </div>
+<div class="section-head">
 
+<span>
+TODAY
+</span>
 
-            <button id="settings">
-                ⚙
-            </button>
+<small>
+THU · AUG 13
+</small>
 
-        </header>
+</div>
 
 
-        <!-- ================= PHOTO SYSTEM ================= -->
+<div class="today-row">
 
-        <section class="photo-controls">
+<div>
 
-            <input
-                id="photoInput"
-                type="file"
-                accept="image/*"
-                multiple
-            >
+<strong>
+0
+</strong>
 
-            <div id="photoTabs"></div>
+<span>
+quests
+</span>
 
-        </section>
+</div>
 
 
-        <main>
+<div>
 
+<strong>
+0
+</strong>
 
-            <!-- ================= RIVAL ================= -->
+<span>
+cards
+</span>
 
-            <section class="rival-card">
+</div>
 
-                <div class="rival-team rival-player">
 
-                    <span>
-                        YOU
-                    </span>
+<div>
 
-                </div>
+<strong>
+0
+</strong>
 
+<span>
+streak
+</span>
 
-                <div class="rival-score">
+</div>
 
-                    <small>
-                        RANK BATTLE
-                    </small>
-
-                    <strong>
-                        <span id="playerScore">
-                            0
-                        </span>
-
-                        -
-
-                        <span id="rivalScore">
-                            0
-                        </span>
-                    </strong>
-
-                    <div class="rival-progress">
-
-                        <div id="rivalProgress"></div>
-
-                    </div>
-
-                </div>
-
-
-                <div class="rival-team rival-enemy">
-
-                    <span>
-                        RIVAL
-                    </span>
-
-                </div>
-
-            </section>
-
-
-            <!-- ================= CHARACTER ================= -->
-
-            <section class="character">
-
-                <div class="avatar">
-
-                    <span>
-                        01
-                    </span>
-
-                </div>
-
-
-                <div class="level">
-
-                    <small>
-                        LEVEL
-                    </small>
-
-                    <strong id="level">
-                        1
-                    </strong>
-
-
-                    <div class="xp">
-
-                        <div id="xpBar"></div>
-
-                    </div>
-
-
-                    <span id="xpText">
-                        0 / 100 XP
-                    </span>
-
-                </div>
-
-            </section>
-
-
-            <!-- ================= NEXT LEVEL ================= -->
-
-            <section class="next-level">
-
-                <small>
-                    NEXT LEVEL
-                </small>
-
-                <strong id="nextXP">
-                    100 XP
-                </strong>
-
-                <p>
-                    Keep going to upgrade your character.
-                </p>
-
-            </section>
-
-
-            <!-- ================= TIMER ================= -->
-
-            <section class="timer-section">
-
-                <div class="mechanical-timer-module">
-
-                    <div class="time-group">
-
-                        <div
-                            class="digit-casing"
-                            id="m1"
-                        >
-                            <div class="digit-track">
-                                <span>0</span>
-                            </div>
-                        </div>
-
-                        <div
-                            class="digit-casing"
-                            id="m2"
-                        >
-                            <div class="digit-track">
-                                <span>0</span>
-                            </div>
-                        </div>
-
-                    </div>
-
-
-                    <div class="time-separator">
-                        :
-                    </div>
-
-
-                    <div class="time-group">
-
-                        <div
-                            class="digit-casing"
-                            id="s1"
-                        >
-                            <div class="digit-track">
-                                <span>0</span>
-                            </div>
-                        </div>
-
-                        <div
-                            class="digit-casing"
-                            id="s2"
-                        >
-                            <div class="digit-track">
-                                <span>0</span>
-                            </div>
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </section>
-
-
-            <!-- ================= TODAY ================= -->
-
-            <section class="today">
-
-                <div class="section-head">
-
-                    <span>
-                        TODAY
-                    </span>
-
-                    <small id="todayDate">
-                        THU · AUG 13
-                    </small>
-
-                </div>
-
-
-                <div class="today-row">
-
-                    <div>
-
-                        <strong id="questCount">
-                            0
-                        </strong>
-
-                        <span>
-                            quests
-                        </span>
-
-                    </div>
-
-
-                    <div>
-
-                        <strong id="cardCount">
-                            0
-                        </strong>
-
-                        <span>
-                            cards
-                        </span>
-
-                    </div>
-
-
-                    <div>
-
-                        <strong id="streakCount">
-                            0
-                        </strong>
-
-                        <span>
-                            streak
-                        </span>
-
-                    </div>
-
-                </div>
-
-            </section>
-
-<section class="performance">
-
-    <div class="section-head">
-        <span>PERFORMANCE</span>
-        <small>LAST 7 DAYS</small>
-    </div>
-
-    <div class="performance-card">
-
-        <div class="performance-header">
-
-            <div class="performance-title">
-                <div class="performance-icon">↗</div>
-
-                <div>
-                    <strong id="chartTitle">XP Progress</strong>
-                    <span id="chartSubtitle">Your character growth</span>
-                </div>
-            </div>
-
-            <span class="live-status">
-                <i></i>
-                LIVE
-            </span>
-
-        </div>
-
-
-        <div class="chart-stats">
-
-            <div>
-                <small>XP GAINED</small>
-                <strong id="chartValue">0</strong>
-                <span>+0%</span>
-            </div>
-
-            <div>
-                <small>LEVEL</small>
-                <strong id="chartLevel">1</strong>
-                <span>current</span>
-            </div>
-
-        </div>
-
-
-        <div class="chart">
-
-            <div class="chart-bars">
-
-                <div class="chart-bar" style="--height:25%">
-                    <span></span>
-                </div>
-
-                <div class="chart-bar" style="--height:40%">
-                    <span></span>
-                </div>
-
-                <div class="chart-bar" style="--height:32%">
-                    <span></span>
-                </div>
-
-                <div class="chart-bar" style="--height:55%">
-                    <span></span>
-                </div>
-
-                <div class="chart-bar" style="--height:48%">
-                    <span></span>
-                </div>
-
-                <div class="chart-bar" style="--height:70%">
-                    <span></span>
-                </div>
-
-                <div class="chart-bar" style="--height:85%">
-                    <span></span>
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <div class="performance-footer">
-
-            <span>Last 7 days</span>
-
-            <button id="chartSwitch">
-                XP
-                <span>⌄</span>
-            </button>
-
-        </div>
-
-    </div>
+</div>
 
 </section>
-            <!-- ================= PROGRESS ================= -->
 
-            <section class="progress-section">
 
-                <div class="section-head">
+<section class="continue">
 
-                    <span>
-                        PROGRESS
-                    </span>
+<small>
+CONTINUE
+</small>
 
-                    <small>
-                        LAST 7 DAYS
-                    </small>
 
-                </div>
+<a href="flashcards/flashcards.html">
 
+<div class="learn-icon">
+✦
+</div>
 
-                <div class="progress-card">
 
-                    <div class="progress-bars">
+<div>
 
-                        <div class="progress-bar">
-                            <span style="height:40%"></span>
-                        </div>
+<strong>
+Flashcards
+</strong>
 
-                        <div class="progress-bar">
-                            <span style="height:55%"></span>
-                        </div>
+<span>
+Train your knowledge
+</span>
 
-                        <div class="progress-bar">
-                            <span style="height:35%"></span>
-                        </div>
+</div>
 
-                        <div class="progress-bar">
-                            <span style="height:70%"></span>
-                        </div>
 
-                        <div class="progress-bar">
-                            <span style="height:50%"></span>
-                        </div>
+<b>
+→
+</b>
 
-                        <div class="progress-bar">
-                            <span style="height:80%"></span>
-                        </div>
+</a>
 
-                        <div class="progress-bar">
-                            <span style="height:65%"></span>
-                        </div>
+</section>
 
-                    </div>
 
-                </div>
+<!-- WORLDS -->
 
-            </section>
+<section class="worlds">
 
+<small class="worlds-title">
+WORLDS
+</small>
 
-            <!-- ================= CONTINUE ================= -->
 
-            <section class="continue">
+<div class="world-grid">
 
-                <small>
-                    CONTINUE
-                </small>
 
+<a
+  href="english/english.html"
+  class="world-card english-world"
+>
 
-                <a href="english/english.html">
+<span class="world-icon">
+文
+</span>
 
-                    <div class="learn-icon">
-                        ✦
-                    </div>
 
+<div>
 
-                    <div>
+<strong>
+English World
+</strong>
 
-                        <strong>
-                            English World
-                        </strong>
+<small>
+Language · Flashcards · Progress
+</small>
 
-                        <span>
-                            Continue your language journey
-                        </span>
+</div>
 
-                    </div>
 
+<b>
+→
+</b>
 
-                    <b>
-                        →
-                    </b>
+</a>
 
-                </a>
 
+<a
+  href="cyber/cyber.html"
+  class="world-card cyber-world"
+>
 
-                <a href="cyber/cyber.html">
+<span class="world-icon">
+&lt;/&gt;
+</span>
 
-                    <div class="learn-icon cyber-icon">
-                        ⚡
-                    </div>
 
+<div>
 
-                    <div>
+<strong>
+Cyber Sleuth World
+</strong>
 
-                        <strong>
-                            Cyber Security World
-                        </strong>
+<small>
+IT · Security · Labs · XP
+</small>
 
-                        <span>
-                            Continue your hacker journey
-                        </span>
+</div>
 
-                    </div>
 
+<b>
+→
+</b>
 
-                    <b>
-                        →
-                    </b>
+</a>
 
-                </a>
 
-            </section>
+</div>
 
+</section>
 
-            <!-- ================= CHECKLIST ================= -->
 
-            <section class="checklist">
+</main>
 
-                <div class="section-head">
 
-                    <span>
-                        CHECKLIST
-                    </span>
+<nav>
 
-                    <small>
-                        TODAY
-                    </small>
 
-                </div>
+<a
+  class="active"
+  href="index.html"
+>
 
+<span>
+⌂
+</span>
 
-                <form class="my-form">
+Home
 
-                    <div>
+</a>
 
-                        <input
-                            id="check-1"
-                            type="checkbox"
-                        >
 
-                        <label for="check-1">
-                            Complete today's main quest
-                        </label>
+<a
+  href="flashcards/flashcards.html"
+>
 
-                    </div>
+<span>
+✦
+</span>
 
+Learn
 
-                    <div>
+</a>
 
-                        <input
-                            id="check-2"
-                            type="checkbox"
-                        >
 
-                        <label for="check-2">
-                            Study English
-                        </label>
+<a
+  href="flashcards/chat/chat.html"
+>
 
-                    </div>
+<span>
+◉
+</span>
 
+NCR
 
-                    <div>
+</a>
 
-                        <input
-                            id="check-3"
-                            type="checkbox"
-                        >
 
-                        <label for="check-3">
-                            Study Cyber Security
-                        </label>
+<a href="#">
 
-                    </div>
+<span>
+⚔
+</span>
 
+Quests
 
-                    <div>
+</a>
 
-                        <input
-                            id="check-4"
-                            type="checkbox"
-                        >
 
-                        <label for="check-4">
-                            Complete daily routine
-                        </label>
+</nav>
 
-                    </div>
 
-                </form>
+</div>
 
-            </section>
 
-
-            <!-- ================= MOOD ================= -->
-
-            <section class="mood">
-
-                <div class="section-head">
-
-                    <span>
-                        HOW ARE YOU?
-                    </span>
-
-                    <small>
-                        SAVE TODAY'S MOOD
-                    </small>
-
-                </div>
-
-
-                <div class="mood-reactions">
-
-                    <button>
-                        👍
-                    </button>
-
-                    <button>
-                        👏🏻
-                    </button>
-
-                    <button>
-                        🎉
-                    </button>
-
-                    <button>
-                        ✨
-                    </button>
-
-                    <button>
-                        🙂
-                    </button>
-
-                </div>
-
-            </section>
-
-
-        </main>
-
-
-        <!-- ================= NAVIGATION ================= -->
-
-        <nav>
-
-            <a
-                class="active"
-                href="index.html"
-            >
-
-                <span>
-                    ⌂
-                </span>
-
-                Home
-
-            </a>
-
-
-            <a href="english/english.html">
-
-                <span>
-                    ✦
-                </span>
-
-                Learn
-
-            </a>
-
-
-            <a href="chat/chat.html">
-
-                <span>
-                    ◉
-                </span>
-
-                NCR
-
-            </a>
-
-
-            <a href="quests/quests.html">
-
-                <span>
-                    ⚔
-                </span>
-
-                Quests
-
-            </a>
-
-        </nav>
-
-
-    </div>
-
-
-    <script src="script.js"></script>
+<script src="script.js"></script>
 
 </body>
 
-  </html>
+</html>
