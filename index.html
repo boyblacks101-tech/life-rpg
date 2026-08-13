@@ -619,43 +619,29 @@ Quests
 <script>
 <script>
 
-window.addEventListener(
-  "load",
-  function () {
+window.addEventListener("load", () => {
 
-    const loading =
-      document.getElementById(
-        "loading-container"
-      );
-
-    if (!loading) {
-      return;
-    }
-
-    setTimeout(
-      function () {
-
-        loading.classList.add(
-          "loading-hidden"
-        );
-
-        setTimeout(
-          function () {
-
-            loading.remove();
-
-          },
-          500
-        );
-
-      },
-      700
+  const loading =
+    document.getElementById(
+      "loading-container"
     );
 
+  if (!loading) {
+    return;
   }
-);
+
+  loading.classList.add(
+    "loading-hidden"
+  );
+
+  setTimeout(() => {
+
+    loading.remove();
+
+  }, 500);
+
+});
 
 </script>
-
 </body>
           </html>
