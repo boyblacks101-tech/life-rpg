@@ -1,0 +1,501 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --bg: #070709;
+    --panel: #111115;
+    --border: #24242b;
+    --text: #f4f4f5;
+    --muted: #686872;
+    --green: #ccff00;
+}
+
+body {
+    min-height: 100vh;
+
+    background:
+        radial-gradient(
+            circle at 50% 0%,
+            #171719,
+            #070709 48%
+        );
+
+    color: var(--text);
+
+    font-family: Arial, sans-serif;
+}
+
+button,
+input,
+textarea {
+    font: inherit;
+}
+
+button {
+    border: 0;
+}
+
+.deck-app {
+    width: min(460px, 100%);
+
+    min-height: 100vh;
+
+    margin: auto;
+
+    padding: 25px 20px 60px;
+}
+
+
+/* HEADER */
+
+.deck-header {
+    display: grid;
+
+    grid-template-columns: 38px 1fr 38px;
+
+    align-items: center;
+
+    gap: 12px;
+}
+
+.back-button,
+.add-button {
+    width: 38px;
+    height: 38px;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 50%;
+
+    background: #111115;
+
+    border: 1px solid var(--border);
+
+    color: white;
+
+    text-decoration: none;
+
+    cursor: pointer;
+}
+
+.add-button {
+    font-size: 22px;
+}
+
+.deck-header > div {
+    text-align: center;
+}
+
+.deck-header small {
+    color: var(--muted);
+
+    font-size: 8px;
+
+    letter-spacing: 1.7px;
+}
+
+.deck-header h1 {
+    margin-top: 5px;
+
+    font-size: 21px;
+
+    white-space: nowrap;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+}
+
+
+/* INFO */
+
+.deck-info {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    margin-top: 30px;
+
+    padding: 17px;
+
+    border: 1px solid var(--border);
+
+    border-radius: 18px;
+
+    background: rgba(17,17,21,.8);
+}
+
+.deck-info > div {
+    text-align: center;
+
+    border-right: 1px solid var(--border);
+}
+
+.deck-info > div:last-child {
+    border: 0;
+}
+
+.deck-info small {
+    display: block;
+
+    color: var(--muted);
+
+    font-size: 8px;
+
+    letter-spacing: 1px;
+}
+
+.deck-info strong {
+    display: block;
+
+    margin-top: 6px;
+
+    font-size: 18px;
+}
+
+
+/* CARDS */
+
+.cards-section {
+    margin-top: 38px;
+}
+
+.section-title {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+}
+
+.section-title small {
+    color: var(--muted);
+
+    font-size: 9px;
+
+    letter-spacing: 1.5px;
+}
+
+.section-title span {
+    max-width: 180px;
+
+    overflow: hidden;
+
+    color: #45454e;
+
+    font-size: 9px;
+
+    white-space: nowrap;
+
+    text-overflow: ellipsis;
+}
+
+.card-list {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 10px;
+
+    margin-top: 15px;
+}
+
+.word-card {
+    padding: 17px;
+
+    border: 1px solid var(--border);
+
+    border-radius: 18px;
+
+    background: var(--panel);
+
+    transition: .2s ease;
+}
+
+.word-card:hover {
+    transform: translateY(-2px);
+
+    border-color: #393941;
+}
+
+.word-top {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: flex-start;
+}
+
+.word {
+    font-size: 17px;
+
+    font-weight: 700;
+}
+
+.pronunciation {
+    margin-top: 4px;
+
+    color: var(--muted);
+
+    font-family: monospace;
+
+    font-size: 10px;
+}
+
+.meaning {
+    margin-top: 12px;
+
+    color: #aaaab2;
+
+    font-size: 12px;
+}
+
+.example {
+    margin-top: 10px;
+
+    padding-top: 10px;
+
+    border-top: 1px solid #202026;
+
+    color: #686872;
+
+    font-size: 10px;
+
+    line-height: 1.5;
+}
+
+.card-status {
+    padding: 5px 8px;
+
+    border-radius: 999px;
+
+    background: #18181d;
+
+    color: #55555f;
+
+    font-size: 8px;
+}
+
+
+/* EMPTY */
+
+.empty-cards {
+    margin-top: 15px;
+
+    padding: 40px 20px;
+
+    border: 1px dashed #2b2b32;
+
+    border-radius: 18px;
+
+    text-align: center;
+}
+
+.empty-icon {
+    width: 45px;
+    height: 45px;
+
+    display: grid;
+    place-items: center;
+
+    margin: auto;
+
+    border-radius: 50%;
+
+    background: #18181d;
+
+    color: var(--green);
+
+    font-size: 22px;
+}
+
+.empty-cards strong {
+    display: block;
+
+    margin-top: 12px;
+
+    font-size: 13px;
+}
+
+.empty-cards p {
+    margin-top: 5px;
+
+    color: var(--muted);
+
+    font-size: 9px;
+}
+
+.empty-cards button {
+    margin-top: 15px;
+
+    padding: 9px 16px;
+
+    border-radius: 999px;
+
+    background: #24242b;
+
+    color: white;
+
+    font-size: 10px;
+
+    cursor: pointer;
+}
+
+
+/* MODAL */
+
+.modal {
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 100;
+
+    display: none;
+
+    align-items: flex-end;
+
+    justify-content: center;
+
+    padding: 15px;
+
+    background: rgba(0,0,0,.72);
+
+    backdrop-filter: blur(8px);
+}
+
+.modal.active {
+    display: flex;
+}
+
+.modal-box {
+    width: min(460px, 100%);
+
+    padding: 20px;
+
+    border: 1px solid #2a2a31;
+
+    border-radius: 24px;
+
+    background: #111115;
+
+    box-shadow: 0 25px 70px rgba(0,0,0,.7);
+}
+
+.modal-header {
+    display: flex;
+
+    justify-content: space-between;
+}
+
+.modal-header small {
+    color: var(--muted);
+
+    font-size: 8px;
+
+    letter-spacing: 1.5px;
+}
+
+.modal-header h2 {
+    margin-top: 5px;
+
+    font-size: 20px;
+}
+
+.modal-header button {
+    width: 34px;
+    height: 34px;
+
+    border-radius: 50%;
+
+    background: #202027;
+
+    color: #aaa;
+
+    font-size: 20px;
+
+    cursor: pointer;
+}
+
+
+/* FORM */
+
+#wordForm {
+    margin-top: 25px;
+}
+
+#wordForm label {
+    display: block;
+
+    margin-bottom: 7px;
+
+    color: var(--muted);
+
+    font-size: 9px;
+}
+
+#wordForm input,
+#wordForm textarea {
+    width: 100%;
+
+    margin-bottom: 17px;
+
+    padding: 12px 13px;
+
+    border: 1px solid #2a2a31;
+
+    border-radius: 12px;
+
+    outline: none;
+
+    background: #09090c;
+
+    color: white;
+}
+
+#wordForm textarea {
+    min-height: 80px;
+
+    resize: vertical;
+}
+
+#wordForm input:focus,
+#wordForm textarea:focus {
+    border-color: #55555f;
+}
+
+.modal-actions {
+    display: flex;
+
+    gap: 8px;
+
+    margin-top: 5px;
+}
+
+.modal-actions button {
+    flex: 1;
+
+    padding: 12px;
+
+    border-radius: 12px;
+
+    cursor: pointer;
+}
+
+#cancelWord {
+    background: #202027;
+
+    color: #aaa;
+}
+
+.save-button {
+    background: white;
+
+    color: black;
+
+    font-weight: 700;
+  }
