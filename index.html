@@ -134,7 +134,6 @@
 
         </div>
 
-
         <div class="chart-stats">
 
             <div>
@@ -148,7 +147,6 @@
             </div>
 
         </div>
-
 
         <div class="chart">
 
@@ -279,23 +277,26 @@
 </nav>
 
 
-<!-- WORLDS MENU -->
+<!-- WORLDS -->
 
 <div id="worldMenu" class="overlay-menu">
 
     <div class="menu-card">
 
         <div class="menu-header">
+
             <div>
                 <small>WORLDS</small>
                 <h2>Select World</h2>
             </div>
 
             <button id="closeWorlds">×</button>
+
         </div>
 
 
         <a href="english/english.html" class="menu-item english">
+
             <span>文</span>
 
             <div>
@@ -304,10 +305,12 @@
             </div>
 
             <b>→</b>
+
         </a>
 
 
         <a href="cyber/cyber.html" class="menu-item cyber">
+
             <span>&lt;/&gt;</span>
 
             <div>
@@ -316,6 +319,7 @@
             </div>
 
             <b>→</b>
+
         </a>
 
     </div>
@@ -323,11 +327,11 @@
 </div>
 
 
-<!-- SETTINGS MENU -->
+<!-- SETTINGS -->
 
 <div id="dashboardMenu" class="overlay-menu">
 
-    <div class="menu-card">
+    <div class="menu-card settings-card">
 
         <div class="menu-header">
 
@@ -341,32 +345,103 @@
         </div>
 
 
-        <label class="setting-row">
-            <span>
-                <strong>Background</strong>
-                <small>Choose your RPG background</small>
-            </span>
+        <!-- NOTIFICATIONS -->
+
+        <button class="setting-button">
+
+            <svg class="setting-icon" viewBox="0 0 448 512">
+                <path d="M224 0c-17.7 0-32 14.3-32 32V49.9C119.5 61.4 64 124.2 64 200v33.4c0 45.4-15.5 89.5-43.8 124.9L5.3 377c-5.8 7.2-6.9 17.1-2.9 25.4S14.8 416 24 416H424c9.2 0 17.6-5.3 21.6-13.6s2.9-18.2-2.9-25.4l-14.9-18.6C399.5 322.9 384 278.8 384 233.4V200c0-75.8-55.5-138.6-128-150.1V32c0-17.7-14.3-32-32-32zm0 96h8c57.4 0 104 46.6 104 104v33.4c0 47.9 13.9 94.6 39.7 134.6H72.3C98.1 328 112 281.3 112 233.4V200c0-57.4 46.6-104 104-104h8zm64 352H224 160c0 17 6.7 33.3 18.7 45.3s28.3 18.7 45.3 18.7s33.3-6.7 45.3-18.7s18.7-28.3 18.7-45.3z"></path>
+            </svg>
+
+            Notifications
+
+            <div class="arrow">›</div>
+
+        </button>
+
+
+        <!-- BACKGROUND -->
+
+        <label class="setting-button">
+
+            <span class="setting-symbol">▣</span>
+
+            Background
 
             <input
                 id="photoInput"
                 type="file"
                 accept="image/*"
                 multiple
+                hidden
             >
+
+            <div class="arrow">›</div>
+
         </label>
 
 
-        <button id="resetProgress" class="danger-button">
+        <!-- SOUND -->
+
+        <button
+            id="soundButton"
+            class="setting-button"
+        >
+
+            <span class="setting-symbol">♫</span>
+
+            Sound
+
+            <div class="setting-state">
+                ON
+            </div>
+
+            <div class="arrow">›</div>
+
+        </button>
+
+
+        <!-- THEME -->
+
+        <button
+            id="themeButton"
+            class="setting-button"
+        >
+
+            <span class="setting-symbol">◐</span>
+
+            Theme
+
+            <div class="setting-state">
+                DARK
+            </div>
+
+            <div class="arrow">›</div>
+
+        </button>
+
+
+        <!-- RESET -->
+
+        <button
+            id="resetProgress"
+            class="setting-button danger-setting"
+        >
+
+            <span class="setting-symbol">↻</span>
+
             Reset Progress
+
+            <div class="arrow">›</div>
+
         </button>
 
     </div>
 
 </div>
 
-</div>
 
 <script src="script.js"></script>
 
 </body>
-</html>
+          </html>
