@@ -1,121 +1,226 @@
-const deckName =
-    localStorage.getItem("selectedDeck") || "English";
+const deck =
+localStorage.getItem("selectedDeck")
+|| "English";
 
-const cards = [
-    {
-        type: "WORD",
-        question: "overwhelmed",
-        answer: "Feeling that you have too much to deal with.",
-        example: "I'm overwhelmed with work."
-    },
-    {
-        type: "WORD",
-        question: "accurate",
-        answer: "Correct and free from mistakes.",
-        example: "The information is accurate."
-    },
-    {
-        type: "NATIVE",
-        question: "That makes sense.",
-        answer: "Used when something is logical or understandable.",
-        example: "Oh, that makes sense now."
-    }
-];
+let cards =
+JSON.parse(
+localStorage.getItem("cards")
+|| "[]"
+);
+
+cards = cards.filter(
+card => card.deck === deck
+);
 
 let current = 0;
 let revealed = false;
 
-const card = document.getElementById("card");
-const front = document.getElementById("front");
-const back = document.getElementById("back");
-const actions = document.getElementById("actions");
+const card =
+document.getElementById("card");
+
+const front =
+document.getElementById("front");
+
+const back =
+document.getElementById("back");
+
+const actions =
+document.getElementById("actions");
 
 document.getElementById("deckName")
-    .textContent = deckName.toUpperCase();
+.textContent =
+deck.toUpperCase();
 
 function render() {
-    const item = cards[current];
 
-    document.getElementById("question")
-        .textContent = item.question;
+if (!cards.length) {
 
-    document.getElementById("answer")
-        .textContent = item.answer;
+document.getElementById("question")
+.textContent =
+"No cards yet";
 
-    document.getElementById("example")
-        .textContent = item.example;
+document.querySelector(".type")
+.textContent =
+"EMPTY";
 
-    document.querySelector(".type")
-        .textContent = item.type;
+document.querySelector(".card p")
+.textContent =
+"Create your first card";
 
-    document.getElementById("counter")
-        .textContent =
-        `${current + 1} / ${cards.length}`;
+return;
 
-    document.getElementById("progressBar")
-        .style.width =
-        `${((current + 1) / cards.length) * 100}%`;
+}
+
+const item =
+cards[current];
+
+document.getElementById("question")
+.textContent =
+item.front;
+
+document.getElementById("answer")
+.textContent =
+item.back;
+
+document.getElementById("example")
+.textContent =
+item.example || "No example";
+
+document.querySelector(".type")
+.textContent =
+item.techType
+|| item.type.toUpperCase();
+
+document.getElementById("counter")
+.textContent =
+`${current + 1} / ${cards.length}`;
+
+document.getElementById("progressBar")
+.style.width =
+`${((current + 1) /
+cards.length) * 100}%`;
+
 }
 
 card.onclick = () => {
-    if (revealed) return;
 
-    revealed = true;
+if (revealed || !cards.length)
+return;
 
-    front.classList.add("hidden");
-    back.classList.remove("hidden");
-    actions.classList.remove("hidden");
+revealed = true;
+
+front.classList.add("hidden");
+back.classList.remove("hidden");
+actions.classList.remove("hidden");
+
 };
 
-document.querySelectorAll("[data-rating]")
-.forEach((button) => {
+document
+.querySelectorAll("[data-rating]")
+.forEach(button => {
 
-    button.onclick = () => {
+button.onclick = () => {
 
-        const rating = button.dataset.rating;
+if (!cards.length)
+return;
 
-        addXP(rating);
+const rating =
+button.dataset.rating;
 
-        current++;
+updateCard(rating);
 
-        if (current >= cards.length) {
-            location.href = "flashcards.html";
-            return;
-        }
+current++;
 
-        revealed = false;
+if (current >= cards.length) {
 
-        front.classList.remove("hidden");
-        back.classList.add("hidden");
-        actions.classList.add("hidden");
+location.href =
+"flashcards.html";
 
-        render();
-    };
+return;
+
+}
+
+revealed = false;
+
+front.classList.remove("hidden");
+back.classList.add("hidden");
+actions.classList.add("hidden");
+
+render();
+
+};
+
 });
 
+function updateCard(rating) {
+
+const item =
+cards[current];
+
+const now =
+Date.now();
+
+const days = {
+
+again: 0,
+hard: 1,
+good: 4,
+easy: 7
+
+};
+
+item.interval =
+days[rating];
+
+item.reviews++;
+
+item.due =
+now +
+(days[rating] * 86400000);
+
+if (rating === "easy")
+item.ease += 0.15;
+
+if (rating === "hard")
+item.ease -= 0.15;
+
+if (item.ease < 1.3)
+item.ease = 1.3;
+
+const allCards =
+JSON.parse(
+localStorage.getItem("cards")
+|| "[]"
+);
+
+const index =
+allCards.findIndex(
+c => c.id === item.id
+);
+
+if (index !== -1)
+allCards[index] = item;
+
+localStorage.setItem(
+"cards",
+JSON.stringify(allCards)
+);
+
+addXP(rating);
+
+}
+
 function addXP(rating) {
-    let xp =
-        Number(localStorage.getItem("xp")) || 0;
 
-    const values = {
-        again: 2,
-        hard: 5,
-        good: 10,
-        easy: 15
-    };
+let xp =
+Number(localStorage.getItem("xp"))
+|| 0;
 
-    xp += values[rating];
+let level =
+Number(localStorage.getItem("level"))
+|| 1;
 
-    let level =
-        Number(localStorage.getItem("level")) || 1;
+const values = {
 
-    if (xp >= 100) {
-        xp -= 100;
-        level++;
-    }
+again: 2,
+hard: 5,
+good: 10,
+easy: 15
 
-    localStorage.setItem("xp", xp);
-    localStorage.setItem("level", level);
+};
+
+xp += values[rating];
+
+while (xp >= 100) {
+
+xp -= 100;
+level++;
+
+}
+
+localStorage.setItem("xp", xp);
+localStorage.setItem("level", level);
+
 }
 
 render();
