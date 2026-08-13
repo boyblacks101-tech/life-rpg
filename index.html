@@ -12,144 +12,111 @@
 
 <div class="app">
 
-    <header class="header">
+    <header>
         <div>
-            <span class="brand">LIFE RPG</span>
-            <p>Build yourself.</p>
+            <small>LIFE RPG</small>
+            <h1>Good morning,<br>Player.</h1>
         </div>
-        <button class="icon-btn">⚙</button>
+        <button>⚙</button>
     </header>
 
-    <section class="hero">
+    <main>
 
-        <div class="hero-top">
-            <div>
-                <span class="label">CURRENT LEVEL</span>
-                <h1>Level <strong id="level">1</strong></h1>
+        <section class="character">
+            <div class="avatar">
+                <span>01</span>
             </div>
 
-            <div class="xp-value">
-                <strong id="xp">0</strong>
-                <span>/ 100 XP</span>
+            <div class="level">
+                <small>LEVEL</small>
+                <strong id="level">1</strong>
+
+                <div class="xp">
+                    <div id="xpBar"></div>
+                </div>
+
+                <span id="xpText">0 / 100 XP</span>
             </div>
-        </div>
+        </section>
 
-        <div class="xp-track">
-            <div id="xpBar"></div>
-        </div>
+        <section class="today">
 
-        <p class="next-level">100 XP until next level</p>
-
-    </section>
-
-    <section class="section">
-
-        <div class="section-title">
-            <h2>Today</h2>
-            <span>Thursday</span>
-        </div>
-
-        <div class="stats-grid">
-
-            <div class="mini-card">
-                <span>QUESTS</span>
-                <strong>0</strong>
-                <small>completed</small>
+            <div class="section-head">
+                <span>TODAY</span>
+                <small>THU · AUG 13</small>
             </div>
 
-            <div class="mini-card">
-                <span>STREAK</span>
-                <strong>0</strong>
-                <small>days</small>
+            <div class="today-row">
+                <div>
+                    <strong>0</strong>
+                    <span>quests</span>
+                </div>
+
+                <div>
+                    <strong>0</strong>
+                    <span>cards</span>
+                </div>
+
+                <div>
+                    <strong>0</strong>
+                    <span>streak</span>
+                </div>
             </div>
 
-            <div class="mini-card">
-                <span>STUDY</span>
-                <strong>0h</strong>
-                <small>today</small>
+        </section>
+
+        <section class="continue">
+
+            <small>CONTINUE</small>
+
+            <a href="flashcards/flashcards.html">
+
+                <div class="learn-icon">✦</div>
+
+                <div>
+                    <strong>Flashcards</strong>
+                    <span>Train your knowledge</span>
+                </div>
+
+                <b>→</b>
+
+            </a>
+
+        </section>
+
+        <section class="activity">
+
+            <div class="section-head">
+                <span>RECENT ACTIVITY</span>
+                <small>VIEW ALL</small>
             </div>
 
-        </div>
+            <p>No activity yet.</p>
 
-    </section>
+        </section>
 
-    <section class="section">
+    </main>
 
-        <div class="section-title">
-            <h2>Quick Access</h2>
-        </div>
-
-        <a href="flashcards/flashcards.html"
-           class="feature">
-
-            <div class="feature-icon">✦</div>
-
-            <div class="feature-info">
-                <strong>Flashcards</strong>
-                <span>
-                    Words · Native Patterns · Tech
-                </span>
-            </div>
-
-            <div class="arrow">›</div>
-
-        </a>
-
-        <button class="feature">
-
-            <div class="feature-icon">⚔</div>
-
-            <div class="feature-info">
-                <strong>Daily Quests</strong>
-                <span>Complete actions and earn XP</span>
-            </div>
-
-            <div class="arrow">›</div>
-
-        </button>
-
-        <button class="feature">
-
-            <div class="feature-icon">◈</div>
-
-            <div class="feature-info">
-                <strong>Character</strong>
-                <span>Stats, skills and progression</span>
-            </div>
-
-            <div class="arrow">›</div>
-
-        </button>
-
-    </section>
-
-    <nav class="bottom-nav">
-
+    <nav>
         <a class="active" href="index.html">
-            <span>⌂</span>
-            Home
+            <span>⌂</span>Home
         </a>
 
         <a href="flashcards/flashcards.html">
-            <span>✦</span>
-            Learn
+            <span>✦</span>Learn
         </a>
 
         <a href="#">
-            <span>⚔</span>
-            Quests
+            <span>⚔</span>Quests
         </a>
 
         <a href="#">
-            <span>◉</span>
-            Character
+            <span>◉</span>Character
         </a>
-
     </nav>
 
 </div>
 
 <script src="script.js"></script>
-
 </body>
 </html>
