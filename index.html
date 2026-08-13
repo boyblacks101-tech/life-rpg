@@ -27,9 +27,7 @@
 
 <div>
 
-<small>
-LIFE RPG
-</small>
+<small>LIFE RPG</small>
 
 <h1>
 Good morning,<br>
@@ -38,9 +36,17 @@ Player.
 
 </div>
 
-<button id="settings">
+<div class="header-actions">
+
+<button id="dashboardButton" aria-label="Dashboard">
+☷
+</button>
+
+<button id="settings" aria-label="Settings">
 ⚙
 </button>
+
+</div>
 
 </header>
 
@@ -66,27 +72,18 @@ Player.
 
 <div class="avatar">
 
-<span>
-01
-</span>
+<span>01</span>
 
 </div>
 
-
 <div class="level">
 
-<small>
-LEVEL
-</small>
+<small>LEVEL</small>
 
-<strong id="level">
-1
-</strong>
+<strong id="level">1</strong>
 
 <div class="xp">
-
 <div id="xpBar"></div>
-
 </div>
 
 <span id="xpText">
@@ -100,9 +97,7 @@ LEVEL
 
 <section class="next-level">
 
-<small>
-NEXT LEVEL
-</small>
+<small>NEXT LEVEL</small>
 
 <strong id="nextXP">
 100 XP
@@ -119,9 +114,7 @@ Keep going to upgrade your character.
 
 <div class="section-head">
 
-<span>
-TODAY
-</span>
+<span>TODAY</span>
 
 <small>
 THU · AUG 13
@@ -129,45 +122,21 @@ THU · AUG 13
 
 </div>
 
-
 <div class="today-row">
 
 <div>
-
-<strong>
-0
-</strong>
-
-<span>
-quests
-</span>
-
+<strong>0</strong>
+<span>quests</span>
 </div>
 
-
 <div>
-
-<strong>
-0
-</strong>
-
-<span>
-cards
-</span>
-
+<strong>0</strong>
+<span>cards</span>
 </div>
 
-
 <div>
-
-<strong>
-0
-</strong>
-
-<span>
-streak
-</span>
-
+<strong>0</strong>
+<span>streak</span>
 </div>
 
 </div>
@@ -177,111 +146,91 @@ streak
 
 <section class="continue">
 
-<small>
-CONTINUE
-</small>
+<small>CONTINUE</small>
 
-
-<a href="flashcards/flashcards.html">
+<a href="english/english.html">
 
 <div class="learn-icon">
-✦
+文
 </div>
-
 
 <div>
 
-<strong>
-Flashcards
-</strong>
+<strong>English World</strong>
 
 <span>
-Train your knowledge
+Language · Flashcards · Progress
 </span>
 
 </div>
 
+<b>→</b>
 
-<b>
-→
-</b>
+</a>
+
+
+<a href="cyber/cyber.html">
+
+<div class="learn-icon cyber-icon">
+&lt;/&gt;
+</div>
+
+<div>
+
+<strong>Cyber Sleuth World</strong>
+
+<span>
+IT · Security · Labs · XP
+</span>
+
+</div>
+
+<b>→</b>
 
 </a>
 
 </section>
 
 
-<!-- WORLDS -->
+<section class="rpg-clock">
 
-<section class="worlds">
+<div class="mechanical-timer-module">
 
-<small class="worlds-title">
-WORLDS
-</small>
+<div class="time-group">
 
+<div class="digit-casing">
+<div class="digit-track">
+<span id="hourTens">0</span>
+</div>
+</div>
 
-<div class="world-grid">
-
-
-<a
-  href="english/english.html"
-  class="world-card english-world"
->
-
-<span class="world-icon">
-文
-</span>
-
-
-<div>
-
-<strong>
-English World
-</strong>
-
-<small>
-Language · Flashcards · Progress
-</small>
+<div class="digit-casing">
+<div class="digit-track">
+<span id="hourOnes">0</span>
+</div>
+</div>
 
 </div>
 
-
-<b>
-→
-</b>
-
-</a>
-
-
-<a
-  href="cyber/cyber.html"
-  class="world-card cyber-world"
->
-
-<span class="world-icon">
-&lt;/&gt;
-</span>
-
-
-<div>
-
-<strong>
-Cyber Sleuth World
-</strong>
-
-<small>
-IT · Security · Labs · XP
-</small>
-
+<div class="time-separator">
+:
 </div>
 
+<div class="time-group">
 
-<b>
-→
-</b>
+<div class="digit-casing">
+<div class="digit-track">
+<span id="minuteTens">0</span>
+</div>
+</div>
 
-</a>
+<div class="digit-casing">
+<div class="digit-track">
+<span id="minuteOnes">0</span>
+</div>
+</div>
 
+</div>
 
 </div>
 
@@ -293,41 +242,30 @@ IT · Security · Labs · XP
 
 <nav>
 
-
 <a
   class="active"
   href="index.html"
 >
 
-<span>
-⌂
-</span>
+<span>⌂</span>
 
 Home
 
 </a>
 
 
-<a
-  href="flashcards/flashcards.html"
->
+<a href="flashcards/flashcards.html">
 
-<span>
-✦
-</span>
+<span>✦</span>
 
 Learn
 
 </a>
 
 
-<a
-  href="flashcards/chat/chat.html"
->
+<a href="flashcards/chat/chat.html">
 
-<span>
-◉
-</span>
+<span>◉</span>
 
 NCR
 
@@ -336,17 +274,348 @@ NCR
 
 <a href="#">
 
-<span>
-⚔
-</span>
+<span>⚔</span>
 
 Quests
 
 </a>
 
-
 </nav>
 
+</div>
+
+
+<!-- =========================
+     DASHBOARD
+========================= -->
+
+<div
+  id="dashboardMenu"
+  class="dashboard-menu"
+>
+
+<div class="dashboard-panel">
+
+<div class="dashboard-header">
+
+<div>
+
+<small>DASHBOARD</small>
+
+<h2>
+Player Stats
+</h2>
+
+</div>
+
+<button id="closeDashboard">
+×
+</button>
+
+</div>
+
+
+<section class="dashboard-section">
+
+<div class="dashboard-section-title">
+RIVAL
+</div>
+
+<div class="rival-card">
+
+<div class="rival-title">
+
+<span>
+CURRENT BATTLE
+</span>
+
+<small>
+XP RACE
+</small>
+
+</div>
+
+
+<div class="rival-versus">
+
+<div class="rival-player">
+
+<strong>
+YOU
+</strong>
+
+<span id="playerScore">
+0 XP
+</span>
+
+</div>
+
+
+<div class="versus">
+VS
+</div>
+
+
+<div class="rival-player enemy">
+
+<strong>
+RIVAL
+</strong>
+
+<span id="rivalScore">
+0 XP
+</span>
+
+</div>
+
+</div>
+
+
+<div class="rival-progress">
+
+<div id="rivalProgress"></div>
+
+</div>
+
+
+<p id="rivalMessage">
+You're perfectly tied.
+</p>
+
+</div>
+
+</section>
+
+
+<section class="dashboard-section">
+
+<div class="dashboard-section-title">
+PERFORMANCE
+</div>
+
+<div class="performance-card">
+
+<div class="performance-header">
+
+<div class="performance-title">
+
+<div class="performance-icon">
+↗
+</div>
+
+<div>
+
+<strong id="chartTitle">
+XP Progress
+</strong>
+
+<span id="chartSubtitle">
+Your character growth
+</span>
+
+</div>
+
+</div>
+
+
+<div class="live-status">
+
+<i></i>
+
+LIVE
+
+</div>
+
+</div>
+
+
+<div class="chart-stats">
+
+<div>
+
+<small>
+LEVEL
+</small>
+
+<strong id="chartLevel">
+1
+</strong>
+
+</div>
+
+
+<div>
+
+<small>
+CURRENT
+</small>
+
+<strong id="chartValue">
+0
+</strong>
+
+<span>
+XP
+</span>
+
+</div>
+
+</div>
+
+
+<div class="chart">
+
+<div class="chart-bars">
+
+<div class="chart-bar" style="--height:35%">
+<span></span>
+</div>
+
+<div class="chart-bar" style="--height:50%">
+<span></span>
+</div>
+
+<div class="chart-bar" style="--height:42%">
+<span></span>
+</div>
+
+<div class="chart-bar" style="--height:68%">
+<span></span>
+</div>
+
+<div class="chart-bar" style="--height:55%">
+<span></span>
+</div>
+
+<div class="chart-bar" style="--height:78%">
+<span></span>
+</div>
+
+<div class="chart-bar" style="--height:90%">
+<span></span>
+</div>
+
+</div>
+
+</div>
+
+
+<div class="performance-footer">
+
+<button id="chartSwitch">
+XP
+<span>⌄</span>
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+
+<section class="dashboard-section">
+
+<div class="dashboard-section-title">
+DAILY CHECKLIST
+</div>
+
+<form class="my-form">
+
+<div>
+
+<input
+  id="check-1"
+  type="checkbox"
+>
+
+<label for="check-1">
+Study
+</label>
+
+</div>
+
+
+<div>
+
+<input
+  id="check-2"
+  type="checkbox"
+>
+
+<label for="check-2">
+Practice
+</label>
+
+</div>
+
+
+<div>
+
+<input
+  id="check-3"
+  type="checkbox"
+>
+
+<label for="check-3">
+Exercise
+</label>
+
+</div>
+
+
+<div>
+
+<input
+  id="check-4"
+  type="checkbox"
+>
+
+<label for="check-4">
+Read
+</label>
+
+</div>
+
+</form>
+
+</section>
+
+
+<section class="dashboard-section">
+
+<div class="dashboard-section-title">
+MOOD
+</div>
+
+<div class="mood-reactions">
+
+<button data-mood="like">
+👍
+</button>
+
+<button data-mood="cheer">
+👏🏻
+</button>
+
+<button data-mood="celebrate">
+🎉
+</button>
+
+<button data-mood="appreciate">
+✨
+</button>
+
+<button data-mood="smile">
+🙂
+</button>
+
+</div>
+
+</section>
+
+
+</div>
 
 </div>
 
@@ -355,4 +624,4 @@ Quests
 
 </body>
 
-</html>
+  </html>
