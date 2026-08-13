@@ -3,290 +3,613 @@
 
 <head>
 
-<meta charset="UTF-8">
+    <meta charset="UTF-8">
 
-<meta
-  name="viewport"
-  content="width=device-width, initial-scale=1"
->
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
-<title>Life RPG</title>
+    <title>Life RPG</title>
 
-<link rel="stylesheet" href="style.css">
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
 
 </head>
 
 <body>
 
+    <!-- Background -->
+    <div id="photoBg"></div>
+    <div id="photoOverlay"></div>
 
-<div id="photoBg"></div>
 
-<div id="photoOverlay"></div>
+    <div class="app">
 
+        <!-- ================= HEADER ================= -->
 
-<div class="app">
+        <header>
 
+            <div>
 
-<header>
+                <small>
+                    LIFE RPG
+                </small>
 
-<div>
+                <h1>
+                    Good morning,<br>
+                    Player.
+                </h1>
 
-<small>
-LIFE RPG
-</small>
+            </div>
 
-<h1>
-Good morning,<br>
-Player.
-</h1>
 
-</div>
+            <button id="settings">
+                ⚙
+            </button>
 
+        </header>
 
-<button id="settings">
-⚙
-</button>
 
-</header>
+        <!-- ================= PHOTO SYSTEM ================= -->
 
+        <section class="photo-controls">
 
-<section class="photo-controls">
+            <input
+                id="photoInput"
+                type="file"
+                accept="image/*"
+                multiple
+            >
 
-<input
-  id="photoInput"
-  type="file"
-  accept="image/*"
-  multiple
->
+            <div id="photoTabs"></div>
 
-<div id="photoTabs"></div>
+        </section>
 
-</section>
 
+        <main>
 
-<main>
 
+            <!-- ================= RIVAL ================= -->
 
-<section class="character">
+            <section class="rival-card">
 
+                <div class="rival-team rival-player">
 
-<div class="avatar">
+                    <span>
+                        YOU
+                    </span>
 
-<span>
-01
-</span>
+                </div>
 
-</div>
 
+                <div class="rival-score">
 
-<div class="level">
+                    <small>
+                        RANK BATTLE
+                    </small>
 
-<small>
-LEVEL
-</small>
+                    <strong>
+                        <span id="playerScore">
+                            0
+                        </span>
 
-<strong id="level">
-1
-</strong>
+                        -
 
+                        <span id="rivalScore">
+                            0
+                        </span>
+                    </strong>
 
-<div class="xp">
+                    <div class="rival-progress">
 
-<div id="xpBar"></div>
+                        <div id="rivalProgress"></div>
 
-</div>
+                    </div>
 
+                </div>
 
-<span id="xpText">
-0 / 100 XP
-</span>
 
-</div>
+                <div class="rival-team rival-enemy">
 
+                    <span>
+                        RIVAL
+                    </span>
 
-</section>
+                </div>
 
+            </section>
 
-<section class="next-level">
 
-<small>
-NEXT LEVEL
-</small>
+            <!-- ================= CHARACTER ================= -->
 
-<strong id="nextXP">
-100 XP
-</strong>
+            <section class="character">
 
-<p>
-Keep going to upgrade your character.
-</p>
+                <div class="avatar">
 
-</section>
+                    <span>
+                        01
+                    </span>
 
+                </div>
 
-<section class="today">
 
+                <div class="level">
 
-<div class="section-head">
+                    <small>
+                        LEVEL
+                    </small>
 
-<span>
-TODAY
-</span>
+                    <strong id="level">
+                        1
+                    </strong>
 
-<small>
-THU · AUG 13
-</small>
 
-</div>
+                    <div class="xp">
 
+                        <div id="xpBar"></div>
 
-<div class="today-row">
+                    </div>
 
-<div>
 
-<strong>
-0
-</strong>
+                    <span id="xpText">
+                        0 / 100 XP
+                    </span>
 
-<span>
-quests
-</span>
+                </div>
 
-</div>
+            </section>
 
 
-<div>
+            <!-- ================= NEXT LEVEL ================= -->
 
-<strong>
-0
-</strong>
+            <section class="next-level">
 
-<span>
-cards
-</span>
+                <small>
+                    NEXT LEVEL
+                </small>
 
-</div>
+                <strong id="nextXP">
+                    100 XP
+                </strong>
 
+                <p>
+                    Keep going to upgrade your character.
+                </p>
 
-<div>
+            </section>
 
-<strong>
-0
-</strong>
 
-<span>
-streak
-</span>
+            <!-- ================= TIMER ================= -->
 
-</div>
+            <section class="timer-section">
 
-</div>
+                <div class="mechanical-timer-module">
 
+                    <div class="time-group">
 
-</section>
+                        <div
+                            class="digit-casing"
+                            id="m1"
+                        >
+                            <div class="digit-track">
+                                <span>0</span>
+                            </div>
+                        </div>
 
+                        <div
+                            class="digit-casing"
+                            id="m2"
+                        >
+                            <div class="digit-track">
+                                <span>0</span>
+                            </div>
+                        </div>
 
-<section class="continue">
+                    </div>
 
-<small>
-CONTINUE
-</small>
 
+                    <div class="time-separator">
+                        :
+                    </div>
 
-<a href="flashcards/flashcards.html">
 
-<div class="learn-icon">
-✦
-</div>
+                    <div class="time-group">
 
+                        <div
+                            class="digit-casing"
+                            id="s1"
+                        >
+                            <div class="digit-track">
+                                <span>0</span>
+                            </div>
+                        </div>
 
-<div>
+                        <div
+                            class="digit-casing"
+                            id="s2"
+                        >
+                            <div class="digit-track">
+                                <span>0</span>
+                            </div>
+                        </div>
 
-<strong>
-Flashcards
-</strong>
+                    </div>
 
-<span>
-Train your knowledge
-</span>
+                </div>
 
-</div>
+            </section>
 
 
-<b>
-→
-</b>
+            <!-- ================= TODAY ================= -->
 
-</a>
+            <section class="today">
 
-</section>
+                <div class="section-head">
 
+                    <span>
+                        TODAY
+                    </span>
 
-</main>
+                    <small id="todayDate">
+                        THU · AUG 13
+                    </small>
 
+                </div>
 
-<nav>
 
+                <div class="today-row">
 
-<a
-  class="active"
-  href="index.html"
->
+                    <div>
 
-<span>
-⌂
-</span>
+                        <strong id="questCount">
+                            0
+                        </strong>
 
-Home
+                        <span>
+                            quests
+                        </span>
 
-</a>
+                    </div>
 
 
-<a
-  href="flashcards/flashcards.html"
->
+                    <div>
 
-<span>
-✦
-</span>
+                        <strong id="cardCount">
+                            0
+                        </strong>
 
-Learn
+                        <span>
+                            cards
+                        </span>
 
-</a>
+                    </div>
 
 
-<a
-  href="flashcards/chat/chat.html"
->
+                    <div>
 
-<span>
-◉
-</span>
+                        <strong id="streakCount">
+                            0
+                        </strong>
 
-NCR
+                        <span>
+                            streak
+                        </span>
 
-</a>
+                    </div>
 
+                </div>
 
-<a href="#">
+            </section>
 
-<span>
-⚔
-</span>
 
-Quests
+            <!-- ================= PROGRESS ================= -->
 
-</a>
+            <section class="progress-section">
 
+                <div class="section-head">
 
-</nav>
+                    <span>
+                        PROGRESS
+                    </span>
 
+                    <small>
+                        LAST 7 DAYS
+                    </small>
 
-</div>
+                </div>
 
 
-<script src="script.js"></script>
+                <div class="progress-card">
+
+                    <div class="progress-bars">
+
+                        <div class="progress-bar">
+                            <span style="height:40%"></span>
+                        </div>
+
+                        <div class="progress-bar">
+                            <span style="height:55%"></span>
+                        </div>
+
+                        <div class="progress-bar">
+                            <span style="height:35%"></span>
+                        </div>
+
+                        <div class="progress-bar">
+                            <span style="height:70%"></span>
+                        </div>
+
+                        <div class="progress-bar">
+                            <span style="height:50%"></span>
+                        </div>
+
+                        <div class="progress-bar">
+                            <span style="height:80%"></span>
+                        </div>
+
+                        <div class="progress-bar">
+                            <span style="height:65%"></span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- ================= CONTINUE ================= -->
+
+            <section class="continue">
+
+                <small>
+                    CONTINUE
+                </small>
+
+
+                <a href="english/english.html">
+
+                    <div class="learn-icon">
+                        ✦
+                    </div>
+
+
+                    <div>
+
+                        <strong>
+                            English World
+                        </strong>
+
+                        <span>
+                            Continue your language journey
+                        </span>
+
+                    </div>
+
+
+                    <b>
+                        →
+                    </b>
+
+                </a>
+
+
+                <a href="cyber/cyber.html">
+
+                    <div class="learn-icon cyber-icon">
+                        ⚡
+                    </div>
+
+
+                    <div>
+
+                        <strong>
+                            Cyber Security World
+                        </strong>
+
+                        <span>
+                            Continue your hacker journey
+                        </span>
+
+                    </div>
+
+
+                    <b>
+                        →
+                    </b>
+
+                </a>
+
+            </section>
+
+
+            <!-- ================= CHECKLIST ================= -->
+
+            <section class="checklist">
+
+                <div class="section-head">
+
+                    <span>
+                        CHECKLIST
+                    </span>
+
+                    <small>
+                        TODAY
+                    </small>
+
+                </div>
+
+
+                <form class="my-form">
+
+                    <div>
+
+                        <input
+                            id="check-1"
+                            type="checkbox"
+                        >
+
+                        <label for="check-1">
+                            Complete today's main quest
+                        </label>
+
+                    </div>
+
+
+                    <div>
+
+                        <input
+                            id="check-2"
+                            type="checkbox"
+                        >
+
+                        <label for="check-2">
+                            Study English
+                        </label>
+
+                    </div>
+
+
+                    <div>
+
+                        <input
+                            id="check-3"
+                            type="checkbox"
+                        >
+
+                        <label for="check-3">
+                            Study Cyber Security
+                        </label>
+
+                    </div>
+
+
+                    <div>
+
+                        <input
+                            id="check-4"
+                            type="checkbox"
+                        >
+
+                        <label for="check-4">
+                            Complete daily routine
+                        </label>
+
+                    </div>
+
+                </form>
+
+            </section>
+
+
+            <!-- ================= MOOD ================= -->
+
+            <section class="mood">
+
+                <div class="section-head">
+
+                    <span>
+                        HOW ARE YOU?
+                    </span>
+
+                    <small>
+                        SAVE TODAY'S MOOD
+                    </small>
+
+                </div>
+
+
+                <div class="mood-reactions">
+
+                    <button>
+                        👍
+                    </button>
+
+                    <button>
+                        👏🏻
+                    </button>
+
+                    <button>
+                        🎉
+                    </button>
+
+                    <button>
+                        ✨
+                    </button>
+
+                    <button>
+                        🙂
+                    </button>
+
+                </div>
+
+            </section>
+
+
+        </main>
+
+
+        <!-- ================= NAVIGATION ================= -->
+
+        <nav>
+
+            <a
+                class="active"
+                href="index.html"
+            >
+
+                <span>
+                    ⌂
+                </span>
+
+                Home
+
+            </a>
+
+
+            <a href="english/english.html">
+
+                <span>
+                    ✦
+                </span>
+
+                Learn
+
+            </a>
+
+
+            <a href="chat/chat.html">
+
+                <span>
+                    ◉
+                </span>
+
+                NCR
+
+            </a>
+
+
+            <a href="quests/quests.html">
+
+                <span>
+                    ⚔
+                </span>
+
+                Quests
+
+            </a>
+
+        </nav>
+
+
+    </div>
+
+
+    <script src="script.js"></script>
 
 </body>
 
-</html>
+  </html>
