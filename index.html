@@ -15,7 +15,55 @@
 <link rel="stylesheet" href="style.css">
 
 </head>
+<div id="worldsSheet" class="worlds-sheet">
 
+    <div class="worlds-sheet-header">
+        <div>
+            <small>YOUR WORLDS</small>
+            <h2>Worlds</h2>
+        </div>
+
+        <button id="closeWorlds">×</button>
+    </div>
+
+
+    <a href="english/english.html" class="world-sheet-card">
+        <span>文</span>
+
+        <div>
+            <strong>English World</strong>
+            <small>Language · Vocabulary · Review</small>
+        </div>
+
+        <b>→</b>
+    </a>
+
+
+    <a href="cyber/cyber.html" class="world-sheet-card">
+        <span>&lt;/&gt;</span>
+
+        <div>
+            <strong>Cyber Security World</strong>
+            <small>Linux · Web · Security · Labs</small>
+        </div>
+
+        <b>→</b>
+    </a>
+
+
+    <a href="spanish/spanish.html" class="world-sheet-card">
+        <span>Ñ</span>
+
+        <div>
+            <strong>Spanish World</strong>
+            <small>Coming soon</small>
+        </div>
+
+        <b>→</b>
+    </a>
+
+            </div>
+    
 <body>
 
 <div id="photoBg"></div>
@@ -55,22 +103,11 @@ Player.
 
 <!-- ================= PHOTO ================= -->
 
-<section class="photo-controls">
-
-<input
-    id="photoInput"
-    type="file"
-    accept="image/*"
-    multiple
->
-
-<div id="photoTabs"></div>
-
-</section>
 
 
 
-<main>
+
+
 
 
 <!-- ================= CHARACTER ================= -->
@@ -197,81 +234,13 @@ streak
 
 <!-- ================= CONTINUE ================= -->
 
-<section class="continue">
-
-<small>
-CONTINUE
-</small>
-
-
-<a href="flashcards/flashcards.html">
-
-<div class="learn-icon">
-✦
-</div>
-
-
-<div>
-
-<strong>
-Flashcards
-</strong>
-
-<span>
-Train your knowledge
-</span>
-
-</div>
-
-
-<b>
-→
-</b>
-
-</a>
-
-</section>
 
 
 
 <!-- ================= WORLDS ================= -->
 
     <!-- ================= WORLDS ================= -->
-
-<section class="worlds">
-
-    <small class="worlds-title">
-        WORLDS
-    </small>
-
-    <div class="world-grid">
-
-        <!-- ENGLISH -->
-
-        <a
-            href="english/english.html"
-            class="world-card english-world"
-        >
-
-            <span class="world-icon">
-                文
-            </span>
-
-            <div>
-                <strong>
-                    English World
-                </strong>
-
-                <small>
-                    Language · Flashcards · Progress
-                </small>
-            </div>
-
-            <b>
-                →
-            </b>
-
-        </a>
+>
 
 
         <!-- CYBER SECURITY -->
@@ -334,77 +303,27 @@ Train your knowledge
 </section>
 
 <!-- ================= BOTTOM NAV ================= -->
-
 <nav>
 
+    <a class="active" href="index.html">
+        <span>⌂</span>
+        Home
+    </a>
 
-<a
-    class="active"
-    href="index.html"
->
+    <button id="worldsButton" class="nav-worlds">
+        <span>◈</span>
+        Worlds
+    </button>
 
-<span>
-⌂
-</span>
+    <a href="quests.html">
+        <span>⚔</span>
+        Quests
+    </a>
 
-Home
-
-</a>
-
-
-
-<a
-    href="english/english.html"
->
-
-<span>
-文
-</span>
-
-English
-
-</a>
-
-
-
-<a
-    href="cyber/cyber.html"
->
-
-<span>
-&lt;/&gt;
-</span>
-
-Cyber
-
-</a>
-
-
-
-<a
-    href="flashcards/chat/chat.html"
->
-
-<span>
-◉
-</span>
-
-NCR
-
-</a>
-
-
-
-<a href="#">
-
-<span>
-⚔
-</span>
-
-Quests
-
-</a>
-
+    <a href="settings.html">
+        <span>⚙</span>
+        Settings
+    </a>
 
 </nav>
 
@@ -644,22 +563,20 @@ Notifications
 
 Background
 
-<div class="setting-arrow">
-›
+<div class="background-control">
+
+    <small>BACKGROUND</small>
+
+    <input
+        id="photoInput"
+        type="file"
+        accept="image/*"
+        multiple
+    >
+
+    <div id="photoTabs"></div>
+
 </div>
-
-</button>
-
-
-
-<button
-    class="setting-control"
-    id="accountButton"
->
-
-<span class="setting-symbol">
-◉
-</span>
 
 Player Account
 
