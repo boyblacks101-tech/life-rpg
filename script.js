@@ -1,12 +1,16 @@
-/* =========================
-   PLAYER
-========================= */
+/* =================================================
+   RPG CORE
+================================================= */
 
 let xp =
-    Number(localStorage.getItem("xp")) || 0;
+    Number(
+        localStorage.getItem("xp")
+    ) || 0;
 
 let level =
-    Number(localStorage.getItem("level")) || 1;
+    Number(
+        localStorage.getItem("level")
+    ) || 1;
 
 
 const xpBar =
@@ -38,320 +42,27 @@ function updateUI() {
 }
 
 
-/* =========================
-   DATE
-========================= */
+updateUI();
 
-function updateDate() {
 
-    const date = new Date();
 
-    document.getElementById(
-        "todayDate"
-    ).textContent =
-        date.toLocaleDateString(
-            "en-US",
-            {
-                weekday: "short",
-                month: "short",
-                day: "numeric"
-            }
-        ).toUpperCase();
-}
+/* =================================================
+   BACKGROUND PHOTOS
+================================================= */
 
-
-/* =========================
-   TODAY
-========================= */
-
-function updateToday() {
-
-    document.getElementById(
-        "cardCount"
-    ).textContent =
-        localStorage.getItem(
-            "flashcardsDone"
-        ) || 0;
-
-    document.getElementById(
-        "questCount"
-    ).textContent =
-        localStorage.getItem(
-            "questsDone"
-        ) || 0;
-
-    document.getElementById(
-        "streakCount"
-    ).textContent =
-        localStorage.getItem(
-            "streak"
-        ) || 0;
-}
-
-
-/* =========================
-   CHART
-========================= */
-
-let chartMode = "xp";
-
-const chartTitle =
-    document.getElementById("chartTitle");
-
-const chartSubtitle =
-    document.getElementById("chartSubtitle");
-
-const chartValue =
-    document.getElementById("chartValue");
-
-const chartLevel =
-    document.getElementById("chartLevel");
-
-const chartSwitch =
-    document.getElementById("chartSwitch");
-
-
-function updateChart() {
-
-    chartLevel.textContent =
-        level;
-
-    if (chartMode === "xp") {
-
-        chartTitle.textContent =
-            "XP Progress";
-
-        chartSubtitle.textContent =
-            "Your character growth";
-
-        chartValue.textContent =
-            xp;
-
-        chartSwitch.innerHTML =
-            `XP <span>⌄</span>`;
-    }
-
-
-    if (chartMode === "study") {
-
-        chartTitle.textContent =
-            "Study Time";
-
-        chartSubtitle.textContent =
-            "Your learning activity";
-
-        chartValue.textContent =
-            localStorage.getItem(
-                "studyMinutes"
-            ) || 0;
-
-        chartSwitch.innerHTML =
-            `STUDY <span>⌄</span>`;
-    }
-
-
-    if (chartMode === "flashcards") {
-
-        chartTitle.textContent =
-            "Flashcards";
-
-        chartSubtitle.textContent =
-            "Cards completed";
-
-        chartValue.textContent =
-            localStorage.getItem(
-                "flashcardsDone"
-            ) || 0;
-
-        chartSwitch.innerHTML =
-            `CARDS <span>⌄</span>`;
-    }
-}
-
-
-chartSwitch.addEventListener(
-    "click",
-    () => {
-
-        if (chartMode === "xp") {
-
-            chartMode = "study";
-
-        } else if (
-            chartMode === "study"
-        ) {
-
-            chartMode = "flashcards";
-
-        } else {
-
-            chartMode = "xp";
-        }
-
-        updateChart();
-    }
-);
-
-
-/* =========================
-   RIVAL
-========================= */
-
-function updateRival() {
-
-    const playerXP =
-        Number(
-            localStorage.getItem("xp")
-        ) || 0;
-
-    const rivalXP =
-        Number(
-            localStorage.getItem("rivalXP")
-        ) || 0;
-
-
-    document.getElementById(
-        "playerScore"
-    ).textContent =
-        `${playerXP} XP`;
-
-
-    document.getElementById(
-        "rivalScore"
-    ).textContent =
-        `${rivalXP} XP`;
-
-
-    const total =
-        playerXP + rivalXP;
-
-
-    const percentage =
-        total === 0
-            ? 50
-            : (playerXP / total) * 100;
-
-
-    document.getElementById(
-        "rivalProgress"
-    ).style.width =
-        `${percentage}%`;
-
-
-    const message =
-        document.getElementById(
-            "rivalMessage"
-        );
-
-
-    if (playerXP > rivalXP) {
-
-        message.textContent =
-            "You're ahead. Keep pushing.";
-
-    } else if (playerXP < rivalXP) {
-
-        message.textContent =
-            "Your rival is ahead. Catch up.";
-
-    } else {
-
-        message.textContent =
-            "You're perfectly tied.";
-    }
-}
-
-
-/* =========================
-   WORLDS
-========================= */
-
-const worldMenu =
-    document.getElementById("worldMenu");
-
-function openWorlds() {
-
-    worldMenu.classList.add("open");
-}
-
-function closeWorlds() {
-
-    worldMenu.classList.remove("open");
-}
-
-
-document
-    .getElementById("worldButton")
-    .addEventListener(
-        "click",
-        openWorlds
-    );
-
-
-document
-    .getElementById("worldNav")
-    .addEventListener(
-        "click",
-        openWorlds
-    );
-
-
-document
-    .getElementById("closeWorlds")
-    .addEventListener(
-        "click",
-        closeWorlds
-    );
-
-
-/* =========================
-   SETTINGS
-========================= */
-
-const dashboardMenu =
-    document.getElementById(
-        "dashboardMenu"
-    );
-
-
-document
-    .getElementById("dashboardButton")
-    .addEventListener(
-        "click",
-        () => {
-
-            dashboardMenu.classList.add(
-                "open"
-            );
-        }
-    );
-
-
-document
-    .getElementById("closeDashboard")
-    .addEventListener(
-        "click",
-        () => {
-
-            dashboardMenu.classList.remove(
-                "open"
-            );
-        }
-    );
-
-
-/* =========================
-   BACKGROUND
-========================= */
-
-const photoInput =
+const input =
     document.getElementById(
         "photoInput"
     );
 
-const photoBg =
+const bg =
     document.getElementById(
         "photoBg"
+    );
+
+const tabs =
+    document.getElementById(
+        "photoTabs"
     );
 
 
@@ -363,7 +74,7 @@ let photos =
     );
 
 
-let currentPhoto = 0;
+let current = 0;
 
 
 function savePhotos() {
@@ -377,27 +88,76 @@ function savePhotos() {
 
 function showPhoto(index) {
 
-    if (!photos.length)
-        return;
+    if (!photos.length) return;
 
-    currentPhoto = index;
+    current = index;
 
-    photoBg.style.backgroundImage =
-        `url("${photos[index]}")`;
+    bg.style.backgroundImage =
+        `url("${photos[current]}")`;
 
-    photoBg.style.opacity = "1";
+    bg.style.opacity = "1";
+
+
+    document
+        .querySelectorAll(".photo-tab")
+        .forEach(
+            (tab, i) => {
+
+                tab.classList.toggle(
+                    "active",
+                    i === current
+                );
+
+            }
+        );
 }
 
 
-photoInput.addEventListener(
+function renderTabs() {
+
+    tabs.innerHTML = "";
+
+    photos.forEach(
+        (photo, index) => {
+
+            const tab =
+                document.createElement(
+                    "button"
+                );
+
+            tab.className =
+                "photo-tab";
+
+            tab.style.backgroundImage =
+                `url("${photo}")`;
+
+
+            tab.onclick =
+                () => showPhoto(index);
+
+
+            tabs.appendChild(tab);
+
+        }
+    );
+
+
+    showPhoto(current);
+}
+
+
+input.addEventListener(
     "change",
     () => {
 
-        [...photoInput.files].forEach(
+        [
+            ...input.files
+        ].forEach(
             file => {
 
                 const reader =
                     new FileReader();
+
 
                 reader.onload =
                     event => {
@@ -408,133 +168,334 @@ photoInput.addEventListener(
 
                         savePhotos();
 
-                        showPhoto(
-                            photos.length - 1
-                        );
+                        renderTabs();
+
                     };
+
 
                 reader.readAsDataURL(
                     file
                 );
+
             }
         );
+
     }
 );
 
 
-if (photos.length) {
-    showPhoto(0);
-}
+setInterval(
+    () => {
+
+        if (!photos.length) return;
+
+        showPhoto(
+            (current + 1) %
+            photos.length
+        );
+
+    },
+    60000
+);
 
 
-/* =========================
-   SOUND
-========================= */
-
-let soundEnabled =
-    localStorage.getItem(
-        "soundEnabled"
-    ) !== "false";
+renderTabs();
 
 
-const soundButton =
+
+/* =================================================
+   SETTINGS
+================================================= */
+
+const settingsButton =
     document.getElementById(
-        "soundButton"
+        "settings"
+    );
+
+const settingsOverlay =
+    document.getElementById(
+        "settingsOverlay"
+    );
+
+const closeSettings =
+    document.getElementById(
+        "closeSettings"
     );
 
 
-function updateSoundUI() {
+function openSettings() {
 
-    soundButton.querySelector(
-        ".setting-state"
-    ).textContent =
-        soundEnabled
-            ? "ON"
-            : "OFF";
+    settingsOverlay.classList.add(
+        "open"
+    );
+
 }
 
 
-soundButton.addEventListener(
+function closeSettingsPanel() {
+
+    settingsOverlay.classList.remove(
+        "open"
+    );
+
+}
+
+
+settingsButton.addEventListener(
+    "click",
+    openSettings
+);
+
+
+closeSettings.addEventListener(
+    "click",
+    closeSettingsPanel
+);
+
+
+settingsOverlay.addEventListener(
+    "click",
+    event => {
+
+        if (
+            event.target ===
+            settingsOverlay
+        ) {
+
+            closeSettingsPanel();
+
+        }
+
+    }
+);
+
+
+
+/* =================================================
+   ACCOUNT
+================================================= */
+
+const usernameInput =
+    document.getElementById(
+        "usernameInput"
+    );
+
+const passwordInput =
+    document.getElementById(
+        "passwordInput"
+    );
+
+const saveAccount =
+    document.getElementById(
+        "saveAccount"
+    );
+
+const accountStatus =
+    document.getElementById(
+        "accountStatus"
+    );
+
+
+usernameInput.value =
+    localStorage.getItem(
+        "playerUsername"
+    ) || "";
+
+
+passwordInput.value =
+    localStorage.getItem(
+        "playerPassword"
+    ) || "";
+
+
+saveAccount.addEventListener(
     "click",
     () => {
 
-        soundEnabled =
-            !soundEnabled;
+        const username =
+            usernameInput.value.trim();
+
+        const password =
+            passwordInput.value.trim();
+
+
+        if (!username || !password) {
+
+            accountStatus.textContent =
+                "Enter username and password.";
+
+            accountStatus.style.color =
+                "#ff5964";
+
+            return;
+
+        }
+
 
         localStorage.setItem(
-            "soundEnabled",
-            soundEnabled
+            "playerUsername",
+            username
         );
 
-        updateSoundUI();
+
+        localStorage.setItem(
+            "playerPassword",
+            password
+        );
+
+
+        accountStatus.textContent =
+            "Account saved.";
+
+        accountStatus.style.color =
+            "#35d98b";
+
+
+        setTimeout(
+            () => {
+
+                accountStatus.textContent =
+                    "";
+
+            },
+            2500
+        );
+
     }
 );
 
 
-/* =========================
-   THEME
-========================= */
 
-const themeButton =
+/* =================================================
+   NOTIFICATIONS
+================================================= */
+
+const notificationsButton =
     document.getElementById(
-        "themeButton"
+        "notificationsButton"
     );
 
 
-themeButton.addEventListener(
+notificationsButton.addEventListener(
     "click",
     () => {
 
-        alert(
-            "Dark theme is currently active."
-        );
+        const enabled =
+            localStorage.getItem(
+                "notifications"
+            ) !== "off";
+
+
+        if (enabled) {
+
+            localStorage.setItem(
+                "notifications",
+                "off"
+            );
+
+            notificationsButton.childNodes[
+                1
+            ].textContent =
+                " Notifications";
+
+        } else {
+
+            localStorage.setItem(
+                "notifications",
+                "on"
+            );
+
+            notificationsButton.childNodes[
+                1
+            ].textContent =
+                " Notifications";
+
+        }
+
     }
 );
 
 
-/* =========================
-   RESET
-========================= */
 
-document
-    .getElementById("resetProgress")
-    .addEventListener(
-        "click",
-        () => {
+/* =================================================
+   BACKGROUND BUTTON
+================================================= */
 
-            const confirmReset =
-                confirm(
-                    "Reset all RPG progress?"
-                );
-
-            if (!confirmReset)
-                return;
-
-            [
-                "xp",
-                "level",
-                "studyMinutes",
-                "flashcardsDone",
-                "questsDone",
-                "streak",
-                "rivalXP"
-            ].forEach(
-                key =>
-                    localStorage.removeItem(key)
-            );
-
-            location.reload();
-        }
+const backgroundButton =
+    document.getElementById(
+        "backgroundButton"
     );
 
 
-/* =========================
-   START
-========================= */
+backgroundButton.addEventListener(
+    "click",
+    () => {
 
-updateUI();
-updateDate();
-updateToday();
-updateChart();
-updateRival();
-updateSoundUI();
+        input.click();
+
+    }
+);
+
+
+
+/* =================================================
+   ACCOUNT BUTTON
+================================================= */
+
+const accountButton =
+    document.getElementById(
+        "accountButton"
+    );
+
+
+accountButton.addEventListener(
+    "click",
+    () => {
+
+        usernameInput.focus();
+
+    }
+);
+
+
+
+/* =================================================
+   RESET PROGRESS
+================================================= */
+
+const resetButton =
+    document.getElementById(
+        "resetButton"
+    );
+
+
+resetButton.addEventListener(
+    "click",
+    () => {
+
+        const confirmReset =
+            confirm(
+                "Reset XP and level?"
+            );
+
+
+        if (!confirmReset) return;
+
+
+        localStorage.removeItem(
+            "xp"
+        );
+
+        localStorage.removeItem(
+            "level"
+        );
+
+
+        xp = 0;
+        level = 1;
+
+
+        updateUI();
+
+    }
+);
