@@ -2,10 +2,18 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Life RPG</title>
-    <link rel="stylesheet" href="style.css">
+
+<meta charset="UTF-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1"
+>
+
+<title>Life RPG</title>
+
+<link rel="stylesheet" href="style.css">
+
 </head>
 
 <body>
@@ -13,435 +21,676 @@
 <div id="photoBg"></div>
 <div id="photoOverlay"></div>
 
+
 <div class="app">
+
 
 <header>
 
-    <div>
-        <small>LIFE RPG</small>
-        <h1>Good morning,<br>Player.</h1>
-    </div>
+<div>
 
-    <div class="header-actions">
+<small>
+LIFE RPG
+</small>
 
-        <button id="worldButton" class="round-button">
-            ◈
-        </button>
+<h1>
+Good morning,<br>
+Player.
+</h1>
 
-        <button id="dashboardButton" class="round-button">
-            ⚙
-        </button>
+</div>
 
-    </div>
+
+<button
+    id="settings"
+    class="settings-button"
+    aria-label="Settings"
+>
+⚙
+</button>
 
 </header>
 
 
+
+<!-- ================= PHOTO ================= -->
+
+<section class="photo-controls">
+
+<input
+    id="photoInput"
+    type="file"
+    accept="image/*"
+    multiple
+>
+
+<div id="photoTabs"></div>
+
+</section>
+
+
+
 <main>
+
+
+<!-- ================= CHARACTER ================= -->
 
 <section class="character">
 
-    <div class="avatar">
-        <span>01</span>
-    </div>
+<div class="avatar">
 
-    <div class="level">
+<span>
+01
+</span>
 
-        <small>LEVEL</small>
+</div>
 
-        <strong id="level">1</strong>
 
-        <div class="xp">
-            <div id="xpBar"></div>
-        </div>
+<div class="level">
 
-        <span id="xpText">0 / 100 XP</span>
+<small>
+LEVEL
+</small>
 
-    </div>
+<strong id="level">
+1
+</strong>
+
+<div class="xp">
+
+<div id="xpBar"></div>
+
+</div>
+
+<span id="xpText">
+0 / 100 XP
+</span>
+
+</div>
 
 </section>
 
+
+
+<!-- ================= NEXT LEVEL ================= -->
 
 <section class="next-level">
 
-    <small>NEXT LEVEL</small>
+<small>
+NEXT LEVEL
+</small>
 
-    <strong id="nextXP">100 XP</strong>
+<strong id="nextXP">
+100 XP
+</strong>
 
-    <p>Keep going to upgrade your character.</p>
+<p>
+Keep going to upgrade your character.
+</p>
 
 </section>
 
+
+
+<!-- ================= TODAY ================= -->
 
 <section class="today">
 
-    <div class="section-head">
-        <span>TODAY</span>
-        <small id="todayDate"></small>
-    </div>
+<div class="section-head">
 
-    <div class="today-row">
+<span>
+TODAY
+</span>
 
-        <div>
-            <strong id="questCount">0</strong>
-            <span>quests</span>
-        </div>
+<small>
+THU · AUG 13
+</small>
 
-        <div>
-            <strong id="cardCount">0</strong>
-            <span>cards</span>
-        </div>
-
-        <div>
-            <strong id="streakCount">0</strong>
-            <span>streak</span>
-        </div>
-
-    </div>
-
-</section>
+</div>
 
 
-<section class="performance">
+<div class="today-row">
 
-    <div class="section-head">
-        <span>PERFORMANCE</span>
-        <small>LIVE</small>
-    </div>
+<div>
 
-    <div class="performance-card">
+<strong>
+0
+</strong>
 
-        <div class="performance-header">
+<span>
+quests
+</span>
 
-            <div class="performance-title">
+</div>
 
-                <div class="performance-icon">
-                    ↗
-                </div>
 
-                <div>
-                    <strong id="chartTitle">XP Progress</strong>
-                    <span id="chartSubtitle">
-                        Your character growth
-                    </span>
-                </div>
+<div>
 
-            </div>
+<strong>
+0
+</strong>
 
-            <button id="chartSwitch">
-                XP <span>⌄</span>
-            </button>
+<span>
+cards
+</span>
 
-        </div>
+</div>
 
-        <div class="chart-stats">
 
-            <div>
-                <small>VALUE</small>
-                <strong id="chartValue">0</strong>
-            </div>
+<div>
 
-            <div>
-                <small>LEVEL</small>
-                <strong id="chartLevel">1</strong>
-            </div>
+<strong>
+0
+</strong>
 
-        </div>
+<span>
+streak
+</span>
 
-        <div class="chart">
+</div>
 
-            <div class="chart-bars">
-
-                <div class="chart-bar" style="--height:25%">
-                    <span></span>
-                </div>
-
-                <div class="chart-bar" style="--height:40%">
-                    <span></span>
-                </div>
-
-                <div class="chart-bar" style="--height:32%">
-                    <span></span>
-                </div>
-
-                <div class="chart-bar" style="--height:55%">
-                    <span></span>
-                </div>
-
-                <div class="chart-bar" style="--height:48%">
-                    <span></span>
-                </div>
-
-                <div class="chart-bar" style="--height:72%">
-                    <span></span>
-                </div>
-
-                <div class="chart-bar" style="--height:90%">
-                    <span></span>
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
+</div>
 
 </section>
 
+
+
+<!-- ================= CONTINUE ================= -->
 
 <section class="continue">
 
-    <small>CONTINUE</small>
+<small>
+CONTINUE
+</small>
 
-    <a href="flashcards/flashcards.html">
 
-        <div class="learn-icon">
-            ✦
-        </div>
+<a href="flashcards/flashcards.html">
 
-        <div>
-            <strong>Flashcards</strong>
-            <span>Train your knowledge</span>
-        </div>
+<div class="learn-icon">
+✦
+</div>
 
-        <b>→</b>
 
-    </a>
+<div>
+
+<strong>
+Flashcards
+</strong>
+
+<span>
+Train your knowledge
+</span>
+
+</div>
+
+
+<b>
+→
+</b>
+
+</a>
+
+</section>
+
+
+
+<!-- ================= WORLDS ================= -->
+
+<section class="worlds">
+
+<small class="worlds-title">
+WORLDS
+</small>
+
+
+<div class="world-grid">
+
+
+<a
+    href="english/english.html"
+    class="world-card english-world"
+>
+
+<span class="world-icon">
+文
+</span>
+
+
+<div>
+
+<strong>
+English World
+</strong>
+
+<small>
+Language · Flashcards · Progress
+</small>
+
+</div>
+
+
+<b>
+→
+</b>
+
+</a>
+
+
+
+<a
+    href="cyber/cyber.html"
+    class="world-card cyber-world"
+>
+
+<span class="world-icon">
+&lt;/&gt;
+</span>
+
+
+<div>
+
+<strong>
+Cyber Security World
+</strong>
+
+<small>
+IT · Security · Labs · XP
+</small>
+
+</div>
+
+
+<b>
+→
+</b>
+
+</a>
+
+
+</div>
 
 </section>
 
-
-<section class="rival-card">
-
-    <div class="rival-title">
-        <span>RIVAL SYSTEM</span>
-        <small>ACTIVE</small>
-    </div>
-
-    <div class="rival-versus">
-
-        <div class="rival-player">
-            <strong>PLAYER</strong>
-            <span id="playerScore">0 XP</span>
-        </div>
-
-        <div class="versus">VS</div>
-
-        <div class="rival-player enemy">
-            <strong>RIVAL</strong>
-            <span id="rivalScore">0 XP</span>
-        </div>
-
-    </div>
-
-    <div class="rival-progress">
-        <div id="rivalProgress"></div>
-    </div>
-
-    <p id="rivalMessage">
-        You're perfectly tied.
-    </p>
-
-</section>
 
 </main>
 
 
+
+<!-- ================= BOTTOM NAV ================= -->
+
 <nav>
 
-    <a class="active" href="index.html">
-        <span>⌂</span>
-        Home
-    </a>
 
-    <button id="worldNav">
-        <span>◈</span>
-        Worlds
-    </button>
+<a
+    class="active"
+    href="index.html"
+>
 
-    <a href="flashcards/flashcards.html">
-        <span>✦</span>
-        Learn
-    </a>
+<span>
+⌂
+</span>
 
-    <a href="flashcards/chat/chat.html">
-        <span>◉</span>
-        NCR
-    </a>
+Home
 
-    <a href="#">
-        <span>⚔</span>
-        Quests
-    </a>
+</a>
+
+
+
+<a
+    href="english/english.html"
+>
+
+<span>
+文
+</span>
+
+English
+
+</a>
+
+
+
+<a
+    href="cyber/cyber.html"
+>
+
+<span>
+&lt;/&gt;
+</span>
+
+Cyber
+
+</a>
+
+
+
+<a
+    href="flashcards/chat/chat.html"
+>
+
+<span>
+◉
+</span>
+
+NCR
+
+</a>
+
+
+
+<a href="#">
+
+<span>
+⚔
+</span>
+
+Quests
+
+</a>
+
 
 </nav>
 
 
-<!-- WORLDS -->
-
-<div id="worldMenu" class="overlay-menu">
-
-    <div class="menu-card">
-
-        <div class="menu-header">
-
-            <div>
-                <small>WORLDS</small>
-                <h2>Select World</h2>
-            </div>
-
-            <button id="closeWorlds">×</button>
-
-        </div>
+</div>
 
 
-        <a href="english/english.html" class="menu-item english">
 
-            <span>文</span>
+<!-- ================================================= -->
+<!-- SETTINGS PANEL -->
+<!-- ================================================= -->
 
-            <div>
-                <strong>English World</strong>
-                <small>Language · Flashcards · XP</small>
-            </div>
+<div
+    id="settingsOverlay"
+    class="settings-overlay"
+>
 
-            <b>→</b>
+<div
+    id="settingsPanel"
+    class="settings-panel"
+>
 
-        </a>
 
+<div class="settings-header">
 
-        <a href="cyber/cyber.html" class="menu-item cyber">
+<div>
 
-            <span>&lt;/&gt;</span>
+<small>
+SYSTEM
+</small>
 
-            <div>
-                <strong>Cyber Sleuth World</strong>
-                <small>IT · Security · Labs · XP</small>
-            </div>
-
-            <b>→</b>
-
-        </a>
-
-    </div>
+<h2>
+Settings
+</h2>
 
 </div>
 
 
-<!-- SETTINGS -->
-
-<div id="dashboardMenu" class="overlay-menu">
-
-    <div class="menu-card settings-card">
-
-        <div class="menu-header">
-
-            <div>
-                <small>SYSTEM</small>
-                <h2>Settings</h2>
-            </div>
-
-            <button id="closeDashboard">×</button>
-
-        </div>
-
-
-        <!-- NOTIFICATIONS -->
-
-        <button class="setting-button">
-
-            <svg class="setting-icon" viewBox="0 0 448 512">
-                <path d="M224 0c-17.7 0-32 14.3-32 32V49.9C119.5 61.4 64 124.2 64 200v33.4c0 45.4-15.5 89.5-43.8 124.9L5.3 377c-5.8 7.2-6.9 17.1-2.9 25.4S14.8 416 24 416H424c9.2 0 17.6-5.3 21.6-13.6s2.9-18.2-2.9-25.4l-14.9-18.6C399.5 322.9 384 278.8 384 233.4V200c0-75.8-55.5-138.6-128-150.1V32c0-17.7-14.3-32-32-32zm0 96h8c57.4 0 104 46.6 104 104v33.4c0 47.9 13.9 94.6 39.7 134.6H72.3C98.1 328 112 281.3 112 233.4V200c0-57.4 46.6-104 104-104h8zm64 352H224 160c0 17 6.7 33.3 18.7 45.3s28.3 18.7 45.3 18.7s33.3-6.7 45.3-18.7s18.7-28.3 18.7-45.3z"></path>
-            </svg>
-
-            Notifications
-
-            <div class="arrow">›</div>
-
-        </button>
-
-
-        <!-- BACKGROUND -->
-
-        <label class="setting-button">
-
-            <span class="setting-symbol">▣</span>
-
-            Background
-
-            <input
-                id="photoInput"
-                type="file"
-                accept="image/*"
-                multiple
-                hidden
-            >
-
-            <div class="arrow">›</div>
-
-        </label>
-
-
-        <!-- SOUND -->
-
-        <button
-            id="soundButton"
-            class="setting-button"
-        >
-
-            <span class="setting-symbol">♫</span>
-
-            Sound
-
-            <div class="setting-state">
-                ON
-            </div>
-
-            <div class="arrow">›</div>
-
-        </button>
-
-
-        <!-- THEME -->
-
-        <button
-            id="themeButton"
-            class="setting-button"
-        >
-
-            <span class="setting-symbol">◐</span>
-
-            Theme
-
-            <div class="setting-state">
-                DARK
-            </div>
-
-            <div class="arrow">›</div>
-
-        </button>
-
-
-        <!-- RESET -->
-
-        <button
-            id="resetProgress"
-            class="setting-button danger-setting"
-        >
-
-            <span class="setting-symbol">↻</span>
-
-            Reset Progress
-
-            <div class="arrow">›</div>
-
-        </button>
-
-    </div>
+<button
+    id="closeSettings"
+    class="close-settings"
+>
+×
+</button>
 
 </div>
+
+
+
+<!-- ================= ACCOUNT ================= -->
+
+<section class="settings-section">
+
+<div class="settings-section-title">
+
+<span>
+ACCOUNT
+</span>
+
+<small>
+PLAYER PROFILE
+</small>
+
+</div>
+
+
+
+<div class="login-form">
+
+
+<div class="form-control">
+
+<input
+    id="usernameInput"
+    type="text"
+    required
+    autocomplete="username"
+>
+
+<label>
+
+<span style="transition-delay:0ms">
+U
+</span>
+
+<span style="transition-delay:50ms">
+s
+</span>
+
+<span style="transition-delay:100ms">
+e
+</span>
+
+<span style="transition-delay:150ms">
+r
+</span>
+
+<span style="transition-delay:200ms">
+n
+</span>
+
+<span style="transition-delay:250ms">
+a
+</span>
+
+<span style="transition-delay:300ms">
+m
+</span>
+
+<span style="transition-delay:350ms">
+e
+</span>
+
+</label>
+
+</div>
+
+
+
+<div class="form-control">
+
+<input
+    id="passwordInput"
+    type="password"
+    required
+    autocomplete="new-password"
+>
+
+<label>
+
+<span style="transition-delay:0ms">
+P
+</span>
+
+<span style="transition-delay:50ms">
+a
+</span>
+
+<span style="transition-delay:100ms">
+s
+</span>
+
+<span style="transition-delay:150ms">
+s
+</span>
+
+<span style="transition-delay:200ms">
+w
+</span>
+
+<span style="transition-delay:250ms">
+o
+</span>
+
+<span style="transition-delay:300ms">
+r
+</span>
+
+<span style="transition-delay:350ms">
+d
+</span>
+
+</label>
+
+</div>
+
+
+<button
+    id="saveAccount"
+    class="save-account"
+>
+SAVE ACCOUNT
+</button>
+
+
+<p
+    id="accountStatus"
+    class="account-status"
+>
+</p>
+
+</div>
+
+</section>
+
+
+
+<!-- ================= SETTINGS BUTTONS ================= -->
+
+<section class="settings-section">
+
+<div class="settings-section-title">
+
+<span>
+SYSTEM
+</span>
+
+<small>
+CONTROL CENTER
+</small>
+
+</div>
+
+
+
+<button
+    class="setting-control"
+    id="notificationsButton"
+>
+
+<svg
+    class="setting-icon"
+    viewBox="0 0 448 512"
+>
+<path d="M224 0c-17.7 0-32 14.3-32 32V49.9C119.5 61.4 64 124.2 64 200v33.4c0 45.4-15.5 89.5-43.8 124.9L5.3 377c-5.8 7.2-6.9 17.1-2.9 25.4S14.8 416 24 416H424c9.2 0 17.6-5.3 21.6-13.6s2.9-18.2-2.9-25.4l-14.9-18.6C399.5 322.9 384 278.8 384 233.4V200c0-75.8-55.5-138.6-128-150.1V32c0-17.7-14.3-32-32-32zm0 96h8c57.4 0 104 46.6 104 104v33.4c0 47.9 13.9 94.6 39.7 134.6H72.3C98.1 328 112 281.3 112 233.4V200c0-57.4 46.6-104 104-104h8zm64 352H224 160c0 17 6.7 33.3 18.7 45.3s28.3 18.7 45.3 18.7s33.3-6.7 45.3-18.7s18.7-28.3 18.7-45.3z">
+</path>
+</svg>
+
+Notifications
+
+<div class="setting-arrow">
+›
+</div>
+
+</button>
+
+
+
+<button
+    class="setting-control"
+    id="backgroundButton"
+>
+
+<span class="setting-symbol">
+◈
+</span>
+
+Background
+
+<div class="setting-arrow">
+›
+</div>
+
+</button>
+
+
+
+<button
+    class="setting-control"
+    id="accountButton"
+>
+
+<span class="setting-symbol">
+◉
+</span>
+
+Player Account
+
+<div class="setting-arrow">
+›
+</div>
+
+</button>
+
+
+
+<button
+    class="setting-control"
+    id="resetButton"
+>
+
+<span class="setting-symbol">
+↻
+</span>
+
+Reset Progress
+
+<div class="setting-arrow">
+›
+</div>
+
+</button>
+
+
+</section>
+
+
+
+<div class="settings-footer">
+
+TROVIRUSES · LIFE RPG
+
+</div>
+
+
+</div>
+
+</div>
+
 
 
 <script src="script.js"></script>
 
 </body>
-          </html>
+
+</html>
