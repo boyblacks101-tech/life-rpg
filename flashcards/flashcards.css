@@ -259,3 +259,21 @@ font-size:8px;
 nav .active {
 color:#fff;
 }
+
+.add-card-link {
+display:block;
+margin-top:10px;
+padding:14px;
+border:1px solid #292930;
+border-radius:15px;
+background:#111115;
+color:#aaaab2;
+text-align:center;
+text-decoration:none;
+font-size:11px;
+}
+
+.add-card-link span {
+margin-right:6px;
+font-size:16px;
+  }
