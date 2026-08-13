@@ -40,13 +40,13 @@ margin-top:5px;
 font-size:25px;
 }
 
+section {
+margin-top:25px;
+}
+
 h2 {
 margin-bottom:13px;
 font-size:16px;
-}
-
-section {
-margin-top:25px;
 }
 
 #types button,
@@ -70,8 +70,48 @@ font-size:12px;
 #types span {
 display:block;
 margin-top:5px;
-color:#666670;
+color:#9999a3;
 font-size:10px;
+}
+
+label {
+display:block;
+margin:17px 0 7px;
+color:#888892;
+font-size:9px;
+letter-spacing:2px;
+}
+
+input,
+textarea {
+display:block;
+width:100%;
+min-height:48px;
+padding:14px;
+border:1px solid #36363f;
+border-radius:14px;
+outline:none;
+background:#18181e;
+color:#fff;
+font-family:inherit;
+font-size:14px;
+caret-color:#fff;
+}
+
+textarea {
+min-height:120px;
+resize:vertical;
+}
+
+input::placeholder,
+textarea::placeholder {
+color:#666670;
+}
+
+input:focus,
+textarea:focus {
+border-color:#777780;
+background:#1b1b21;
 }
 
 #techTypes {
@@ -88,30 +128,6 @@ grid-column:1/-1;
 margin:0;
 }
 
-label {
-display:block;
-margin:17px 0 7px;
-color:#666670;
-font-size:9px;
-letter-spacing:2px;
-}
-
-input,
-textarea {
-width:100%;
-border:1px solid #292930;
-border-radius:14px;
-background:#111115;
-color:#fff;
-padding:14px;
-outline:none;
-}
-
-textarea {
-min-height:120px;
-resize:vertical;
-}
-
 #save {
 width:100%;
 margin-top:18px;
@@ -125,5 +141,5 @@ cursor:pointer;
 }
 
 .hidden {
-display:none !important;
+display:none!important;
   }
