@@ -1,119 +1,112 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
-    <title>Life RPG</title>
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport"
+content="width=device-width,initial-scale=1">
+<title>Life RPG</title>
+<link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
+<div id="photoBg"></div>
+<div id="photoOverlay"></div>
+
 <div class="app">
 
-    <header>
-        <div>
-            <small>LIFE RPG</small>
-            <h1>Good morning,<br>Player.</h1>
-        </div>
-        <button>⚙</button>
-    </header>
+<header>
+<div>
+<small>LIFE RPG</small>
+<h1>Good morning,<br>Player.</h1>
+</div>
+<button id="settings">⚙</button>
+</header>
 
-    <main>
+<section class="photo-controls">
+<input id="photoInput"
+type="file"
+accept="image/*"
+multiple>
 
-        <section class="character">
-            <div class="avatar">
-                <span>01</span>
-            </div>
+<div id="photoTabs"></div>
+</section>
 
-            <div class="level">
-                <small>LEVEL</small>
-                <strong id="level">1</strong>
+<main>
 
-                <div class="xp">
-                    <div id="xpBar"></div>
-                </div>
+<section class="character">
 
-                <span id="xpText">0 / 100 XP</span>
-            </div>
-        </section>
+<div class="avatar">
+<span>01</span>
+</div>
 
-        <section class="today">
+<div class="level">
+<small>LEVEL</small>
+<strong id="level">1</strong>
 
-            <div class="section-head">
-                <span>TODAY</span>
-                <small>THU · AUG 13</small>
-            </div>
+<div class="xp">
+<div id="xpBar"></div>
+</div>
 
-            <div class="today-row">
-                <div>
-                    <strong>0</strong>
-                    <span>quests</span>
-                </div>
+<span id="xpText">0 / 100 XP</span>
+</div>
 
-                <div>
-                    <strong>0</strong>
-                    <span>cards</span>
-                </div>
+</section>
 
-                <div>
-                    <strong>0</strong>
-                    <span>streak</span>
-                </div>
-            </div>
+<section class="next-level">
 
-        </section>
+<small>NEXT LEVEL</small>
+<strong id="nextXP">100 XP</strong>
+<p>Keep going to upgrade your character.</p>
 
-        <section class="continue">
+</section>
 
-            <small>CONTINUE</small>
+<section class="today">
 
-            <a href="flashcards/flashcards.html">
+<div class="section-head">
+<span>TODAY</span>
+<small>THU · AUG 13</small>
+</div>
 
-                <div class="learn-icon">✦</div>
+<div class="today-row">
+<div><strong>0</strong><span>quests</span></div>
+<div><strong>0</strong><span>cards</span></div>
+<div><strong>0</strong><span>streak</span></div>
+</div>
 
-                <div>
-                    <strong>Flashcards</strong>
-                    <span>Train your knowledge</span>
-                </div>
+</section>
 
-                <b>→</b>
+<section class="continue">
 
-            </a>
+<small>CONTINUE</small>
 
-        </section>
+<a href="flashcards/flashcards.html">
+<div class="learn-icon">✦</div>
 
-        <section class="activity">
+<div>
+<strong>Flashcards</strong>
+<span>Train your knowledge</span>
+</div>
 
-            <div class="section-head">
-                <span>RECENT ACTIVITY</span>
-                <small>VIEW ALL</small>
-            </div>
+<b>→</b>
+</a>
 
-            <p>No activity yet.</p>
+</section>
 
-        </section>
+</main>
 
-    </main>
+<nav>
+<a class="active" href="index.html">
+<span>⌂</span>Home
+</a>
 
-    <nav>
-        <a class="active" href="index.html">
-            <span>⌂</span>Home
-        </a>
+<a href="flashcards/flashcards.html">
+<span>✦</span>Learn
+</a>
 
-        <a href="flashcards/flashcards.html">
-            <span>✦</span>Learn
-        </a>
-
-        <a href="#">
-            <span>⚔</span>Quests
-        </a>
-
-        <a href="#">
-            <span>◉</span>Character
-        </a>
-    </nav>
+<a href="#"><span>⚔</span>Quests</a>
+<a href="#"><span>◉</span>Character</a>
+</nav>
 
 </div>
 
