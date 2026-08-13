@@ -1,6 +1,10 @@
 let selectedType = "";
 let selectedTech = "";
 
+const selectedDeck =
+localStorage.getItem("selectedDeck")
+|| "English";
+
 const types =
 document.querySelectorAll("[data-type]");
 
@@ -10,87 +14,117 @@ document.getElementById("techTypes");
 const form =
 document.getElementById("form");
 
-types.forEach((button) => {
+types.forEach(button => {
 
-    button.onclick = () => {
+button.onclick = () => {
 
-        selectedType =
-            button.dataset.type;
+selectedType =
+button.dataset.type;
 
-        if (selectedType === "tech") {
+if (selectedType === "tech") {
 
-            techTypes.classList
-                .remove("hidden");
+techTypes.classList
+.remove("hidden");
 
-            form.classList.add("hidden");
+form.classList
+.add("hidden");
 
-        } else {
+} else {
 
-            techTypes.classList
-                .add("hidden");
+techTypes.classList
+.add("hidden");
 
-            form.classList
-                .remove("hidden");
-        }
-    };
+form.classList
+.remove("hidden");
+
+}
+
+};
+
 });
 
 document
 .querySelectorAll("[data-tech]")
-.forEach((button) => {
+.forEach(button => {
 
-    button.onclick = () => {
+button.onclick = () => {
 
-        selectedTech =
-            button.dataset.tech;
+selectedTech =
+button.dataset.tech;
 
-        techTypes.classList
-            .add("hidden");
+techTypes.classList
+.add("hidden");
 
-        form.classList
-            .remove("hidden");
-    };
+form.classList
+.remove("hidden");
+
+};
+
 });
 
 document.getElementById("save")
 .onclick = () => {
 
-    const front =
-        document.getElementById("frontInput")
-        .value.trim();
+const front =
+document.getElementById("frontInput")
+.value.trim();
 
-    const back =
-        document.getElementById("backInput")
-        .value.trim();
+const back =
+document.getElementById("backInput")
+.value.trim();
 
-    const example =
-        document.getElementById("exampleInput")
-        .value.trim();
+const example =
+document.getElementById("exampleInput")
+.value.trim();
 
-    if (!front || !back) {
-        alert("Front and back are required.");
-        return;
-    }
+if (!front || !back) {
 
-    const cards =
-        JSON.parse(
-            localStorage.getItem("cards") || "[]"
-        );
+alert("Front and back are required.");
 
-    cards.push({
-        id: Date.now(),
-        type: selectedType,
-        techType: selectedTech,
-        front,
-        back,
-        example,
-        createdAt: Date.now()
-    });
+return;
 
-    localStorage.setItem(
-        "cards",
-        JSON.stringify(cards)
-    );
+}
 
-    location.href = "flashcards.html";
+const cards =
+JSON.parse(
+localStorage.getItem("cards")
+|| "[]"
+);
+
+cards.push({
+
+id: Date.now(),
+
+deck: selectedDeck,
+
+type: selectedType,
+
+techType: selectedTech,
+
+front: front,
+
+back: back,
+
+example: example,
+
+interval: 0,
+
+ease: 2.5,
+
+reviews: 0,
+
+due: Date.now(),
+
+createdAt: Date.now()
+
+});
+
+localStorage.setItem(
+"cards",
+JSON.stringify(cards)
+);
+
+location.href =
+"flashcards.html";
+
 };
