@@ -13,15 +13,25 @@
 
     <link
         rel="stylesheet"
-        href="deck.css"
+        href="english.css"
     >
 </head>
 
 <body>
 
-<div class="deck-app">
+<div class="english-app">
 
-    <header class="deck-header">
+    <header class="english-header">
+
+        <div>
+            <small>ENGLISH WORLD</small>
+
+            <h1 id="deckTitle">Deck</h1>
+
+            <p id="deckDescription">
+                Vocabulary collection
+            </p>
+        </div>
 
         <a
             href="english.html"
@@ -30,58 +40,80 @@
             ←
         </a>
 
-        <div>
-            <small>ENGLISH WORLD</small>
-            <h1 id="deckTitle">Deck</h1>
-        </div>
-
-        <button
-            id="addWordButton"
-            class="add-button"
-        >
-            +
-        </button>
-
     </header>
 
 
-    <section class="deck-info">
+    <section class="deck-stats">
 
         <div>
-            <small>CARDS</small>
             <strong id="cardCount">0</strong>
+            <small>CARDS</small>
         </div>
 
         <div>
+            <strong id="masteredCount">0</strong>
             <small>MASTERED</small>
-            <strong id="masteredCount">0%</strong>
         </div>
 
-        <div>
-            <small>XP</small>
-            <strong id="deckXP">0</strong>
+    </section>
+
+
+    <section class="add-card-section">
+
+        <div class="section-title">
+
+            <div>
+                <small>VOCABULARY</small>
+                <h2>Add Card</h2>
+            </div>
+
         </div>
+
+
+        <form id="cardForm">
+
+            <input
+                id="wordInput"
+                type="text"
+                placeholder="English word"
+                required
+            >
+
+            <input
+                id="meaningInput"
+                type="text"
+                placeholder="Meaning"
+                required
+            >
+
+            <input
+                id="exampleInput"
+                type="text"
+                placeholder="Example sentence"
+            >
+
+            <button
+                type="submit"
+                class="create-button"
+            >
+                + Add Card
+            </button>
+
+        </form>
 
     </section>
 
 
     <section class="cards-section">
 
-        <div class="section-title">
-            <small>VOCABULARY</small>
-            <span id="deckDescription"></span>
-        </div>
-
-
         <div
             id="cardList"
             class="card-list"
         ></div>
 
-
         <div
             id="emptyCards"
-            class="empty-cards"
+            class="empty-deck"
         >
 
             <div class="empty-icon">
@@ -89,115 +121,24 @@
             </div>
 
             <strong>
-                No words yet
+                No cards yet
             </strong>
 
             <p>
-                Add your first word to this deck.
+                Add your first English word.
             </p>
-
-            <button id="emptyAddButton">
-                Add Word
-            </button>
 
         </div>
 
     </section>
 
-</div>
 
-
-<!-- ADD WORD MODAL -->
-
-<div
-    id="wordModal"
-    class="modal"
->
-
-    <div class="modal-box">
-
-        <div class="modal-header">
-
-            <div>
-                <small>NEW FLASHCARD</small>
-                <h2>Add Word</h2>
-            </div>
-
-            <button id="closeWordModal">
-                ×
-            </button>
-
-        </div>
-
-
-        <form id="wordForm">
-
-            <label>
-                English word
-            </label>
-
-            <input
-                id="wordInput"
-                type="text"
-                placeholder="e.g. discipline"
-                required
-            >
-
-
-            <label>
-                Meaning
-            </label>
-
-            <input
-                id="meaningInput"
-                type="text"
-                placeholder="e.g. انضباط"
-                required
-            >
-
-
-            <label>
-                Example sentence
-            </label>
-
-            <textarea
-                id="exampleInput"
-                placeholder="e.g. Discipline is more important than motivation."
-            ></textarea>
-
-
-            <label>
-                Pronunciation
-            </label>
-
-            <input
-                id="pronunciationInput"
-                type="text"
-                placeholder="e.g. /ˈdɪsəplɪn/"
-            >
-
-
-            <div class="modal-actions">
-
-                <button
-                    type="button"
-                    id="cancelWord"
-                >
-                    Cancel
-                </button>
-
-                <button
-                    type="submit"
-                    class="save-button"
-                >
-                    Save Word
-                </button>
-
-            </div>
-
-        </form>
-
-    </div>
+    <button
+        id="startReview"
+        class="review-main-button"
+    >
+        Start Review →
+    </button>
 
 </div>
 
