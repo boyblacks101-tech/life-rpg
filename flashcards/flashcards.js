@@ -1,52 +1,113 @@
-const decks = document.querySelectorAll(".deck");
+let xp =
+Number(localStorage.getItem("xp")) || 0;
 
-decks.forEach((deck) => {
+let level =
+Number(localStorage.getItem("level")) || 1;
 
-    deck.addEventListener("click", () => {
+const decks = [
+{
+name:"English",
+desc:"Words & Native Patterns",
+icon:"EN"
+},
+{
+name:"Cybersecurity",
+desc:"Bug Bounty & Web Security",
+icon:"CY"
+},
+{
+name:"Programming",
+desc:"Code, Concepts & Commands",
+icon:"DEV"
+}
+];
 
-        const name = deck.dataset.deck;
+const levelEl =
+document.getElementById("level");
 
-        openDeck(name);
+const xpText =
+document.getElementById("xpText");
 
-    });
+const xpBar =
+document.getElementById("xpBar");
 
-});
+function updatePlayer() {
 
+levelEl.textContent = level;
 
-function openDeck(name) {
+xpText.textContent =
+`${xp} / 100 XP`;
 
-    localStorage.setItem(
-        "selectedDeck",
-        name
-    );
-
-    alert(`Opening ${name} deck...`);
+xpBar.style.width =
+`${xp}%`;
 
 }
 
+function renderDecks() {
+
+const list =
+document.getElementById("deckList");
+
+list.innerHTML = "";
+
+decks.forEach(deck => {
+
+const item =
+document.createElement("button");
+
+item.className = "deck";
+
+item.innerHTML = `
+<div class="deck-icon">
+${deck.icon}
+</div>
+
+<div class="deck-info">
+<strong>${deck.name}</strong>
+<span>${deck.desc}</span>
+</div>
+
+<div class="deck-arrow">›</div>
+`;
+
+item.onclick = () =>
+openDeck(deck.name);
+
+list.appendChild(item);
+
+});
+
+}
+
+function openDeck(name) {
+
+localStorage.setItem(
+"selectedDeck",
+name
+);
+
+alert(`Opening ${name}`);
+
+}
 
 document
-    .getElementById("addDeck")
-    .addEventListener("click", () => {
+.getElementById("newDeck")
+.addEventListener("click", () => {
 
-        alert("Deck creator coming next.");
+const name =
+prompt("Collection name:");
 
-    });
+if (!name) return;
 
+decks.push({
+name:name,
+desc:"New flashcard collection",
+icon:"＋"
+});
 
-document
-    .getElementById("browse")
-    .addEventListener("click", () => {
+renderDecks();
 
-        alert("Card browser coming next.");
+});
 
-    });
-
-
-document
-    .getElementById("stats")
-    .addEventListener("click", () => {
-
-        alert("Statistics coming next.");
-
-    });
+updatePlayer();
+renderDecks();
