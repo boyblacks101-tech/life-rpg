@@ -4,33 +4,93 @@
     padding: 0;
 }
 
+:root {
+    --bg: #070709;
+    --panel: #111115;
+    --panel-2: #15151a;
+    --border: #24242b;
+    --text: #f4f4f5;
+    --muted: #686872;
+    --dim: #45454e;
+    --white: #eeeef0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
 body {
-    background: #070709;
-    color: #f4f4f5;
+    min-height: 100vh;
+    background: var(--bg);
+    color: var(--text);
     font-family: Arial, sans-serif;
+    overflow-x: hidden;
 }
 
 button,
+input,
 a {
     font: inherit;
 }
 
+button {
+    border: 0;
+}
+
+button,
+a {
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* ================= BACKGROUND ================= */
+
+#photoBg {
+    position: fixed;
+    inset: 0;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    opacity: 0;
+    transition: opacity .8s ease;
+    z-index: -3;
+}
+
+#photoOverlay {
+    position: fixed;
+    inset: 0;
+    background:
+        linear-gradient(
+            180deg,
+            rgba(7,7,9,.35),
+            rgba(7,7,9,.94) 70%
+        );
+    z-index: -2;
+}
+
+
+/* ================= APP ================= */
+
 .app {
+    position: relative;
     width: min(460px, 100%);
     min-height: 100vh;
     margin: auto;
-    padding: 25px 20px 100px;
+    padding: 25px 20px 115px;
 }
+
+
+/* ================= HEADER ================= */
 
 header {
     display: flex;
+    align-items: flex-start;
     justify-content: space-between;
 }
 
 header small,
 .section-head span,
 .continue > small {
-    color: #686872;
+    color: var(--muted);
     font-size: 10px;
     letter-spacing: 2px;
 }
@@ -48,7 +108,158 @@ header button {
     border-radius: 12px;
     background: #101014;
     color: #aaaab2;
+    cursor: pointer;
+    transition: .2s ease;
 }
+
+header button:hover {
+    background: #18181e;
+    color: white;
+    transform: rotate(20deg);
+}
+
+
+/* ================= PHOTO CONTROLS ================= */
+
+.photo-controls {
+    margin-top: 18px;
+}
+
+#photoInput {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #28282f;
+    border-radius: 14px;
+    background: #111115;
+    color: #888891;
+}
+
+#photoInput::file-selector-button {
+    margin-right: 10px;
+    padding: 8px 12px;
+    border: 0;
+    border-radius: 9px;
+    background: #24242c;
+    color: #fff;
+    cursor: pointer;
+}
+
+#photoTabs {
+    display: flex;
+    gap: 7px;
+    margin-top: 9px;
+    overflow-x: auto;
+    scrollbar-width: none;
+}
+
+#photoTabs::-webkit-scrollbar {
+    display: none;
+}
+
+.photo-tab {
+    flex: 0 0 auto;
+    width: 42px;
+    height: 42px;
+    border-radius: 12px;
+    border: 2px solid transparent;
+    background-size: cover;
+    background-position: center;
+    cursor: pointer;
+    transition: .2s ease;
+}
+
+.photo-tab:hover {
+    transform: translateY(-2px);
+}
+
+.photo-tab.active {
+    border-color: #fff;
+}
+
+
+/* ================= RIVAL ================= */
+
+.rival-card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 30px;
+    min-height: 100px;
+    overflow: hidden;
+    border: 1px solid #202027;
+    border-radius: 18px;
+    background:
+        linear-gradient(
+            90deg,
+            rgba(25,25,30,.95),
+            rgba(10,10,13,.95),
+            rgba(25,25,30,.95)
+        );
+    box-shadow:
+        0 15px 40px rgba(0,0,0,.3);
+}
+
+.rival-team {
+    flex: 1;
+    padding: 20px 8px;
+    text-align: center;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+}
+
+.rival-player {
+    color: #6f8cff;
+}
+
+.rival-enemy {
+    color: #ff4d67;
+}
+
+.rival-score {
+    width: 120px;
+    padding: 10px;
+    text-align: center;
+    border-left: 1px solid #222229;
+    border-right: 1px solid #222229;
+}
+
+.rival-score small {
+    display: block;
+    color: var(--dim);
+    font-size: 7px;
+    letter-spacing: 1.5px;
+}
+
+.rival-score strong {
+    display: block;
+    margin: 5px 0;
+    font-size: 23px;
+    letter-spacing: 3px;
+}
+
+.rival-progress {
+    width: 100%;
+    height: 3px;
+    overflow: hidden;
+    border-radius: 10px;
+    background: #24242b;
+}
+
+#rivalProgress {
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        #3a3dff,
+        #ff2929
+    );
+    transition: width .5s ease;
+}
+
+
+/* ================= CHARACTER ================= */
 
 .character {
     display: flex;
@@ -60,12 +271,19 @@ header button {
 .avatar {
     width: 125px;
     height: 155px;
-    border-radius: 30px;
-    background:
-        radial-gradient(circle at 50% 35%, #33333d, #141419 55%, #0c0c10);
+    flex-shrink: 0;
     display: grid;
     place-items: end center;
     padding-bottom: 15px;
+    border-radius: 30px;
+    background:
+        radial-gradient(
+            circle at 50% 35%,
+            #33333d,
+            #141419 55%,
+            #0c0c10
+        );
+    border: 1px solid #202027;
 }
 
 .avatar span {
@@ -79,45 +297,165 @@ header button {
 }
 
 .level small {
-    color: #686872;
+    color: var(--muted);
     font-size: 10px;
     letter-spacing: 2px;
 }
 
 .level strong {
     display: block;
-    font-size: 42px;
     margin: 4px 0 15px;
+    font-size: 42px;
 }
 
 .xp {
     height: 5px;
-    background: #202026;
-    border-radius: 10px;
     overflow: hidden;
+    border-radius: 10px;
+    background: #202026;
 }
 
 #xpBar {
     width: 0%;
     height: 100%;
     background: #eeeef0;
+    transition: width .4s ease;
 }
 
 .level > span {
     display: block;
     margin-top: 7px;
-    color: #686872;
+    color: var(--muted);
     font-size: 10px;
 }
 
+
+/* ================= NEXT LEVEL ================= */
+
+.next-level {
+    margin-top: 25px;
+    padding: 17px 19px;
+    border: 1px solid #292930;
+    border-radius: 18px;
+    background: rgba(17,17,21,.82);
+    backdrop-filter: blur(12px);
+}
+
+.next-level small {
+    display: block;
+    color: var(--muted);
+    font-size: 9px;
+    letter-spacing: 2px;
+}
+
+.next-level strong {
+    display: block;
+    margin-top: 7px;
+    font-size: 21px;
+}
+
+.next-level p {
+    margin-top: 5px;
+    color: var(--muted);
+    font-size: 10px;
+}
+
+
+/* ================= TIMER ================= */
+
+.timer-section {
+    display: flex;
+    justify-content: center;
+    margin-top: 38px;
+}
+
+.mechanical-timer-module {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    padding: 18px 20px;
+    border-radius: 24px;
+    border: 1px solid rgba(255,255,255,.05);
+    background:
+        linear-gradient(
+            180deg,
+            #18181b 0%,
+            #09090b 100%
+        );
+    box-shadow:
+        0 25px 50px -16px rgba(0,0,0,.9),
+        inset 0 1px 1px rgba(255,255,255,.1),
+        inset 0 -4px 8px rgba(0,0,0,.6);
+}
+
+.time-group {
+    display: flex;
+    gap: 5px;
+}
+
+.time-separator {
+    margin: 0 5px;
+    color: #8c8c8d;
+    font-family: "Courier New", monospace;
+    font-size: 2.7rem;
+    font-weight: 700;
+    animation: blink 1s step-end infinite;
+}
+
+.digit-casing {
+    position: relative;
+    width: 48px;
+    height: 65px;
+    overflow: hidden;
+    border-radius: 7px;
+    background: #212121;
+    box-shadow:
+        inset 0 12px 24px rgba(0,0,0,1),
+        inset 0 -2px 4px rgba(255,255,255,.05);
+}
+
+.digit-casing::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: rgba(0,0,0,.9);
+    z-index: 10;
+}
+
+.digit-track {
+    display: flex;
+    flex-direction: column;
+}
+
+.digit-track span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 65px;
+    color: #ccff00;
+    font-family: "Courier New", monospace;
+    font-size: 2.8rem;
+    font-weight: 700;
+    text-shadow: 0 0 16px rgba(204,255,0,.3);
+}
+
+
+/* ================= TODAY ================= */
+
 .today,
+.progress-section,
 .continue,
-.activity {
+.checklist,
+.mood {
     margin-top: 42px;
 }
 
 .section-head {
     display: flex;
+    align-items: center;
     justify-content: space-between;
 }
 
@@ -128,18 +466,18 @@ header button {
 
 .today-row {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3,1fr);
     margin-top: 18px;
 }
 
 .today-row div {
-    border-left: 1px solid #24242b;
     padding-left: 15px;
+    border-left: 1px solid #24242b;
 }
 
 .today-row div:first-child {
-    border: 0;
     padding-left: 0;
+    border-left: 0;
 }
 
 .today-row strong {
@@ -148,9 +486,54 @@ header button {
 }
 
 .today-row span {
-    color: #686872;
+    color: var(--muted);
     font-size: 10px;
 }
+
+
+/* ================= PROGRESS ================= */
+
+.progress-card {
+    height: 125px;
+    margin-top: 15px;
+    padding: 15px;
+    border: 1px solid #24242b;
+    border-radius: 18px;
+    background: rgba(17,17,21,.75);
+}
+
+.progress-bars {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    height: 100%;
+    gap: 7px;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: flex-end;
+    overflow: hidden;
+    border-radius: 5px;
+    background: #202026;
+}
+
+.progress-bar span {
+    display: block;
+    width: 100%;
+    border-radius: 5px;
+    background: linear-gradient(
+        180deg,
+        #eeeef0,
+        #55555f
+    );
+    transition: height .5s ease;
+}
+
+
+/* ================= CONTINUE ================= */
 
 .continue > small {
     display: block;
@@ -161,22 +544,40 @@ header button {
     display: flex;
     align-items: center;
     gap: 14px;
+    margin-bottom: 10px;
     padding: 17px;
     border: 1px solid #24242b;
     border-radius: 20px;
     background: #111115;
     color: white;
     text-decoration: none;
+    transition: .2s ease;
+}
+
+.continue a:hover {
+    transform: translateY(-2px);
+    border-color: #383842;
 }
 
 .learn-icon {
     width: 45px;
     height: 45px;
+    flex-shrink: 0;
     display: grid;
     place-items: center;
     border-radius: 14px;
     background: #202027;
     font-size: 19px;
+}
+
+.cyber-icon {
+    background:
+        linear-gradient(
+            135deg,
+            #101c16,
+            #16271b
+        );
+    color: #00ff41;
 }
 
 .continue a div:nth-child(2) {
@@ -191,7 +592,7 @@ header button {
 .continue span {
     display: block;
     margin-top: 5px;
-    color: #686872;
+    color: var(--muted);
     font-size: 10px;
 }
 
@@ -200,21 +601,127 @@ header button {
     font-size: 20px;
 }
 
-.activity p {
-    margin-top: 18px;
-    color: #45454e;
-    font-size: 12px;
+
+/* ================= CHECKLIST ================= */
+
+.my-form {
+    --_clr-primary: #666;
+    --_clr-hover: #f33195;
+    --_clr-checked: #127acf;
+
+    margin-top: 17px;
+    padding: 17px;
+    border: 1px solid #24242b;
+    border-radius: 18px;
+    background: rgba(17,17,21,.75);
 }
+
+.my-form > div {
+    --_clr-current: var(--_clr-primary);
+
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+}
+
+.my-form > div + div {
+    margin-top: .65rem;
+}
+
+.my-form label {
+    cursor: pointer;
+    color: var(--_clr-current);
+    font-size: 12px;
+    transition: color 150ms ease-in-out;
+}
+
+.my-form input[type="checkbox"] {
+    appearance: none;
+    outline: none;
+    width: 1.35rem;
+    height: 1.35rem;
+    flex-shrink: 0;
+    padding: .25rem;
+    border: 1px solid var(--_clr-current);
+    border-radius: 4px;
+    background: transparent;
+    display: grid;
+    place-content: center;
+    cursor: pointer;
+}
+
+.my-form input[type="checkbox"]::after {
+    content: "\2714";
+    opacity: 0;
+    color: var(--_clr-checked);
+    font-size: 12px;
+    transition: opacity 150ms ease-in-out;
+}
+
+.my-form label:hover,
+.my-form input[type="checkbox"]:hover,
+.my-form input[type="checkbox"]:hover + label {
+    --_clr-current: var(--_clr-hover);
+}
+
+.my-form input[type="checkbox"]:checked + label,
+.my-form input[type="checkbox"]:checked {
+    --_clr-current: var(--_clr-checked);
+}
+
+.my-form input[type="checkbox"]:checked::after {
+    opacity: 1;
+}
+
+
+/* ================= MOOD ================= */
+
+.mood-reactions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    margin-top: 16px;
+    padding: 9px;
+    border-radius: 999px;
+    background: #111115;
+    border: 1px solid #24242b;
+}
+
+.mood-reactions button {
+    position: relative;
+    padding: 8px 11px;
+    border-radius: 999px;
+    background: #18181d;
+    font-size: 20px;
+    cursor: pointer;
+    transition: .2s ease;
+}
+
+.mood-reactions button:hover {
+    transform: translateY(-7px) scale(1.15);
+    background: #22222a;
+}
+
+.mood-reactions button.selected {
+    transform: translateY(-5px) scale(1.12);
+    box-shadow: 0 0 18px rgba(255,255,255,.08);
+}
+
+
+/* ================= NAV ================= */
 
 nav {
     position: fixed;
     bottom: 12px;
     left: 50%;
-    transform: translateX(-50%);
+    z-index: 100;
     width: min(420px, calc(100% - 30px));
     display: flex;
+    align-items: center;
     justify-content: space-around;
     padding: 10px 5px;
+    transform: translateX(-50%);
     border: 1px solid #222229;
     border-radius: 22px;
     background: #101014eF;
@@ -226,6 +733,11 @@ nav a {
     text-decoration: none;
     font-size: 9px;
     text-align: center;
+    transition: .2s ease;
+}
+
+nav a:hover {
+    color: #aaaab2;
 }
 
 nav span {
@@ -238,7 +750,31 @@ nav .active {
     color: #fff;
 }
 
+
+/* ================= ANIMATION ================= */
+
+@keyframes blink {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
+}
+
+
+/* ================= MOBILE ================= */
+
 @media (max-width: 360px) {
+
+    .app {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
     .avatar {
         width: 105px;
         height: 140px;
@@ -247,98 +783,26 @@ nav .active {
     .character {
         gap: 16px;
     }
-}
 
-#photoBg {
-position:fixed;
-inset:0;
-background-position:center;
-background-size:cover;
-opacity:0;
-transition:opacity .8s;
-z-index:-3;
-}
+    .digit-casing {
+        width: 42px;
+        height: 58px;
+    }
 
-#photoOverlay {
-position:fixed;
-inset:0;
-background:
-linear-gradient(
-180deg,
-rgba(7,7,9,.35),
-rgba(7,7,9,.94) 70%
-);
-z-index:-2;
-}
+    .digit-track span {
+        height: 58px;
+        font-size: 2.4rem;
+    }
 
-.photo-controls {
-margin-top:18px;
-}
+    .time-separator {
+        font-size: 2.3rem;
+    }
 
-#photoInput {
-display:block;
-width:100%;
-padding:12px;
-border:1px solid #28282f;
-border-radius:14px;
-background:#111115;
-color:#888891;
-}
+    .mood-reactions {
+        gap: 3px;
+    }
 
-#photoTabs {
-display:flex;
-gap:7px;
-margin-top:9px;
-}
-
-.photo-tab {
-width:42px;
-height:42px;
-border-radius:12px;
-border:2px solid transparent;
-background-size:cover;
-background-position:center;
-cursor:pointer;
-}
-
-.photo-tab.active {
-border-color:#fff;
-}
-
-.next-level {
-margin-top:25px;
-padding:17px 19px;
-border:1px solid #292930;
-border-radius:18px;
-background:rgba(17,17,21,.82);
-backdrop-filter:blur(12px);
-}
-
-.next-level small {
-display:block;
-color:#686872;
-font-size:9px;
-letter-spacing:2px;
-}
-
-.next-level strong {
-display:block;
-margin-top:7px;
-font-size:21px;
-}
-
-.next-level p {
-margin-top:5px;
-color:#686872;
-font-size:10px;
-}
-
-#photoInput::file-selector-button {
-margin-right:10px;
-padding:8px 12px;
-border:0;
-border-radius:9px;
-background:#24242c;
-color:#fff;
-cursor:pointer;
-}
+    .mood-reactions button {
+        padding: 7px 9px;
+    }
+                               }
