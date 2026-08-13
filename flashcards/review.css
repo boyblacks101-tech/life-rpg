@@ -28,6 +28,25 @@ color:#fff;
 text-decoration:none;
 font-size:22px;
 }
+.card.revealed {
+    transform: perspective(900px)
+        rotateX(0deg)
+        rotateY(0deg)
+        scale(1.02);
+
+    transition:
+        transform .5s ease,
+        box-shadow .5s ease;
+}
+
+.card.revealed:hover {
+    transform:
+        perspective(900px)
+        rotateX(4deg)
+        rotateY(-4deg)
+        scale(1.03);
+}
+
 
 header div {
 flex:1;
