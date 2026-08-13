@@ -5,8 +5,9 @@ let decks = JSON.parse(
 );
 
 
-const deckModal =
-    document.getElementById("deckModal");
+/* =========================
+   ELEMENTS
+========================= */
 
 const deckList =
     document.getElementById("deckList");
@@ -17,9 +18,22 @@ const emptyDeck =
 const deckCount =
     document.getElementById("deckCount");
 
+const englishXP =
+    document.getElementById("englishXP");
+
+const englishXPBar =
+    document.getElementById("englishXPBar");
+
+const deckModal =
+    document.getElementById("deckModal");
+
 const deckForm =
     document.getElementById("deckForm");
 
+
+/* =========================
+   SAVE
+========================= */
 
 function saveDecks() {
 
@@ -27,98 +41,166 @@ function saveDecks() {
         STORAGE_KEY,
         JSON.stringify(decks)
     );
+
 }
 
+
+/* =========================
+   XP
+========================= */
+
+function calculateXP() {
+
+    let xp = 0;
+
+    decks.forEach(deck => {
+
+        xp += deck.cards.length * 10;
+
+        xp += deck.cards.filter(
+            card => card.mastered
+        ).length * 25;
+
+    });
+
+    return xp;
+
+}
+
+
+/* =========================
+   RENDER DECKS
+========================= */
 
 function renderDecks() {
 
     deckList.innerHTML = "";
 
-    deckCount.textContent = decks.length;
+    deckCount.textContent =
+        decks.length;
+
+
+    const xp = calculateXP();
+
+    englishXP.textContent =
+        `${xp} XP`;
+
+
+    const levelXP = xp % 100;
+
+    englishXPBar.style.width =
+        `${levelXP}%`;
 
 
     if (decks.length === 0) {
 
-        emptyDeck.style.display = "block";
+        emptyDeck.style.display =
+            "block";
 
         return;
     }
 
 
-    emptyDeck.style.display = "none";
+    emptyDeck.style.display =
+        "none";
 
 
-    decks.forEach((deck, index) => {
+    decks.forEach(deck => {
 
-        const element =
-            document.createElement("div");
+        const card = document.createElement("button");
 
-        element.className = "deck";
+        card.className = "deck-card";
 
 
-        element.innerHTML = `
+        card.innerHTML = `
 
-            <div class="deck-top">
-
-                <div class="deck-icon">
-                    ${index + 1}
-                </div>
-
-                <div class="deck-arrow">
-                    →
-                </div>
-
+            <div class="deck-icon">
+                ${deck.name
+                    .charAt(0)
+                    .toUpperCase()}
             </div>
 
-            <h3>
-                ${escapeHTML(deck.name)}
-            </h3>
+            <div class="deck-content">
 
-            <p>
-                ${escapeHTML(
-                    deck.description ||
-                    "Vocabulary collection"
-                )}
-            </p>
+                <strong>
+                    ${escapeHTML(deck.name)}
+                </strong>
 
-            <div class="deck-meta">
+                <small>
+                    ${escapeHTML(
+                        deck.description ||
+                        "Vocabulary collection"
+                    )}
+                </small>
 
                 <span>
                     ${deck.cards.length} cards
                 </span>
 
-                <span>
-                    0% mastered
-                </span>
-
             </div>
+
+            <b>
+                →
+            </b>
 
         `;
 
 
-        element.addEventListener(
+        card.addEventListener(
             "click",
-            () => openDeck(deck.id)
+            () => {
+
+                openDeck(deck.id);
+
+            }
         );
 
 
-        deckList.appendChild(element);
+        deckList.appendChild(card);
 
     });
 
 }
 
 
-function escapeHTML(text) {
+/* =========================
+   CREATE DECK
+========================= */
 
-    const div =
-        document.createElement("div");
+function createDeck(
+    name,
+    description
+) {
 
-    div.textContent = text;
+    const deck = {
 
-    return div.innerHTML;
+        id: Date.now(),
+
+        name: name,
+
+        description:
+            description || "",
+
+        cards: [],
+
+        createdAt:
+            new Date().toISOString()
+
+    };
+
+
+    decks.push(deck);
+
+    saveDecks();
+
+    renderDecks();
+
 }
 
+
+/* =========================
+   OPEN DECK
+========================= */
 
 function openDeck(id) {
 
@@ -128,9 +210,15 @@ function openDeck(id) {
 }
 
 
+/* =========================
+   MODAL
+========================= */
+
 function openModal() {
 
-    deckModal.classList.add("active");
+    deckModal.classList.add(
+        "active"
+    );
 
     setTimeout(() => {
 
@@ -145,12 +233,18 @@ function openModal() {
 
 function closeModal() {
 
-    deckModal.classList.remove("active");
+    deckModal.classList.remove(
+        "active"
+    );
 
     deckForm.reset();
 
 }
 
+
+/* =========================
+   BUTTONS
+========================= */
 
 document
     .getElementById("createDeckButton")
@@ -186,19 +280,28 @@ document
 
 deckModal.addEventListener(
     "click",
-    (event) => {
+    event => {
 
-        if (event.target === deckModal) {
+        if (
+            event.target ===
+            deckModal
+        ) {
+
             closeModal();
+
         }
 
     }
 );
 
 
+/* =========================
+   FORM
+========================= */
+
 deckForm.addEventListener(
     "submit",
-    (event) => {
+    event => {
 
         event.preventDefault();
 
@@ -220,28 +323,11 @@ deckForm.addEventListener(
         if (!name) return;
 
 
-        const newDeck = {
-
-            id:
-                Date.now(),
-
+        createDeck(
             name,
+            description
+        );
 
-            description,
-
-            cards: [],
-
-            createdAt:
-                new Date().toISOString()
-
-        };
-
-
-        decks.push(newDeck);
-
-        saveDecks();
-
-        renderDecks();
 
         closeModal();
 
@@ -249,26 +335,61 @@ deckForm.addEventListener(
 );
 
 
+/* =========================
+   REVIEW
+========================= */
+
 document
     .getElementById("reviewButton")
     .addEventListener(
         "click",
         () => {
 
-            if (decks.length === 0) {
+            const reviewableDeck =
+                decks.find(
+                    deck =>
+                        deck.cards.length > 0
+                );
 
-                openModal();
+
+            if (!reviewableDeck) {
+
+                alert(
+                    "Add some words first."
+                );
 
                 return;
             }
 
 
-            alert(
-                "Review system is coming next."
-            );
+            window.location.href =
+                `deck.html?id=${reviewableDeck.id}&review=true`;
 
         }
     );
 
+
+/* =========================
+   SECURITY
+========================= */
+
+function escapeHTML(text) {
+
+    const div =
+        document.createElement(
+            "div"
+        );
+
+    div.textContent =
+        text || "";
+
+    return div.innerHTML;
+
+}
+
+
+/* =========================
+   START
+========================= */
 
 renderDecks();
