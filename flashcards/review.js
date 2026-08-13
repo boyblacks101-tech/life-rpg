@@ -80,21 +80,21 @@ document.getElementById("progressBar")
 `${((current + 1) /
 cards.length) * 100}%`;
 
-}
-
 card.onclick = () => {
 
-if (revealed || !cards.length)
-return;
+    if (revealed || !cards.length)
+        return;
 
-revealed = true;
+    revealed = true;
 
-front.classList.add("hidden");
-back.classList.remove("hidden");
-actions.classList.remove("hidden");
+    front.classList.add("hidden");
+    back.classList.remove("hidden");
 
+    card.classList.add("revealed");
+
+    actions.classList.remove("hidden");
 };
-
+  
 document
 .querySelectorAll("[data-rating]")
 .forEach(button => {
