@@ -301,3 +301,29 @@ chartSwitch.addEventListener("click", () => {
 
 
 updateChart();
+/* =========================
+   DASHBOARD
+========================= */
+
+const dashboardButton =
+    document.getElementById("dashboardButton");
+
+const dashboardMenu =
+    document.getElementById("dashboardMenu");
+
+const closeDashboard =
+    document.getElementById("closeDashboard");
+
+
+dashboardButton.addEventListener("click", () => {
+
+    dashboardMenu.classList.add("open");
+
+});
+
+
+closeDashboard.addEventListener("click", () => {
+
+    dashboardMenu.classList.remove("open");
+
+});
