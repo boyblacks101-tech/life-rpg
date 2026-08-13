@@ -2,117 +2,411 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>English World</title>
 
-    <link rel="stylesheet" href="english.css">
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1"
+    >
+
+    <title>English World · Troviruses</title>
+
+    <link
+        rel="stylesheet"
+        href="english.css"
+    >
+
 </head>
 
 <body>
 
-<div class="world">
+<div class="english-app">
 
-    <header>
-        <a href="../index.html">←</a>
+
+    <!-- ================= HEADER ================= -->
+
+    <header class="english-header">
 
         <div>
-            <small>WORLD 01</small>
-            <h1>English World</h1>
+
+            <small>
+                WORLD 01
+            </small>
+
+            <h1>
+                English World
+            </h1>
+
         </div>
+
+        <a
+            href="../index.html"
+            class="back-button"
+        >
+            ←
+        </a>
+
     </header>
 
 
-    <section class="world-status">
+    <!-- ================= PLAYER ================= -->
 
-        <div>
-            <small>LEVEL</small>
-            <strong id="englishLevel">1</strong>
-        </div>
+    <section class="english-player">
 
-        <div class="world-xp">
-            <small>XP</small>
+        <div class="player-main">
 
-            <div class="xp-bar">
+            <small>
+                ENGLISH LEVEL
+            </small>
+
+            <strong id="englishLevel">
+                1
+            </strong>
+
+            <div class="english-xp">
+
                 <div id="englishXPBar"></div>
+
             </div>
 
-            <span id="englishXP">0 / 100 XP</span>
+            <span id="englishXPText">
+                0 / 100 XP
+            </span>
+
+        </div>
+
+
+        <div class="english-stats">
+
+            <div>
+                <strong id="wordsLearned">
+                    0
+                </strong>
+
+                <span>
+                    words
+                </span>
+            </div>
+
+            <div>
+                <strong id="englishStreak">
+                    0
+                </strong>
+
+                <span>
+                    streak
+                </span>
+            </div>
+
+            <div>
+                <strong id="cardsDue">
+                    0
+                </strong>
+
+                <span>
+                    due
+                </span>
+            </div>
+
         </div>
 
     </section>
 
 
-    <section class="learning">
+    <!-- ================= QUICK ACTIONS ================= -->
 
-        <small class="title">LEARNING</small>
+    <section class="english-actions">
 
-        <a href="#" class="learning-card">
-            <div class="icon">✦</div>
+        <button
+            class="english-action primary"
+            id="reviewButton"
+        >
 
-            <div>
-                <strong>Flashcards</strong>
-                <span>Words · Idioms · Vocabulary</span>
-            </div>
-
-            <b>→</b>
-        </a>
-
-
-        <a href="#" class="learning-card">
-            <div class="icon">A</div>
+            <span>
+                ↻
+            </span>
 
             <div>
-                <strong>Grammar</strong>
-                <span>Grammar training</span>
+
+                <strong>
+                    Review
+                </strong>
+
+                <small>
+                    Study cards due today
+                </small>
+
             </div>
 
-            <b>→</b>
-        </a>
+            <b>
+                →
+            </b>
+
+        </button>
 
 
-        <a href="#" class="learning-card">
-            <div class="icon">◉</div>
+        <button
+            class="english-action"
+            id="vocabularyButton"
+        >
+
+            <span>
+                Aa
+            </span>
 
             <div>
-                <strong>Progress</strong>
-                <span>Your English statistics</span>
+
+                <strong>
+                    Vocabulary
+                </strong>
+
+                <small>
+                    Browse your words
+                </small>
+
             </div>
 
-            <b>→</b>
-        </a>
+            <b>
+                →
+            </b>
+
+        </button>
 
     </section>
 
 
-    <section class="stats">
+    <!-- ================= DECKS ================= -->
 
-        <small class="title">TODAY</small>
+    <section class="decks-section">
 
-        <div class="stats-row">
-
-            <div>
-                <strong>0</strong>
-                <span>cards</span>
-            </div>
+        <div class="section-head">
 
             <div>
-                <strong>0</strong>
-                <span>words</span>
+
+                <small>
+                    COLLECTIONS
+                </small>
+
+                <h2>
+                    My Decks
+                </h2>
+
             </div>
 
-            <div>
-                <strong>0</strong>
-                <span>streak</span>
-            </div>
+            <button
+                id="createDeckButton"
+                class="create-button"
+            >
+                + Deck
+            </button>
+
+        </div>
+
+
+        <div
+            id="deckList"
+            class="deck-list"
+        >
+
+            <!-- Decks will be inserted by JavaScript -->
 
         </div>
 
     </section>
+
+
+    <!-- ================= SPECIAL ================= -->
+
+    <section class="special-section">
+
+        <div class="section-head">
+
+            <div>
+
+                <small>
+                    SPECIAL
+                </small>
+
+                <h2>
+                    More
+                </h2>
+
+            </div>
+
+        </div>
+
+
+        <button
+            class="english-action"
+            id="pakdastButton"
+        >
+
+            <span>
+                ✦
+            </span>
+
+            <div>
+
+                <strong>
+                    پاکدست
+                </strong>
+
+                <small>
+                    English practice & challenges
+                </small>
+
+            </div>
+
+            <b>
+                →
+            </b>
+
+        </button>
+
+    </section>
+
+
+    <!-- ================= BOTTOM NAV ================= -->
+
+    <nav class="english-nav">
+
+        <a
+            class="active"
+            href="english.html"
+        >
+
+            <span>
+                ⌂
+            </span>
+
+            Home
+
+        </a>
+
+
+        <a href="#decks">
+
+            <span>
+                ▣
+            </span>
+
+            Decks
+
+        </a>
+
+
+        <a href="#review">
+
+            <span>
+                ↻
+            </span>
+
+            Review
+
+        </a>
+
+
+        <a href="#vocabulary">
+
+            <span>
+                Aa
+            </span>
+
+            Words
+
+        </a>
+
+    </nav>
+
 
 </div>
+
+
+
+<!-- ================= CREATE DECK MODAL ================= -->
+
+<div
+    id="deckModal"
+    class="modal-overlay"
+>
+
+    <div class="deck-modal">
+
+        <div class="modal-header">
+
+            <div>
+
+                <small>
+                    NEW COLLECTION
+                </small>
+
+                <h2>
+                    Create Deck
+                </h2>
+
+            </div>
+
+
+            <button
+                id="closeDeckModal"
+                class="close-modal"
+            >
+                ×
+            </button>
+
+        </div>
+
+
+        <form id="deckForm">
+
+            <div class="modal-field">
+
+                <label>
+                    Deck name
+                </label>
+
+                <input
+                    id="deckName"
+                    type="text"
+                    placeholder="e.g. Daily Vocabulary"
+                    required
+                >
+
+            </div>
+
+
+            <div class="modal-field">
+
+                <label>
+                    Description
+                </label>
+
+                <input
+                    id="deckDescription"
+                    type="text"
+                    placeholder="What are you learning?"
+                >
+
+            </div>
+
+
+            <button
+                type="submit"
+                class="create-deck-submit"
+            >
+                CREATE DECK
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
 
 <script src="english.js"></script>
 
 </body>
+
 </html>
