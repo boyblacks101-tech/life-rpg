@@ -217,3 +217,87 @@ function updateRival() {
 
 
 updateRival();
+
+/* =========================
+   PERFORMANCE CHART
+========================= */
+
+const chartTitle = document.getElementById("chartTitle");
+const chartSubtitle = document.getElementById("chartSubtitle");
+const chartValue = document.getElementById("chartValue");
+const chartLevel = document.getElementById("chartLevel");
+const chartSwitch = document.getElementById("chartSwitch");
+
+let chartMode = "xp";
+
+function updateChart() {
+
+    chartLevel.textContent = level;
+
+    if (chartMode === "xp") {
+
+        chartTitle.textContent = "XP Progress";
+        chartSubtitle.textContent = "Your character growth";
+
+        chartValue.textContent = xp;
+
+        chartSwitch.innerHTML = `
+            XP
+            <span>⌄</span>
+        `;
+
+    }
+
+    if (chartMode === "study") {
+
+        chartTitle.textContent = "Study Time";
+        chartSubtitle.textContent = "Your learning activity";
+
+        chartValue.textContent =
+            localStorage.getItem("studyMinutes") || 0;
+
+        chartSwitch.innerHTML = `
+            STUDY
+            <span>⌄</span>
+        `;
+
+    }
+
+    if (chartMode === "flashcards") {
+
+        chartTitle.textContent = "Flashcards";
+        chartSubtitle.textContent = "Cards completed";
+
+        chartValue.textContent =
+            localStorage.getItem("flashcardsDone") || 0;
+
+        chartSwitch.innerHTML = `
+            CARDS
+            <span>⌄</span>
+        `;
+    }
+}
+
+
+chartSwitch.addEventListener("click", () => {
+
+    if (chartMode === "xp") {
+
+        chartMode = "study";
+
+    } else if (chartMode === "study") {
+
+        chartMode = "flashcards";
+
+    } else {
+
+        chartMode = "xp";
+
+    }
+
+    updateChart();
+
+});
+
+
+updateChart();
