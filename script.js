@@ -1,5 +1,5 @@
 /* =========================
-   PLAYER DATA
+   PLAYER
 ========================= */
 
 let xp =
@@ -8,10 +8,6 @@ let xp =
 let level =
     Number(localStorage.getItem("level")) || 1;
 
-
-/* =========================
-   BASIC UI
-========================= */
 
 const xpBar =
     document.getElementById("xpBar");
@@ -25,12 +21,6 @@ const levelText =
 const nextXP =
     document.getElementById("nextXP");
 
-const chartValue =
-    document.getElementById("chartValue");
-
-const chartLevel =
-    document.getElementById("chartLevel");
-
 
 function updateUI() {
 
@@ -41,9 +31,6 @@ function updateUI() {
         `${xp} / 100 XP`;
 
     levelText.textContent =
-        level;
-
-    chartLevel.textContent =
         level;
 
     nextXP.textContent =
@@ -57,10 +44,11 @@ function updateUI() {
 
 function updateDate() {
 
-    const date =
-        new Date();
+    const date = new Date();
 
-    const text =
+    document.getElementById(
+        "todayDate"
+    ).textContent =
         date.toLocaleDateString(
             "en-US",
             {
@@ -69,74 +57,58 @@ function updateDate() {
                 day: "numeric"
             }
         ).toUpperCase();
-
-    document.getElementById(
-        "todayDate"
-    ).textContent = text;
 }
 
 
 /* =========================
-   TODAY STATS
+   TODAY
 ========================= */
 
 function updateToday() {
 
-    const cards =
-        Number(
-            localStorage.getItem(
-                "flashcardsDone"
-            )
-        ) || 0;
-
-    const quests =
-        Number(
-            localStorage.getItem(
-                "questsDone"
-            )
-        ) || 0;
-
-    const streak =
-        Number(
-            localStorage.getItem(
-                "streak"
-            )
-        ) || 0;
-
     document.getElementById(
         "cardCount"
-    ).textContent = cards;
+    ).textContent =
+        localStorage.getItem(
+            "flashcardsDone"
+        ) || 0;
 
     document.getElementById(
         "questCount"
-    ).textContent = quests;
+    ).textContent =
+        localStorage.getItem(
+            "questsDone"
+        ) || 0;
 
     document.getElementById(
         "streakCount"
-    ).textContent = streak;
+    ).textContent =
+        localStorage.getItem(
+            "streak"
+        ) || 0;
 }
 
 
 /* =========================
-   PERFORMANCE CHART
+   CHART
 ========================= */
 
 let chartMode = "xp";
 
 const chartTitle =
-    document.getElementById(
-        "chartTitle"
-    );
+    document.getElementById("chartTitle");
 
 const chartSubtitle =
-    document.getElementById(
-        "chartSubtitle"
-    );
+    document.getElementById("chartSubtitle");
+
+const chartValue =
+    document.getElementById("chartValue");
+
+const chartLevel =
+    document.getElementById("chartLevel");
 
 const chartSwitch =
-    document.getElementById(
-        "chartSwitch"
-    );
+    document.getElementById("chartSwitch");
 
 
 function updateChart() {
@@ -234,9 +206,7 @@ function updateRival() {
 
     const rivalXP =
         Number(
-            localStorage.getItem(
-                "rivalXP"
-            )
+            localStorage.getItem("rivalXP")
         ) || 0;
 
 
@@ -293,114 +263,93 @@ function updateRival() {
 
 
 /* =========================
-   WORLDS MENU
+   WORLDS
 ========================= */
 
-const worldButton =
-    document.getElementById(
-        "worldButton"
-    );
-
-const worldNav =
-    document.getElementById(
-        "worldNav"
-    );
-
 const worldMenu =
-    document.getElementById(
-        "worldMenu"
-    );
-
-const closeWorlds =
-    document.getElementById(
-        "closeWorlds"
-    );
-
+    document.getElementById("worldMenu");
 
 function openWorlds() {
 
-    worldMenu.classList.add(
-        "open"
-    );
+    worldMenu.classList.add("open");
+}
+
+function closeWorlds() {
+
+    worldMenu.classList.remove("open");
 }
 
 
-function closeWorldMenu() {
-
-    worldMenu.classList.remove(
-        "open"
+document
+    .getElementById("worldButton")
+    .addEventListener(
+        "click",
+        openWorlds
     );
-}
 
 
-worldButton.addEventListener(
-    "click",
-    openWorlds
-);
+document
+    .getElementById("worldNav")
+    .addEventListener(
+        "click",
+        openWorlds
+    );
 
-worldNav.addEventListener(
-    "click",
-    openWorlds
-);
 
-closeWorlds.addEventListener(
-    "click",
-    closeWorldMenu
-);
+document
+    .getElementById("closeWorlds")
+    .addEventListener(
+        "click",
+        closeWorlds
+    );
 
 
 /* =========================
    SETTINGS
 ========================= */
 
-const dashboardButton =
-    document.getElementById(
-        "dashboardButton"
-    );
-
 const dashboardMenu =
     document.getElementById(
         "dashboardMenu"
     );
 
-const closeDashboard =
-    document.getElementById(
-        "closeDashboard"
+
+document
+    .getElementById("dashboardButton")
+    .addEventListener(
+        "click",
+        () => {
+
+            dashboardMenu.classList.add(
+                "open"
+            );
+        }
     );
 
 
-dashboardButton.addEventListener(
-    "click",
-    () => {
+document
+    .getElementById("closeDashboard")
+    .addEventListener(
+        "click",
+        () => {
 
-        dashboardMenu.classList.add(
-            "open"
-        );
-    }
-);
-
-
-closeDashboard.addEventListener(
-    "click",
-    () => {
-
-        dashboardMenu.classList.remove(
-            "open"
-        );
-    }
-);
+            dashboardMenu.classList.remove(
+                "open"
+            );
+        }
+    );
 
 
 /* =========================
    BACKGROUND
 ========================= */
 
-const input =
+const photoInput =
     document.getElementById(
         "photoInput"
     );
 
-const bg =
+const photoBg =
     document.getElementById(
         "photoBg"
     );
@@ -433,18 +382,18 @@ function showPhoto(index) {
 
     currentPhoto = index;
 
-    bg.style.backgroundImage =
+    photoBg.style.backgroundImage =
         `url("${photos[index]}")`;
 
-    bg.style.opacity = "1";
+    photoBg.style.opacity = "1";
 }
 
 
-input.addEventListener(
+photoInput.addEventListener(
     "change",
     () => {
 
-        [...input.files].forEach(
+        [...photoInput.files].forEach(
             file => {
 
                 const reader =
@@ -473,19 +422,73 @@ input.addEventListener(
 );
 
 
-setInterval(
+if (photos.length) {
+    showPhoto(0);
+}
+
+
+/* =========================
+   SOUND
+========================= */
+
+let soundEnabled =
+    localStorage.getItem(
+        "soundEnabled"
+    ) !== "false";
+
+
+const soundButton =
+    document.getElementById(
+        "soundButton"
+    );
+
+
+function updateSoundUI() {
+
+    soundButton.querySelector(
+        ".setting-state"
+    ).textContent =
+        soundEnabled
+            ? "ON"
+            : "OFF";
+}
+
+
+soundButton.addEventListener(
+    "click",
     () => {
 
-        if (!photos.length)
-            return;
+        soundEnabled =
+            !soundEnabled;
 
-        showPhoto(
-            (currentPhoto + 1)
-            % photos.length
+        localStorage.setItem(
+            "soundEnabled",
+            soundEnabled
         );
 
-    },
-    60000
+        updateSoundUI();
+    }
+);
+
+
+/* =========================
+   THEME
+========================= */
+
+const themeButton =
+    document.getElementById(
+        "themeButton"
+    );
+
+
+themeButton.addEventListener(
+    "click",
+    () => {
+
+        alert(
+            "Dark theme is currently active."
+        );
+    }
 );
 
 
@@ -507,28 +510,17 @@ document
             if (!confirmReset)
                 return;
 
-            localStorage.removeItem(
-                "xp"
-            );
-
-            localStorage.removeItem(
-                "level"
-            );
-
-            localStorage.removeItem(
-                "studyMinutes"
-            );
-
-            localStorage.removeItem(
-                "flashcardsDone"
-            );
-
-            localStorage.removeItem(
-                "questsDone"
-            );
-
-            localStorage.removeItem(
-                "streak"
+            [
+                "xp",
+                "level",
+                "studyMinutes",
+                "flashcardsDone",
+                "questsDone",
+                "streak",
+                "rivalXP"
+            ].forEach(
+                key =>
+                    localStorage.removeItem(key)
             );
 
             location.reload();
@@ -545,7 +537,4 @@ updateDate();
 updateToday();
 updateChart();
 updateRival();
-
-if (photos.length) {
-    showPhoto(0);
-}
+updateSoundUI();
