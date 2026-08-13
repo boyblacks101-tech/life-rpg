@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport"
+content="width=device-width,initial-scale=1">
+
+<title>Add Card</title>
+<link rel="stylesheet" href="editor.css">
+</head>
+
+<body>
+
+<div class="editor">
+
+<header>
+<a href="flashcards.html">←</a>
+
+<div>
+<small>FLASHCARDS</small>
+<h1>Add Card</h1>
+</div>
+</header>
+
+<section id="types">
+
+<h2>Choose card type</h2>
+
+<button data-type="word">
+<strong>WORD</strong>
+<span>Vocabulary and definitions</span>
+</button>
+
+<button data-type="native">
+<strong>NATIVE PATTERN</strong>
+<span>Natural English expressions</span>
+</button>
+
+<button data-type="tech">
+<strong>TECH</strong>
+<span>Programming and Bug Bounty</span>
+</button>
+
+</section>
+
+<section id="techTypes" class="hidden">
+
+<h2>Tech card type</h2>
+
+<button data-tech="Concept">Concept</button>
+<button data-tech="Command">Command</button>
+<button data-tech="Code">Code</button>
+<button data-tech="Vulnerability">Vulnerability</button>
+<button data-tech="Technique">Technique</button>
+<button data-tech="Scenario">Scenario</button>
+
+</section>
+
+<section id="form" class="hidden">
+
+<label>FRONT</label>
+<input id="frontInput"
+placeholder="Question or term">
+
+<label>BACK</label>
+<textarea id="backInput"
+placeholder="Answer or explanation"></textarea>
+
+<label>EXAMPLE</label>
+<textarea id="exampleInput"
+placeholder="Optional example"></textarea>
+
+<button id="save">Save Card</button>
+
+</section>
+
+</div>
+
+<script src="editor.js"></script>
+</body>
+  </html>
