@@ -2,21 +2,10 @@
 <html lang="en">
 
 <head>
-
-<meta charset="UTF-8">
-
-<meta
-    name="viewport"
-    content="width=device-width, initial-scale=1"
->
-
-<title>Life RPG</title>
-
-<link
-    rel="stylesheet"
-    href="style.css"
->
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Life RPG</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
@@ -29,268 +18,171 @@
 <header>
 
     <div>
-
-        <small>
-            LIFE RPG
-        </small>
-
-        <h1>
-            Good morning,<br>
-            Player.
-        </h1>
-
+        <small>LIFE RPG</small>
+        <h1>Good morning,<br>Player.</h1>
     </div>
 
-    <!-- DASHBOARD BUTTON -->
+    <div class="header-actions">
 
-    <button
-        id="dashboardButton"
-        class="ios-icon-button"
-        aria-label="Open dashboard"
-    >
-        ◉
-    </button>
+        <button id="worldButton" class="round-button">
+            ◈
+        </button>
+
+        <button id="dashboardButton" class="round-button">
+            ⚙
+        </button>
+
+    </div>
 
 </header>
 
 
-<!-- DASHBOARD -->
-
-<div
-    id="dashboardMenu"
-    class="dashboard-menu"
->
-
-    <div class="dashboard-header">
-
-        <div>
-            <small>
-                PLAYER MENU
-            </small>
-
-            <strong>
-                Dashboard
-            </strong>
-        </div>
-
-        <button
-            id="closeDashboard"
-            class="ios-icon-button"
-        >
-            ×
-        </button>
-
-    </div>
-
-
-    <div class="dashboard-grid">
-
-        <!-- NCR -->
-
-        <a
-            href="flashcards/chat/chat.html"
-            class="dashboard-item"
-        >
-
-            <span class="dashboard-icon ncr-icon">
-                ◉
-            </span>
-
-            <span>
-                NCR
-            </span>
-
-        </a>
-
-
-        <!-- ENGLISH -->
-
-        <a
-            href="english/english.html"
-            class="dashboard-item"
-        >
-
-            <span class="dashboard-icon english-icon">
-                文
-            </span>
-
-            <span>
-                English
-            </span>
-
-        </a>
-
-
-        <!-- CYBER -->
-
-        <a
-            href="cyber/cyber.html"
-            class="dashboard-item"
-        >
-
-            <span class="dashboard-icon cyber-icon">
-                &lt;/&gt;
-            </span>
-
-            <span>
-                Cyber
-            </span>
-
-        </a>
-
-
-        <!-- SETTINGS -->
-
-        <button
-            id="settings"
-            class="dashboard-item"
-        >
-
-            <span class="dashboard-icon settings-icon">
-                ⚙
-            </span>
-
-            <span>
-                Settings
-            </span>
-
-        </button>
-
-    </div>
-
-</div>
-
-
-<!-- PHOTO CONTROLS -->
-
-<section class="photo-controls">
-
-    <input
-        id="photoInput"
-        type="file"
-        accept="image/*"
-        multiple
-    >
-
-    <div id="photoTabs"></div>
-
-</section>
-
-
 <main>
-
-
-<!-- CHARACTER -->
 
 <section class="character">
 
     <div class="avatar">
-
-        <span>
-            01
-        </span>
-
+        <span>01</span>
     </div>
-
 
     <div class="level">
 
-        <small>
-            LEVEL
-        </small>
+        <small>LEVEL</small>
 
-        <strong id="level">
-            1
-        </strong>
+        <strong id="level">1</strong>
 
         <div class="xp">
-
             <div id="xpBar"></div>
-
         </div>
 
-        <span id="xpText">
-            0 / 100 XP
-        </span>
+        <span id="xpText">0 / 100 XP</span>
 
     </div>
 
 </section>
 
 
-<!-- NEXT LEVEL -->
-
 <section class="next-level">
 
-    <small>
-        NEXT LEVEL
-    </small>
+    <small>NEXT LEVEL</small>
 
-    <strong id="nextXP">
-        100 XP
-    </strong>
+    <strong id="nextXP">100 XP</strong>
 
-    <p>
-        Keep going to upgrade your character.
-    </p>
+    <p>Keep going to upgrade your character.</p>
 
 </section>
 
-
-<!-- TODAY -->
 
 <section class="today">
 
     <div class="section-head">
-
-        <span>
-            TODAY
-        </span>
-
-        <small>
-            THU · AUG 13
-        </small>
-
+        <span>TODAY</span>
+        <small id="todayDate"></small>
     </div>
-
 
     <div class="today-row">
 
         <div>
+            <strong id="questCount">0</strong>
+            <span>quests</span>
+        </div>
 
-            <strong>
-                0
-            </strong>
+        <div>
+            <strong id="cardCount">0</strong>
+            <span>cards</span>
+        </div>
 
-            <span>
-                quests
-            </span>
+        <div>
+            <strong id="streakCount">0</strong>
+            <span>streak</span>
+        </div>
+
+    </div>
+
+</section>
+
+
+<section class="performance">
+
+    <div class="section-head">
+        <span>PERFORMANCE</span>
+        <small>LIVE</small>
+    </div>
+
+    <div class="performance-card">
+
+        <div class="performance-header">
+
+            <div class="performance-title">
+
+                <div class="performance-icon">
+                    ↗
+                </div>
+
+                <div>
+                    <strong id="chartTitle">XP Progress</strong>
+                    <span id="chartSubtitle">
+                        Your character growth
+                    </span>
+                </div>
+
+            </div>
+
+            <button id="chartSwitch">
+                XP <span>⌄</span>
+            </button>
 
         </div>
 
 
-        <div>
+        <div class="chart-stats">
 
-            <strong>
-                0
-            </strong>
+            <div>
+                <small>VALUE</small>
+                <strong id="chartValue">0</strong>
+            </div>
 
-            <span>
-                cards
-            </span>
+            <div>
+                <small>LEVEL</small>
+                <strong id="chartLevel">1</strong>
+            </div>
 
         </div>
 
 
-        <div>
+        <div class="chart">
 
-            <strong>
-                0
-            </strong>
+            <div class="chart-bars">
 
-            <span>
-                streak
-            </span>
+                <div class="chart-bar" style="--height:25%">
+                    <span></span>
+                </div>
+
+                <div class="chart-bar" style="--height:40%">
+                    <span></span>
+                </div>
+
+                <div class="chart-bar" style="--height:32%">
+                    <span></span>
+                </div>
+
+                <div class="chart-bar" style="--height:55%">
+                    <span></span>
+                </div>
+
+                <div class="chart-bar" style="--height:48%">
+                    <span></span>
+                </div>
+
+                <div class="chart-bar" style="--height:72%">
+                    <span></span>
+                </div>
+
+                <div class="chart-bar" style="--height:90%">
+                    <span></span>
+                </div>
+
+            </div>
 
         </div>
 
@@ -299,111 +191,182 @@
 </section>
 
 
-<!-- CONTINUE -->
-
 <section class="continue">
 
-    <small>
-        CONTINUE
-    </small>
+    <small>CONTINUE</small>
 
-
-    <a
-        href="flashcards/flashcards.html"
-    >
+    <a href="flashcards/flashcards.html">
 
         <div class="learn-icon">
             ✦
         </div>
 
-
         <div>
-
-            <strong>
-                Flashcards
-            </strong>
-
-            <span>
-                Train your knowledge
-            </span>
-
+            <strong>Flashcards</strong>
+            <span>Train your knowledge</span>
         </div>
 
-
-        <b>
-            →
-        </b>
+        <b>→</b>
 
     </a>
 
 </section>
 
 
+<section class="rival-card">
+
+    <div class="rival-title">
+        <span>RIVAL SYSTEM</span>
+        <small>ACTIVE</small>
+    </div>
+
+    <div class="rival-versus">
+
+        <div class="rival-player">
+            <strong>PLAYER</strong>
+            <span id="playerScore">0 XP</span>
+        </div>
+
+        <div class="versus">VS</div>
+
+        <div class="rival-player enemy">
+            <strong>RIVAL</strong>
+            <span id="rivalScore">0 XP</span>
+        </div>
+
+    </div>
+
+    <div class="rival-progress">
+        <div id="rivalProgress"></div>
+    </div>
+
+    <p id="rivalMessage">
+        You're perfectly tied.
+    </p>
+
+</section>
+
 </main>
 
 
-<!-- BOTTOM NAV -->
-
 <nav>
 
-    <a
-        class="active"
-        href="index.html"
-    >
-
-        <span>
-            ⌂
-        </span>
-
+    <a class="active" href="index.html">
+        <span>⌂</span>
         Home
-
     </a>
 
+    <button id="worldNav">
+        <span>◈</span>
+        Worlds
+    </button>
 
-    <a
-        href="flashcards/flashcards.html"
-    >
-
-        <span>
-            ✦
-        </span>
-
+    <a href="flashcards/flashcards.html">
+        <span>✦</span>
         Learn
-
     </a>
 
-
-    <a
-        href="flashcards/chat/chat.html"
-    >
-
-        <span>
-            ◉
-        </span>
-
+    <a href="flashcards/chat/chat.html">
+        <span>◉</span>
         NCR
-
     </a>
-
 
     <a href="#">
-
-        <span>
-            ⚔
-        </span>
-
+        <span>⚔</span>
         Quests
-
     </a>
 
 </nav>
 
 
+<!-- WORLDS MENU -->
+
+<div id="worldMenu" class="overlay-menu">
+
+    <div class="menu-card">
+
+        <div class="menu-header">
+            <div>
+                <small>WORLDS</small>
+                <h2>Select World</h2>
+            </div>
+
+            <button id="closeWorlds">×</button>
+        </div>
+
+
+        <a href="english/english.html" class="menu-item english">
+            <span>文</span>
+
+            <div>
+                <strong>English World</strong>
+                <small>Language · Flashcards · XP</small>
+            </div>
+
+            <b>→</b>
+        </a>
+
+
+        <a href="cyber/cyber.html" class="menu-item cyber">
+            <span>&lt;/&gt;</span>
+
+            <div>
+                <strong>Cyber Sleuth World</strong>
+                <small>IT · Security · Labs · XP</small>
+            </div>
+
+            <b>→</b>
+        </a>
+
+    </div>
+
 </div>
 
+
+<!-- SETTINGS MENU -->
+
+<div id="dashboardMenu" class="overlay-menu">
+
+    <div class="menu-card">
+
+        <div class="menu-header">
+
+            <div>
+                <small>SYSTEM</small>
+                <h2>Settings</h2>
+            </div>
+
+            <button id="closeDashboard">×</button>
+
+        </div>
+
+
+        <label class="setting-row">
+            <span>
+                <strong>Background</strong>
+                <small>Choose your RPG background</small>
+            </span>
+
+            <input
+                id="photoInput"
+                type="file"
+                accept="image/*"
+                multiple
+            >
+        </label>
+
+
+        <button id="resetProgress" class="danger-button">
+            Reset Progress
+        </button>
+
+    </div>
+
+</div>
+
+</div>
 
 <script src="script.js"></script>
 
 </body>
-
 </html>
