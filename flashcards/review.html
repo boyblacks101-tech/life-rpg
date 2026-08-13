@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport"
+content="width=device-width,initial-scale=1">
+
+<title>Review</title>
+<link rel="stylesheet" href="review.css">
+</head>
+
+<body>
+
+<div class="review">
+
+<header>
+<a href="flashcards.html">←</a>
+
+<div>
+<small id="deckName">ENGLISH</small>
+<strong>Review</strong>
+</div>
+
+<span id="counter">1 / 0</span>
+</header>
+
+<main>
+
+<div class="progress">
+<div id="progressBar"></div>
+</div>
+
+<button id="card" class="card">
+
+<div id="front">
+<span class="type">WORD</span>
+<h1 id="question">Loading...</h1>
+<p>Tap to reveal</p>
+</div>
+
+<div id="back" class="hidden">
+<h1 id="answer"></h1>
+
+<div class="divider"></div>
+
+<span>EXAMPLE</span>
+<p id="example"></p>
+</div>
+
+</button>
+
+<div id="actions" class="actions hidden">
+
+<button data-rating="again">
+<strong>Again</strong>
+<span>10m</span>
+</button>
+
+<button data-rating="hard">
+<strong>Hard</strong>
+<span>1d</span>
+</button>
+
+<button data-rating="good">
+<strong>Good</strong>
+<span>4d</span>
+</button>
+
+<button data-rating="easy">
+<strong>Easy</strong>
+<span>7d</span>
+</button>
+
+</div>
+
+</main>
+
+</div>
+
+<script src="review.js"></script>
+</body>
+</html>
